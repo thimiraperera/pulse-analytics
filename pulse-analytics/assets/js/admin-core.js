@@ -808,17 +808,123 @@
 		return { el: el, header: header, body: body, footer: footer, actions: actions, tabs: tabsEl };
 	};
 
+	// CSV download plus the matching prompt for AI tools.
 	App.csvButton = function (getUrl) {
-		return h('a', {
+		return h('span', { 'class': 'pa-export-pair' }, [
+			h('a', {
+				'class': 'pa-icon-btn',
+				href: '#',
+				title: __('Download CSV', 'pulse-analytics'),
+				'aria-label': __('Download CSV', 'pulse-analytics'),
+				onclick: function (e) {
+					e.preventDefault();
+					window.location.href = getUrl();
+				}
+			}, [icon('download'), h('span', { 'class': 'pa-icon-btn-label', text: 'CSV' })]),
+			App.promptButton(getUrl)
+		]);
+	};
+
+	App.promptButton = function (getUrl) {
+		return h('button', {
+			type: 'button',
 			'class': 'pa-icon-btn',
-			href: '#',
-			title: __('Download CSV', 'pulse-analytics'),
-			'aria-label': __('Download CSV', 'pulse-analytics'),
-			onclick: function (e) {
-				e.preventDefault();
-				window.location.href = getUrl();
+			title: __('Copy a prompt that explains this CSV file to an AI tool', 'pulse-analytics'),
+			'aria-label': __('AI prompt for this CSV file', 'pulse-analytics'),
+			onclick: function () { App.showPrompt(getUrl()); }
+		}, [icon('sparkles'), h('span', { 'class': 'pa-icon-btn-label', text: __('AI prompt', 'pulse-analytics') })]);
+	};
+
+	/* ------------------------------------------------------- prompt dialog */
+
+	var promptDialog = null;
+
+	// Copies text. Plain-http sites have no Clipboard API, so select the text and use the older command there.
+	App.copyText = function (text, textarea) {
+		if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+			return navigator.clipboard.writeText(text);
+		}
+		return new Promise(function (resolve, reject) {
+			textarea.focus();
+			textarea.select();
+			try {
+				if (document.execCommand('copy')) { resolve(); } else { reject(new Error('copy')); }
+			} catch (e) {
+				reject(e);
 			}
-		}, [icon('download'), h('span', { 'class': 'pa-icon-btn-label', text: 'CSV' })]);
+		});
+	};
+
+	// Opens a dialog with the prompt for an export URL.
+	App.showPrompt = function (exportUrl) {
+		var appRoot = document.getElementById('pulse-analytics-app') || document.body;
+		if (!promptDialog) {
+			var textarea = h('textarea', { 'class': 'pa-prompt-text', rows: '16', spellcheck: 'false', 'aria-label': __('Prompt', 'pulse-analytics') });
+			var copyBtn = h('button', { type: 'button', 'class': 'pa-btn pa-btn-primary pa-prompt-copy' });
+			var setCopyLabel = function (copied) {
+				clear(copyBtn);
+				copyBtn.appendChild(icon(copied ? 'check' : 'copy'));
+				copyBtn.appendChild(h('span', { text: copied ? __('Copied', 'pulse-analytics') : __('Copy prompt', 'pulse-analytics') }));
+			};
+			var close = function () {
+				if (typeof promptDialog.close === 'function') { promptDialog.close(); } else { promptDialog.removeAttribute('open'); }
+			};
+			setCopyLabel(false);
+			copyBtn.addEventListener('click', function () {
+				App.copyText(textarea.value, textarea).then(function () {
+					setCopyLabel(true);
+					setTimeout(function () { setCopyLabel(false); }, 1800);
+				}).catch(function () {
+					textarea.focus();
+					textarea.select();
+				});
+			});
+			promptDialog = h('dialog', { 'class': 'pa-dialog', 'aria-labelledby': 'pa-prompt-title' }, h('div', { 'class': 'pa-dialog-inner' }, [
+				h('div', { 'class': 'pa-dialog-head' }, [
+					h('h2', { id: 'pa-prompt-title' }, [icon('sparkles'), h('span', { text: __('Prompt for AI tools', 'pulse-analytics') })]),
+					h('button', { type: 'button', 'class': 'pa-icon-btn', 'aria-label': __('Close', 'pulse-analytics'), onclick: close }, icon('close'))
+				]),
+				h('p', { 'class': 'pa-dialog-note', text: __('Paste this into ChatGPT, Claude, Gemini or another AI chat together with the file, so the AI knows what the columns mean and what to look for. You can change the text before you copy it.', 'pulse-analytics') }),
+				textarea,
+				h('div', { 'class': 'pa-dialog-foot' }, [
+					h('button', { type: 'button', 'class': 'pa-btn', text: __('Close', 'pulse-analytics'), onclick: close }),
+					copyBtn
+				])
+			]));
+			// A click on the dimmed backdrop lands on the dialog element itself.
+			promptDialog.addEventListener('click', function (e) {
+				if (e.target === promptDialog) { close(); }
+			});
+			promptDialog.textarea = textarea;
+			promptDialog.copyBtn = copyBtn;
+		}
+		if (promptDialog.parentNode !== appRoot) {
+			appRoot.appendChild(promptDialog);
+		}
+
+		var area = promptDialog.textarea;
+		area.value = __('Writing the prompt...', 'pulse-analytics');
+		promptDialog.copyBtn.disabled = true;
+		if (typeof promptDialog.showModal === 'function') {
+			if (!promptDialog.open) { promptDialog.showModal(); }
+		} else {
+			promptDialog.setAttribute('open', '');
+		}
+
+		var requested = exportUrl;
+		promptDialog.requested = requested;
+		fetch(exportUrl + (exportUrl.indexOf('?') > -1 ? '&' : '?') + 'format=prompt', { credentials: 'same-origin' }).then(function (res) {
+			if (!res.ok) { throw new Error(String(res.status)); }
+			return res.text();
+		}).then(function (text) {
+			if (promptDialog.requested !== requested) { return; }
+			area.value = text;
+			area.scrollTop = 0;
+			promptDialog.copyBtn.disabled = false;
+		}).catch(function () {
+			if (promptDialog.requested !== requested) { return; }
+			area.value = __('The prompt could not be loaded. Reload the page and try again.', 'pulse-analytics');
+		});
 	};
 
 	/* ------------------------------------------------------------ row labels */

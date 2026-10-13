@@ -563,6 +563,29 @@ class Settings_Page {
 					echo $export( 'summary', __( 'Daily summary', 'pulse-analytics' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</p>
+				<p class="pa-inline pa-prompt-row">
+					<label for="pa-prompt-type"><?php esc_html_e( 'Prompt for AI tools:', 'pulse-analytics' ); ?></label>
+					<select id="pa-prompt-type">
+						<option value="all"><?php esc_html_e( 'All reports (ZIP)', 'pulse-analytics' ); ?></option>
+						<option value="sessions"><?php esc_html_e( 'Visits (sessions)', 'pulse-analytics' ); ?></option>
+						<option value="pageviews"><?php esc_html_e( 'Pageviews', 'pulse-analytics' ); ?></option>
+						<option value="events"><?php esc_html_e( 'Events', 'pulse-analytics' ); ?></option>
+						<option value="summary"><?php esc_html_e( 'Daily summary', 'pulse-analytics' ); ?></option>
+					</select>
+					<button type="button" class="button" id="pa-prompt-open"><?php esc_html_e( 'AI prompt', 'pulse-analytics' ); ?></button>
+				</p>
+				<p class="description"><?php esc_html_e( 'Paste the prompt into ChatGPT, Claude, Gemini or another AI chat together with the file, so the AI knows what the columns mean and what to look for. The ZIP also contains it as prompt-for-ai.txt.', 'pulse-analytics' ); ?></p>
+				<dialog id="pa-prompt-dialog" class="pa-prompt-dialog" aria-labelledby="pa-prompt-title">
+					<div class="pa-prompt-inner">
+						<h2 id="pa-prompt-title"><?php esc_html_e( 'Prompt for AI tools', 'pulse-analytics' ); ?></h2>
+						<p class="description"><?php esc_html_e( 'Paste this into the AI chat together with the file. You can change the text before you copy it.', 'pulse-analytics' ); ?></p>
+						<textarea id="pa-prompt-text" rows="16" spellcheck="false" aria-label="<?php esc_attr_e( 'Prompt', 'pulse-analytics' ); ?>"></textarea>
+						<p class="pa-prompt-actions">
+							<button type="button" class="button" data-pa-prompt-close><?php esc_html_e( 'Close', 'pulse-analytics' ); ?></button>
+							<button type="button" class="button button-primary" id="pa-prompt-copy"><?php esc_html_e( 'Copy prompt', 'pulse-analytics' ); ?></button>
+						</p>
+					</div>
+				</dialog>
 			</div>
 
 			<div class="pa-card">

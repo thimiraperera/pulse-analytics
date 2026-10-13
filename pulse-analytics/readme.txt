@@ -36,6 +36,8 @@ Every report can be filtered. Click any row to filter by it, or use Add filter t
 
 Each card and table has a CSV button that uses the current filters and dates. The Export menu also has "All reports in one ZIP file", with every report as its own CSV file plus the raw visits, pageviews and events. Settings > Tools has the same downloads for any period. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
 
+Every export also has an AI prompt button. It gives you text to paste into ChatGPT, Claude, Gemini or another AI chat together with the file. The text explains what the file contains, what each column means and how the visitors were counted, and asks for an analysis. The ZIP includes the same text as prompt-for-ai.txt.
+
 = Elsewhere in the admin =
 
 * A widget on the WordPress dashboard with the last 30 days.

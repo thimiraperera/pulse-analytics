@@ -56,13 +56,81 @@
 	// Raw export date range.
 	var start = document.getElementById('pa-export-start');
 	var end = document.getElementById('pa-export-end');
+	function exportUrl(link) {
+		var url = new URL(link.href, window.location.href);
+		if (start && start.value) { url.searchParams.set('start', start.value); }
+		if (end && end.value) { url.searchParams.set('end', end.value); }
+		return url;
+	}
 	document.querySelectorAll('[data-pa-export]').forEach(function (link) {
 		link.addEventListener('click', function () {
-			if (!start || !end) { return; }
-			var url = new URL(link.href, window.location.href);
-			if (start.value) { url.searchParams.set('start', start.value); }
-			if (end.value) { url.searchParams.set('end', end.value); }
-			link.href = url.toString();
+			link.href = exportUrl(link).toString();
 		});
 	});
+
+	// Prompt for AI tools, for the export picked in the list.
+	var dialog = document.getElementById('pa-prompt-dialog');
+	var openBtn = document.getElementById('pa-prompt-open');
+	if (dialog && openBtn) {
+		var text = document.getElementById('pa-prompt-text');
+		var copyBtn = document.getElementById('pa-prompt-copy');
+		var copyLabel = copyBtn.textContent;
+		var requested = '';
+		var close = function () {
+			if (typeof dialog.close === 'function') { dialog.close(); } else { dialog.removeAttribute('open'); }
+		};
+		var selectAndCopy = function () {
+			text.focus();
+			text.select();
+			try { return document.execCommand('copy'); } catch (e) { return false; }
+		};
+		var copied = function () {
+			copyBtn.textContent = __('Copied', 'pulse-analytics');
+			setTimeout(function () { copyBtn.textContent = copyLabel; }, 1800);
+		};
+
+		openBtn.addEventListener('click', function () {
+			var link = document.querySelector('[data-pa-export="' + document.getElementById('pa-prompt-type').value + '"]');
+			if (!link) { return; }
+			var url = exportUrl(link);
+			url.searchParams.set('format', 'prompt');
+			requested = url.toString();
+			text.value = __('Writing the prompt...', 'pulse-analytics');
+			copyBtn.disabled = true;
+			if (typeof dialog.showModal === 'function') {
+				if (!dialog.open) { dialog.showModal(); }
+			} else {
+				dialog.setAttribute('open', '');
+			}
+			var mine = requested;
+			fetch(mine, { credentials: 'same-origin' }).then(function (res) {
+				if (!res.ok) { throw new Error(String(res.status)); }
+				return res.text();
+			}).then(function (body) {
+				if (mine !== requested) { return; }
+				text.value = body;
+				text.scrollTop = 0;
+				copyBtn.disabled = false;
+			}).catch(function () {
+				if (mine !== requested) { return; }
+				text.value = __('The prompt could not be loaded. Reload the page and try again.', 'pulse-analytics');
+			});
+		});
+
+		copyBtn.addEventListener('click', function () {
+			if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+				navigator.clipboard.writeText(text.value).then(copied, function () {
+					if (selectAndCopy()) { copied(); }
+				});
+			} else if (selectAndCopy()) {
+				copied();
+			}
+		});
+		dialog.querySelectorAll('[data-pa-prompt-close]').forEach(function (btn) {
+			btn.addEventListener('click', close);
+		});
+		dialog.addEventListener('click', function (e) {
+			if (e.target === dialog) { close(); }
+		});
+	}
 })();

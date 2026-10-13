@@ -97,6 +97,112 @@ class Exporter {
 	}
 
 	/**
+	 * Download name of a single CSV export.
+	 *
+	 * @param string $type      Report type.
+	 * @param string $dimension Dimension (breakdowns only).
+	 * @param Query  $query     Query.
+	 * @return string
+	 */
+	public static function filename( $type, $dimension, Query $query ) {
+		return sanitize_file_name( 'pulse-analytics-' . ( 'breakdown' === $type ? str_replace( '_', '-', $dimension ) : $type ) . '-' . $query->start . '-to-' . $query->end . '.csv' );
+	}
+
+	/**
+	 * Header rows of the raw exports.
+	 *
+	 * @param string $type sessions, pageviews or events.
+	 * @return string[]
+	 */
+	public static function raw_columns( $type ) {
+		$columns = array(
+			'sessions'  => array( 'Session ID', 'Visitor ID (anonymous)', 'Started', 'Last activity', 'Duration (seconds)', 'Pageviews', 'Events', 'New visitor', 'Entry page', 'Entry page title', 'Exit page', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM term', 'UTM content', 'Country', 'Region', 'City', 'Device', 'Browser', 'Browser version', 'OS', 'OS version', 'Screen', 'Language', 'User', 'IP address' ),
+			'pageviews' => array( 'Pageview ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Page path', 'Page title', 'Content type', 'Previous page', 'Time on page (seconds)', 'Scroll depth (%)', 'New visitor', 'Country', 'Region', 'City', 'Device', 'Browser', 'OS', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign' ),
+			'events'    => array( 'Event ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Category', 'Name', 'Label', 'Page', 'Country', 'City', 'Device', 'Channel', 'Source', 'UTM campaign' ),
+		);
+		return isset( $columns[ $type ] ) ? $columns[ $type ] : array();
+	}
+
+	/**
+	 * Header row of the goals export.
+	 *
+	 * @param bool $with_previous Whether the comparison columns are included.
+	 * @return string[]
+	 */
+	public static function goal_columns( $with_previous ) {
+		$columns = array( 'Goal', 'Type', 'Match', 'Value', 'Conversions (visitors)', 'Completions', 'Conversion rate (%)' );
+		return $with_previous ? array_merge( $columns, array( 'Conversions (previous)', 'Completions (previous)', 'Conversion rate (previous, %)' ) ) : $columns;
+	}
+
+	/**
+	 * Titles of the extra columns some breakdowns have (key in the row => title).
+	 *
+	 * @return array<string,string>
+	 */
+	public static function extra_columns() {
+		return array(
+			'country'  => __( 'Country code', 'pulse-analytics' ),
+			'region'   => __( 'Region', 'pulse-analytics' ),
+			'browser'  => __( 'Browser', 'pulse-analytics' ),
+			'os'       => __( 'Operating system', 'pulse-analytics' ),
+			'category' => __( 'Event type', 'pulse-analytics' ),
+			'lat'      => __( 'Latitude', 'pulse-analytics' ),
+			'lon'      => __( 'Longitude', 'pulse-analytics' ),
+		);
+	}
+
+	/**
+	 * The filters of a query in words, such as "Country is Sri Lanka (LK)".
+	 *
+	 * @param Query $query Query.
+	 * @return string[]
+	 */
+	public static function filter_text( Query $query ) {
+		$ops = array(
+			'is'           => __( 'is', 'pulse-analytics' ),
+			'is_not'       => __( 'is not', 'pulse-analytics' ),
+			'contains'     => __( 'contains', 'pulse-analytics' ),
+			'not_contains' => __( 'does not contain', 'pulse-analytics' ),
+		);
+		$out = array();
+		foreach ( $query->filters as $filter ) {
+			// Page filters hold a path, so name the path column rather than the title.
+			$columns = self::dimension_columns( $filter['dim'] );
+			$label   = '_page' === substr( '_' . $filter['dim'], -5 ) ? $columns[1] : $columns[0];
+			$values  = array();
+			foreach ( (array) $filter['value'] as $value ) {
+				$values[] = self::filter_value( $filter['dim'], (string) $value );
+			}
+			$out[] = $label . ' ' . ( isset( $ops[ $filter['op'] ] ) ? $ops[ $filter['op'] ] : $filter['op'] ) . ' ' . implode( ', ', $values );
+		}
+		return $out;
+	}
+
+	/**
+	 * Readable form of a filter value.
+	 *
+	 * @param string $dimension Dimension.
+	 * @param string $value     Stored value.
+	 * @return string
+	 */
+	private static function filter_value( $dimension, $value ) {
+		if ( 'country' === $dimension ) {
+			$name = Countries::name( $value );
+			return $name !== $value ? $name . ' (' . $value . ')' : $value;
+		}
+		$labels = array();
+		if ( 'channel' === $dimension ) {
+			$labels = Referrer::channels();
+		} elseif ( 'event_category' === $dimension ) {
+			$labels = Reports::event_categories();
+		} elseif ( 'goal' === $dimension ) {
+			$goal = Goals::get( $value );
+			return $goal && ! empty( $goal['name'] ) ? $goal['name'] : $value;
+		}
+		return isset( $labels[ $value ] ) ? $labels[ $value ] : $value;
+	}
+
+	/**
 	 * Handles an export request.
 	 */
 	public function handle() {
@@ -118,6 +224,7 @@ class Exporter {
 		);
 		$dimension = isset( $_GET['dimension'] ) ? sanitize_key( wp_unslash( $_GET['dimension'] ) ) : '';
 		$interval  = isset( $_GET['interval'] ) ? sanitize_key( wp_unslash( $_GET['interval'] ) ) : '';
+		$format    = isset( $_GET['format'] ) ? sanitize_key( wp_unslash( $_GET['format'] ) ) : 'csv';
 		// phpcs:enable
 
 		if ( function_exists( 'set_time_limit' ) ) {
@@ -125,22 +232,30 @@ class Exporter {
 		}
 		$reports = new Reports();
 
-		if ( 'all' === $type ) {
-			$this->send_zip( $reports, $query, $interval );
-			exit;
-		}
-
-		if ( ! in_array( $type, self::TYPES, true ) ) {
+		if ( 'all' !== $type && ! in_array( $type, self::TYPES, true ) ) {
 			if ( ! $reports->is_dimension( $dimension ) ) {
 				wp_die( esc_html__( 'Unknown report.', 'pulse-analytics' ) );
 			}
 			$type = 'breakdown';
 		}
 
-		$filename = sanitize_file_name( 'pulse-analytics-' . ( 'breakdown' === $type ? str_replace( '_', '-', $dimension ) : $type ) . '-' . $query->start . '-to-' . $query->end . '.csv' );
+		// The text to paste into an AI tool along with the file.
+		if ( 'prompt' === $format ) {
+			nocache_headers();
+			header( 'Content-Type: text/plain; charset=utf-8' );
+			header( 'X-Content-Type-Options: nosniff' );
+			echo Export_Prompt::build( $type, $dimension, $query, $interval, $reports ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Plain text response.
+			exit;
+		}
+
+		if ( 'all' === $type ) {
+			$this->send_zip( $reports, $query, $interval );
+			exit;
+		}
+
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+		header( 'Content-Disposition: attachment; filename="' . self::filename( $type, $dimension, $query ) . '"' );
 		header( 'X-Content-Type-Options: nosniff' );
 		$out = fopen( 'php://output', 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		$this->write( $out, $type, $dimension, $interval, $reports, $query );
@@ -209,6 +324,9 @@ class Exporter {
 		$about = $dir . '/about-this-export.txt';
 		file_put_contents( $about, $this->about_text( $query ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
 		$files['about-this-export.txt'] = $about;
+		$prompt                         = $dir . '/prompt-for-ai.txt';
+		file_put_contents( $prompt, str_replace( "\n", "\r\n", Export_Prompt::build( 'all', '', $query, $interval, $reports ) ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+		$files['prompt-for-ai.txt'] = $prompt;
 
 		$zip_path = $dir . '.zip';
 		$created  = $this->create_zip( $zip_path, $files, $folder );
@@ -265,14 +383,8 @@ class Exporter {
 	 */
 	private function about_text( Query $query ) {
 		$previous = $query->previous();
-		$filters  = array();
-		foreach ( $query->filters as $filter ) {
-			// Page filters hold a path, so name the path column rather than the title.
-			$columns   = $this->dimension_columns( $filter['dim'] );
-			$label     = '_page' === substr( '_' . $filter['dim'], -5 ) ? $columns[1] : $columns[0];
-			$filters[] = $label . ' ' . str_replace( '_', ' ', $filter['op'] ) . ' ' . implode( ', ', (array) $filter['value'] );
-		}
-		$user  = wp_get_current_user();
+		$filters  = self::filter_text( $query );
+		$user     = wp_get_current_user();
 		$lines = array(
 			'Pulse Analytics export',
 			'',
@@ -285,6 +397,7 @@ class Exporter {
 			'Every CSV file opens in Excel, Google Sheets or Numbers.',
 			'Durations are in seconds and rates are in percent.',
 			'Files starting with "raw-" have one row per visit, pageview or event.',
+			'prompt-for-ai.txt explains the files to an AI tool. Upload it with the CSV files or paste its text into the chat.',
 		);
 		return implode( "\r\n", $lines ) . "\r\n";
 	}
@@ -315,7 +428,7 @@ class Exporter {
 	 * @param string $dimension Dimension.
 	 * @return array{0:string,1:string} Label and key column titles.
 	 */
-	private function dimension_columns( $dimension ) {
+	public static function dimension_columns( $dimension ) {
 		$map = array(
 			'page'           => array( __( 'Page title', 'pulse-analytics' ), __( 'Page path', 'pulse-analytics' ) ),
 			'entry_page'     => array( __( 'Entry page title', 'pulse-analytics' ), __( 'Entry page path', 'pulse-analytics' ) ),
@@ -330,8 +443,26 @@ class Exporter {
 		if ( isset( $map[ $dimension ] ) ) {
 			return $map[ $dimension ];
 		}
-		$title = ucwords( str_replace( '_', ' ', $dimension ) );
-		return array( $title, $title . ' ' . __( '(raw value)', 'pulse-analytics' ) );
+		$titles = array(
+			'utm_source'      => __( 'UTM source', 'pulse-analytics' ),
+			'utm_medium'      => __( 'UTM medium', 'pulse-analytics' ),
+			'utm_campaign'    => __( 'UTM campaign', 'pulse-analytics' ),
+			'utm_term'        => __( 'UTM term', 'pulse-analytics' ),
+			'utm_content'     => __( 'UTM content', 'pulse-analytics' ),
+			'os'              => __( 'Operating system', 'pulse-analytics' ),
+			'os_version'      => __( 'OS version', 'pulse-analytics' ),
+			'browser_version' => __( 'Browser version', 'pulse-analytics' ),
+			'referrer_url'    => __( 'Referrer URL', 'pulse-analytics' ),
+			'post_type'       => __( 'Content type', 'pulse-analytics' ),
+			'event_name'      => __( 'Event', 'pulse-analytics' ),
+			'event_label'     => __( 'Event label', 'pulse-analytics' ),
+			'visitor_type'    => __( 'Visitor type', 'pulse-analytics' ),
+			'user_type'       => __( 'User type', 'pulse-analytics' ),
+			'screen'          => __( 'Screen size', 'pulse-analytics' ),
+		);
+		$title  = isset( $titles[ $dimension ] ) ? $titles[ $dimension ] : ucfirst( str_replace( '_', ' ', $dimension ) );
+		/* translators: %s: column title */
+		return array( $title, sprintf( __( '%s (raw value)', 'pulse-analytics' ), $title ) );
 	}
 
 	/**
@@ -361,12 +492,11 @@ class Exporter {
 			);
 			$rows   = $result['rows'];
 			if ( null === $header ) {
-				list( $label_title, $key_title ) = $this->dimension_columns( $dimension );
-				$header                          = array( $label_title, $key_title );
-				foreach ( array( 'country', 'region', 'browser', 'os', 'category', 'lat', 'lon' ) as $extra ) {
+				$header = self::dimension_columns( $dimension );
+				foreach ( self::extra_columns() as $extra => $extra_title ) {
 					if ( $rows && array_key_exists( $extra, $rows[0] ) ) {
 						$extras[] = $extra;
-						$header[] = ucfirst( $extra );
+						$header[] = $extra_title;
 					}
 				}
 				foreach ( $result['metrics'] as $metric ) {
@@ -459,7 +589,7 @@ class Exporter {
 	 * @param Query    $query   Query.
 	 */
 	private function session_rows( $out, Reports $reports, Query $query ) {
-		$this->row( $out, array( 'Session ID', 'Visitor ID (anonymous)', 'Started', 'Last activity', 'Duration (seconds)', 'Pageviews', 'Events', 'New visitor', 'Entry page', 'Entry page title', 'Exit page', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM term', 'UTM content', 'Country', 'Region', 'City', 'Device', 'Browser', 'Browser version', 'OS', 'OS version', 'Screen', 'Language', 'User', 'IP address' ) );
+		$this->row( $out, self::raw_columns( 'sessions' ) );
 		$reports->each_session(
 			$query,
 			function ( $s ) use ( $out ) {
@@ -477,7 +607,7 @@ class Exporter {
 	 */
 	private function pageview_rows( $out, Reports $reports, Query $query ) {
 		$channels = Referrer::channels();
-		$this->row( $out, array( 'Pageview ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Page path', 'Page title', 'Content type', 'Previous page', 'Time on page (seconds)', 'Scroll depth (%)', 'New visitor', 'Country', 'Region', 'City', 'Device', 'Browser', 'OS', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign' ) );
+		$this->row( $out, self::raw_columns( 'pageviews' ) );
 		$reports->each_pageview(
 			$query,
 			function ( $p ) use ( $out, $channels ) {
@@ -495,7 +625,7 @@ class Exporter {
 	 */
 	private function event_rows( $out, Reports $reports, Query $query ) {
 		$cats = Reports::event_categories();
-		$this->row( $out, array( 'Event ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Category', 'Name', 'Label', 'Page', 'Country', 'City', 'Device', 'Channel', 'Source', 'UTM campaign' ) );
+		$this->row( $out, self::raw_columns( 'events' ) );
 		$reports->each_event(
 			$query,
 			function ( $e ) use ( $out, $cats ) {
@@ -513,11 +643,7 @@ class Exporter {
 	 */
 	private function goal_rows( $out, Reports $reports, Query $query ) {
 		$result = $reports->goals( $query );
-		$header = array( 'Goal', 'Type', 'Match', 'Value', 'Conversions (visitors)', 'Completions', 'Conversion rate (%)' );
-		if ( '' !== $query->compare ) {
-			$header = array_merge( $header, array( 'Conversions (previous)', 'Completions (previous)', 'Conversion rate (previous, %)' ) );
-		}
-		$this->row( $out, $header );
+		$this->row( $out, self::goal_columns( '' !== $query->compare ) );
 		foreach ( $result['goals'] as $goal ) {
 			$cells = array( $goal['name'], $goal['type'], $goal['match'], $goal['value'], $goal['conversions'], $goal['completions'], $goal['cr'] );
 			if ( '' !== $query->compare ) {

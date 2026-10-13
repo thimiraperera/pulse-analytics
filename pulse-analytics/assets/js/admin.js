@@ -175,7 +175,19 @@
 					return;
 				}
 				var itemIcon = item[0] === 'all' ? 'download' : (item[0] === 'breakdown' || item[0] === 'summary' || item[0] === 'goals' ? 'table' : 'file');
-				menu.appendChild(h('a', { 'class': 'pa-menu-item' + (item[0] === 'all' ? ' is-strong' : ''), role: 'menuitem', href: App.exportUrl(item[0], { dimension: item[1], interval: state.interval }), onclick: closePopover }, [icon(itemIcon), h('span', { text: item[2] })]));
+				var href = App.exportUrl(item[0], { dimension: item[1], interval: state.interval });
+				menu.appendChild(h('div', { 'class': 'pa-menu-row' }, [
+					h('a', { 'class': 'pa-menu-item' + (item[0] === 'all' ? ' is-strong' : ''), role: 'menuitem', href: href, onclick: closePopover }, [icon(itemIcon), h('span', { text: item[2] })]),
+					h('button', {
+						type: 'button',
+						'class': 'pa-menu-prompt',
+						role: 'menuitem',
+						title: __('Copy a prompt that explains this file to an AI tool', 'pulse-analytics'),
+						/* translators: %s: name of an export, such as "All pages" */
+						'aria-label': sprintf(__('AI prompt for %s', 'pulse-analytics'), item[2]),
+						onclick: function () { closePopover(); App.showPrompt(href); }
+					}, [icon('sparkles'), h('span', { text: __('AI prompt', 'pulse-analytics') })])
+				]));
 			});
 			openPopover(button, menu, { alignRight: true, focus: false });
 		});
