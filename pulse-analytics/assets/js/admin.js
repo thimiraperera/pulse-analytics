@@ -183,8 +183,11 @@
 						'class': 'pa-menu-prompt',
 						role: 'menuitem',
 						title: __('Copy a prompt that explains this file to an AI tool', 'pulse-analytics'),
-						/* translators: %s: name of an export, such as "All pages" */
-						'aria-label': sprintf(__('AI prompt for %s', 'pulse-analytics'), item[2]),
+						'aria-label': sprintf(
+							/* translators: %s: name of an export, such as "All pages" */
+							__('AI prompt for %s', 'pulse-analytics'),
+							item[2]
+						),
 						onclick: function () { closePopover(); App.showPrompt(href); }
 					}, [icon('sparkles'), h('span', { text: __('AI prompt', 'pulse-analytics') })])
 				]));

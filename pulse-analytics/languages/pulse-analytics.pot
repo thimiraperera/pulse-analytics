@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pulse Analytics 0.2.0\n"
+"Project-Id-Version: Pulse Analytics 0.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/thimiraperera/pulse-analytics/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T04:37:48+00:00\n"
+"POT-Creation-Date: 2026-10-13T05:40:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pulse-analytics\n"
@@ -59,7 +59,7 @@ msgstr ""
 #: includes/class-admin.php:176
 #: includes/class-admin.php:251
 #: includes/class-post-stats.php:142
-#: assets/js/admin.js:205
+#: assets/js/admin.js:220
 msgid "Statistics"
 msgstr ""
 
@@ -133,8 +133,8 @@ msgstr ""
 
 #: includes/class-admin.php:252
 #: includes/class-settings-page.php:41
-#: assets/js/admin.js:215
-#: assets/js/admin.js:1053
+#: assets/js/admin.js:230
+#: assets/js/admin.js:1068
 msgid "Settings"
 msgstr ""
 
@@ -200,6 +200,7 @@ msgstr ""
 #: includes/class-email-reports.php:132
 #: includes/class-exporter.php:40
 #: includes/class-settings-page.php:561
+#: includes/class-settings-page.php:571
 #: assets/js/admin-core.js:212
 msgid "Pageviews"
 msgstr ""
@@ -216,7 +217,7 @@ msgstr ""
 
 #: includes/class-dashboard-widget.php:99
 #: includes/class-email-reports.php:132
-#: assets/js/admin.js:1086
+#: assets/js/admin.js:1101
 msgid "Top pages"
 msgstr ""
 
@@ -275,15 +276,15 @@ msgid "Top countries"
 msgstr ""
 
 #: includes/class-email-reports.php:149
-#: assets/js/admin.js:390
-#: assets/js/admin.js:788
+#: assets/js/admin.js:405
+#: assets/js/admin.js:803
 msgid "Goals"
 msgstr ""
 
 #: includes/class-email-reports.php:149
 #: includes/class-exporter.php:50
 #: assets/js/admin-core.js:222
-#: assets/js/admin.js:1580
+#: assets/js/admin.js:1595
 msgid "Conversions"
 msgstr ""
 
@@ -297,6 +298,778 @@ msgstr ""
 
 #: includes/class-email-reports.php:157
 msgid "Sent by Pulse Analytics. You can change or turn off these emails under Statistics > Settings."
+msgstr ""
+
+#: includes/class-export-prompt.php:34
+msgid "I am attaching statistics from my website as a set of CSV files, exported from Pulse Analytics, a WordPress analytics plugin. Please read these notes first, then analyse the files."
+msgstr ""
+
+#: includes/class-export-prompt.php:35
+#: includes/class-export-prompt.php:42
+msgid "About the data"
+msgstr ""
+
+#: includes/class-export-prompt.php:36
+msgid "The files"
+msgstr ""
+
+#: includes/class-export-prompt.php:37
+#: includes/class-export-prompt.php:44
+msgid "What the columns mean"
+msgstr ""
+
+#: includes/class-export-prompt.php:41
+msgid "I am attaching a CSV file with statistics from my website, exported from Pulse Analytics, a WordPress analytics plugin. Please read these notes first, then analyse the file."
+msgstr ""
+
+#: includes/class-export-prompt.php:43
+msgid "The file"
+msgstr ""
+
+#: includes/class-export-prompt.php:47
+msgid "What I would like from you"
+msgstr ""
+
+#. translators: 1: site name, 2: site address
+#: includes/class-export-prompt.php:93
+#, php-format
+msgid "Website: %1$s (%2$s)"
+msgstr ""
+
+#. translators: 1: first day, 2: last day, 3: number of days
+#: includes/class-export-prompt.php:95
+#, php-format
+msgid "Period: %1$s to %2$s (%3$s day)"
+msgid_plural "Period: %1$s to %2$s (%3$s days)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: first day, 2: last day
+#: includes/class-export-prompt.php:98
+#, php-format
+msgid "Compared with: %1$s to %2$s, the same dates a year earlier"
+msgstr ""
+
+#. translators: 1: first day, 2: last day
+#: includes/class-export-prompt.php:101
+#, php-format
+msgid "Compared with: %1$s to %2$s, the period just before"
+msgstr ""
+
+#: includes/class-export-prompt.php:103
+msgid "Compared with: nothing, this export has no comparison period"
+msgstr ""
+
+#. translators: %s: list of filters
+#: includes/class-export-prompt.php:106
+#, php-format
+msgid "Filters: %s. Everything in the export is limited to these visits."
+msgstr ""
+
+#. translators: %s: list of filters
+#: includes/class-export-prompt.php:106
+msgid "Filters: none, all tracked visits are included"
+msgstr ""
+
+#. translators: %s: time zone, such as Asia/Colombo
+#: includes/class-export-prompt.php:108
+#, php-format
+msgid "Dates and times are in the website's time zone (%s)."
+msgstr ""
+
+#: includes/class-export-prompt.php:109
+msgid "The files are UTF-8 CSV with a header row. Durations are in seconds, and percentages are numbers from 0 to 100."
+msgstr ""
+
+#: includes/class-export-prompt.php:111
+msgid "A column whose name ends in \"(previous period)\" holds the same figure for the comparison period. An empty cell there means the row had no data in that period."
+msgstr ""
+
+#: includes/class-export-prompt.php:113
+msgid "A text cell that starts with an apostrophe, such as '+1 202 555 0143, got the apostrophe on export so that spreadsheet programs do not read it as a formula. Ignore the apostrophe."
+msgstr ""
+
+#: includes/class-export-prompt.php:115
+msgid "Visitors are recognised by an anonymous ID stored in their browser, so a returning visitor counts once for the whole period unless they clear their browser data or switch devices."
+msgstr ""
+
+#: includes/class-export-prompt.php:116
+msgid "Visitors are counted without cookies, using an anonymous ID that changes every day. The same person on two different days counts as two visitors, so visitor totals for several days are closer to the sum of the daily figures, and \"returning\" only covers repeat visits on the same day."
+msgstr ""
+
+#. translators: %s: number of minutes
+#: includes/class-export-prompt.php:118
+#, php-format
+msgid "A visit ends after %s minute without activity."
+msgid_plural "A visit ends after %s minutes without activity."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: list of user roles
+#: includes/class-export-prompt.php:121
+#, php-format
+msgid "Bots and crawlers are not counted, and neither are logged-in users with these roles: %s."
+msgstr ""
+
+#. translators: %s: list of user roles
+#: includes/class-export-prompt.php:121
+msgid "Bots and crawlers are not counted."
+msgstr ""
+
+#: includes/class-export-prompt.php:123
+msgid "Visitors whose browser sends a Do Not Track signal are not counted."
+msgstr ""
+
+#: includes/class-export-prompt.php:126
+msgid "Visits are only counted after the visitor accepts the cookie banner, so the real traffic is higher than these numbers."
+msgstr ""
+
+#: includes/class-export-prompt.php:129
+msgid "Warning: the site still contains sample visits that the plugin generated for testing. These numbers probably do not describe real visitors."
+msgstr ""
+
+#. translators: %s: file name
+#: includes/class-export-prompt.php:164
+#, php-format
+msgid "File: %s"
+msgstr ""
+
+#. translators: %s: what the rows of the file are
+#: includes/class-export-prompt.php:166
+#, php-format
+msgid "Contents: %s"
+msgstr ""
+
+#: includes/class-export-prompt.php:168
+msgid "The file can be large. Use code, for example Python with pandas, to analyse it rather than reading it line by line."
+msgstr ""
+
+#. translators: %s: list of URL parameters, such as utm_campaign
+#: includes/class-export-prompt.php:199
+#, php-format
+msgid "visits grouped by the campaign tags of the link the visitor arrived on (%s), one file per tag. Visits without the tag are left out."
+msgstr ""
+
+#: includes/class-export-prompt.php:201
+msgid "a short summary of the export."
+msgstr ""
+
+#: includes/class-export-prompt.php:202
+msgid "these notes."
+msgstr ""
+
+#. translators: %s: folder name
+#: includes/class-export-prompt.php:205
+#, php-format
+msgid "The ZIP file has a folder named %s with these files:"
+msgstr ""
+
+#: includes/class-export-prompt.php:207
+msgid "The files whose names start with \"raw-\" have one row per visit, pageview or event and can be large. Use code, for example Python with pandas, to analyse them rather than reading them line by line."
+msgstr ""
+
+#: includes/class-export-prompt.php:225
+msgid "one row per hour"
+msgstr ""
+
+#: includes/class-export-prompt.php:226
+msgid "one row per day"
+msgstr ""
+
+#: includes/class-export-prompt.php:227
+msgid "one row per week"
+msgstr ""
+
+#: includes/class-export-prompt.php:228
+msgid "one row per month"
+msgstr ""
+
+#. translators: %s: "one row per day" or similar
+#: includes/class-export-prompt.php:232
+#, php-format
+msgid "two tables. The first has the main figures (visitors, visits, pageviews, views per visit, bounce rate and average visit length) for the period and the comparison period, with the change in percent. After an empty row, the second table shows the same figures over time, %s."
+msgstr ""
+
+#: includes/class-export-prompt.php:234
+msgid "one row per goal set up in the plugin, with the number of visitors who reached it, how often it was reached and the conversion rate."
+msgstr ""
+
+#: includes/class-export-prompt.php:236
+msgid "one row per visit (session) with its time, length, number of pages, entry and exit page, traffic source, campaign tags, location, device and browser."
+msgstr ""
+
+#: includes/class-export-prompt.php:238
+msgid "one row per pageview with its time, page, previous page, time on page, scroll depth, location, device and traffic source."
+msgstr ""
+
+#: includes/class-export-prompt.php:240
+msgid "one row per tracked event, such as a link click, download, form submission, site search or 404 error, with its page, location, device and traffic source."
+msgstr ""
+
+#. translators: %s: name of a URL parameter, such as utm_campaign
+#: includes/class-export-prompt.php:252
+#, php-format
+msgid "visits grouped by the %s tag of the campaign link the visitor arrived on. Visits without the tag are left out."
+msgstr ""
+
+#: includes/class-export-prompt.php:255
+msgid "one row per page, identified by its path, for pages viewed in the period."
+msgstr ""
+
+#: includes/class-export-prompt.php:256
+msgid "one row per page where visits started (landing pages)."
+msgstr ""
+
+#: includes/class-export-prompt.php:257
+msgid "one row per page where visits ended."
+msgstr ""
+
+#: includes/class-export-prompt.php:258
+msgid "the pages viewed just before the page in the filter."
+msgstr ""
+
+#: includes/class-export-prompt.php:259
+msgid "the pages viewed just after the page in the filter, including leaving the site."
+msgstr ""
+
+#: includes/class-export-prompt.php:260
+msgid "pageviews grouped by content type, such as posts, pages or products."
+msgstr ""
+
+#: includes/class-export-prompt.php:261
+msgid "pageviews grouped by the author of the post."
+msgstr ""
+
+#: includes/class-export-prompt.php:262
+msgid "pageviews grouped by post category."
+msgstr ""
+
+#. translators: %s: list of channel names
+#: includes/class-export-prompt.php:264
+#, php-format
+msgid "visits grouped by channel. The channels are: %s."
+msgstr ""
+
+#: includes/class-export-prompt.php:265
+msgid "visits grouped by traffic source: a search engine, social network, website, or the utm_source of a campaign link. Direct visits have no source."
+msgstr ""
+
+#: includes/class-export-prompt.php:266
+msgid "visits grouped by the website that linked to this site."
+msgstr ""
+
+#: includes/class-export-prompt.php:267
+msgid "visits grouped by the exact page on another website that linked to this site."
+msgstr ""
+
+#: includes/class-export-prompt.php:268
+msgid "visits grouped by country."
+msgstr ""
+
+#: includes/class-export-prompt.php:269
+msgid "visits grouped by region or state."
+msgstr ""
+
+#: includes/class-export-prompt.php:270
+msgid "visits grouped by city."
+msgstr ""
+
+#: includes/class-export-prompt.php:271
+msgid "visits grouped by continent."
+msgstr ""
+
+#: includes/class-export-prompt.php:272
+msgid "visits grouped by the language set in the visitor's browser."
+msgstr ""
+
+#: includes/class-export-prompt.php:273
+msgid "visits grouped by device type: desktop, mobile or tablet."
+msgstr ""
+
+#: includes/class-export-prompt.php:274
+msgid "visits grouped by browser."
+msgstr ""
+
+#: includes/class-export-prompt.php:275
+msgid "visits grouped by browser version."
+msgstr ""
+
+#: includes/class-export-prompt.php:276
+msgid "visits grouped by operating system."
+msgstr ""
+
+#: includes/class-export-prompt.php:277
+msgid "visits grouped by operating system version."
+msgstr ""
+
+#: includes/class-export-prompt.php:278
+msgid "visits grouped by screen size."
+msgstr ""
+
+#: includes/class-export-prompt.php:279
+msgid "visits from new visitors and from returning visitors."
+msgstr ""
+
+#: includes/class-export-prompt.php:280
+msgid "visits from logged-in users and from guests."
+msgstr ""
+
+#. translators: %s: list of event types
+#: includes/class-export-prompt.php:282
+#, php-format
+msgid "events grouped by type. The types are: %s."
+msgstr ""
+
+#: includes/class-export-prompt.php:283
+msgid "one row per event, such as a link, file, form or search term, with the number of times it happened."
+msgstr ""
+
+#: includes/class-export-prompt.php:284
+msgid "events grouped by label, the extra detail recorded with an event."
+msgstr ""
+
+#: includes/class-export-prompt.php:311
+msgid "number of unique visitors (see the note on how visitors are counted)"
+msgstr ""
+
+#: includes/class-export-prompt.php:312
+#: includes/class-export-prompt.php:319
+msgid "number of visits that started on this page"
+msgstr ""
+
+#: includes/class-export-prompt.php:312
+msgid "number of visits (sessions)"
+msgstr ""
+
+#: includes/class-export-prompt.php:313
+msgid "number of pages viewed"
+msgstr ""
+
+#: includes/class-export-prompt.php:314
+msgid "average number of pages viewed per visit"
+msgstr ""
+
+#: includes/class-export-prompt.php:315
+msgid "share of the visits that started on this page and did not go on to another page"
+msgstr ""
+
+#: includes/class-export-prompt.php:315
+msgid "share of visits that viewed only one page"
+msgstr ""
+
+#: includes/class-export-prompt.php:316
+msgid "average length of a visit"
+msgstr ""
+
+#: includes/class-export-prompt.php:317
+msgid "average time spent on the page, leaving out pageviews where it could not be measured"
+msgstr ""
+
+#: includes/class-export-prompt.php:318
+msgid "how far down the page visitors scrolled on average"
+msgstr ""
+
+#: includes/class-export-prompt.php:320
+msgid "number of visits that ended on this page"
+msgstr ""
+
+#: includes/class-export-prompt.php:321
+msgid "share of this page's pageviews that were the last page of a visit"
+msgstr ""
+
+#: includes/class-export-prompt.php:322
+msgid "number of times the event happened"
+msgstr ""
+
+#: includes/class-export-prompt.php:323
+msgid "number of visitors who reached the goal in the filter"
+msgstr ""
+
+#: includes/class-export-prompt.php:324
+msgid "conversions as a share of visitors"
+msgstr ""
+
+#: includes/class-export-prompt.php:362
+msgid "In the first table, Metric names the figure. The next two columns hold its value for the period and for the comparison period, and Change (%) is the difference in percent."
+msgstr ""
+
+#: includes/class-export-prompt.php:363
+msgid "In the first table, Metric names the figure and the next column holds its value for the period. The last two columns, including Change (%), are empty because there is no comparison period."
+msgstr ""
+
+#: includes/class-export-prompt.php:365
+msgid "In the second table, Period is the date or time of the row. Previous period is the matching date in the comparison period, and the columns ending in \"(previous period)\" hold its figures."
+msgstr ""
+
+#: includes/class-export-prompt.php:366
+msgid "In the second table, Period is the date or time of the row."
+msgstr ""
+
+#: includes/class-export-prompt.php:371
+msgid "Goal is the name of the goal. Type is page (reached by viewing a page) or event (reached by an event such as a form submission)."
+msgstr ""
+
+#: includes/class-export-prompt.php:372
+msgid "Match and Value are the rule of the goal: Match is equals, contains, starts, ends or regex, and Value is the page path or event name it is compared with."
+msgstr ""
+
+#: includes/class-export-prompt.php:373
+msgid "Conversions (visitors) is the number of visitors who reached the goal at least once. Completions counts every time it was reached."
+msgstr ""
+
+#: includes/class-export-prompt.php:374
+msgid "Conversion rate (%) is conversions as a share of all visitors in the period."
+msgstr ""
+
+#: includes/class-export-prompt.php:376
+msgid "Conversions (previous), Completions (previous) and Conversion rate (previous, %) hold the same figures for the comparison period."
+msgstr ""
+
+#: includes/class-export-prompt.php:381
+msgid "Session ID is the number of the visit. The raw pageview and event exports use the same number, so they can be joined with this file."
+msgstr ""
+
+#: includes/class-export-prompt.php:382
+msgid "Visitor ID (anonymous) is the same for visits from the same visitor (see the note on how visitors are counted)."
+msgstr ""
+
+#: includes/class-export-prompt.php:383
+msgid "Started and Last activity are the times of the first and the last hit of the visit. Duration (seconds) is the time between them."
+msgstr ""
+
+#: includes/class-export-prompt.php:384
+msgid "Pageviews and Events count what happened during the visit. New visitor is yes for a first visit and no for a returning one."
+msgstr ""
+
+#: includes/class-export-prompt.php:385
+msgid "Entry page and Exit page are the paths of the first and the last page viewed. Entry page title is the title of the first page."
+msgstr ""
+
+#: includes/class-export-prompt.php:386
+msgid "Channel, Source and Referrer show where the visit came from. Referrer is the full address of the page that linked to the site. UTM source, UTM medium, UTM campaign, UTM term and UTM content hold the campaign tags of the link the visitor arrived on."
+msgstr ""
+
+#: includes/class-export-prompt.php:387
+msgid "Country, Region, City, Device, Browser, Browser version, OS, OS version, Screen (screen size) and Language (browser language) describe the visitor."
+msgstr ""
+
+#: includes/class-export-prompt.php:389
+msgid "User is the name of the WordPress user for visitors who were logged in."
+msgstr ""
+
+#: includes/class-export-prompt.php:390
+msgid "User is empty because the site does not record which user was logged in."
+msgstr ""
+
+#: includes/class-export-prompt.php:392
+msgid "IP address is empty because the site does not store IP addresses."
+msgstr ""
+
+#: includes/class-export-prompt.php:393
+msgid "IP address has its last part removed for privacy."
+msgstr ""
+
+#: includes/class-export-prompt.php:394
+msgid "IP address is the visitor's full IP address."
+msgstr ""
+
+#: includes/class-export-prompt.php:401
+msgid "Pageview ID is the number of the pageview. Session ID links it to its visit in the raw visits export."
+msgstr ""
+
+#: includes/class-export-prompt.php:402
+msgid "Visitor ID (anonymous) is the same for pageviews from the same visitor."
+msgstr ""
+
+#: includes/class-export-prompt.php:403
+msgid "Time is when the page was opened. Page path and Page title identify the page, and Content type is its WordPress post type."
+msgstr ""
+
+#: includes/class-export-prompt.php:404
+msgid "Previous page is the path of the page viewed just before it in the same visit. It is empty for the first page of a visit."
+msgstr ""
+
+#: includes/class-export-prompt.php:405
+msgid "Time on page (seconds) is 0 when the browser did not report it. Scroll depth (%) is how far down the page the visitor scrolled."
+msgstr ""
+
+#: includes/class-export-prompt.php:406
+msgid "New visitor, Country, Region, City, Device, Browser, OS, Channel, Source, Referrer, UTM source, UTM medium and UTM campaign repeat the values of the visit."
+msgstr ""
+
+#: includes/class-export-prompt.php:410
+msgid "Event ID is the number of the event. Session ID links it to its visit in the raw visits export, and Visitor ID (anonymous) is the same for events from the same visitor."
+msgstr ""
+
+#. translators: %s: list of event types
+#: includes/class-export-prompt.php:412
+#, php-format
+msgid "Category is the event type: %s."
+msgstr ""
+
+#: includes/class-export-prompt.php:413
+msgid "Name says what the event was about: the website for outbound links, the file for downloads, the address or number for email and phone links, the form for form submissions, the search term for site searches and the missing address for 404 errors. Custom events use the name the site owner chose."
+msgstr ""
+
+#: includes/class-export-prompt.php:414
+msgid "Label adds detail: the full link for outbound links and downloads, the page for email, phone and form events, the number of results for searches and the referring page for 404 errors."
+msgstr ""
+
+#: includes/class-export-prompt.php:415
+msgid "Page is the path of the page where the event happened. Country, City, Device, Channel, Source and UTM campaign repeat the values of the visit."
+msgstr ""
+
+#. translators: 1: title column, 2: path column
+#: includes/class-export-prompt.php:439
+#, php-format
+msgid "%1$s is the title of the page and %2$s its path, the address without the domain."
+msgstr ""
+
+#. translators: 1: name column, 2: code column
+#: includes/class-export-prompt.php:442
+#, php-format
+msgid "%1$s is the name and %2$s the two-letter code."
+msgstr ""
+
+#. translators: 1: name column, 2: key column
+#: includes/class-export-prompt.php:445
+#, php-format
+msgid "%1$s is the readable name and %2$s the internal one."
+msgstr ""
+
+#. translators: 1: label column, 2: raw value column
+#: includes/class-export-prompt.php:448
+#, php-format
+msgid "%1$s is the readable value and %2$s the value as it was recorded. They are often the same."
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-export-prompt.php:454
+#, php-format
+msgid "%s is the two-letter code of the country."
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-export-prompt.php:456
+#, php-format
+msgid "%s is the region or state."
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-export-prompt.php:458
+#, php-format
+msgid "%s is the browser the version belongs to."
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-export-prompt.php:460
+#, php-format
+msgid "%s is the operating system the version belongs to."
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-export-prompt.php:462
+#, php-format
+msgid "%s is the internal name of the event type."
+msgstr ""
+
+#. translators: 1: latitude column, 2: longitude column
+#: includes/class-export-prompt.php:471
+#, php-format
+msgid "%1$s and %2$s are the approximate coordinates of the place."
+msgstr ""
+
+#: includes/class-export-prompt.php:475
+msgid "Because of the goal filter, Visitors counts all visitors in the row, with or without the goal, while the other columns after Conversion rate (%) only cover visits in which the goal was reached."
+msgstr ""
+
+#: includes/class-export-prompt.php:488
+msgid "Most files start with two columns for the item: a readable name and the value as it was recorded (a column named \"... (raw value)\", \"... code\", \"... key\" or \"... path\"). Pages are identified by their path, the address without the domain."
+msgstr ""
+
+#: includes/class-export-prompt.php:489
+msgid "Some files add columns such as Country code, Region, Browser, Operating system, Event type, Latitude and Longitude to tell rows apart."
+msgstr ""
+
+#: includes/class-export-prompt.php:497
+msgid "In pages.csv and entry-pages.csv, Bounce rate (%) only counts visits that started on that page."
+msgstr ""
+
+#: includes/class-export-prompt.php:499
+msgid "Change (%) in summary-and-trend.csv is the difference from the comparison period in percent."
+msgstr ""
+
+#: includes/class-export-prompt.php:501
+msgid "In goals.csv, Conversions (visitors) counts visitors who reached the goal, Completions counts every time it was reached, and Conversion rate (%) is conversions as a share of all visitors in the period."
+msgstr ""
+
+#: includes/class-export-prompt.php:502
+msgid "In the raw files, Session ID links rows in raw-visits.csv, raw-pageviews.csv and raw-events.csv, and Visitor ID (anonymous) is the same for rows from the same visitor."
+msgstr ""
+
+#: includes/class-export-prompt.php:519
+msgid "Say what changed compared with the comparison period, including rows that are new or have disappeared."
+msgstr ""
+
+#: includes/class-export-prompt.php:524
+msgid "Summarise how the website did in this period and how it compares with the comparison period."
+msgstr ""
+
+#: includes/class-export-prompt.php:524
+msgid "Summarise how the website did in this period."
+msgstr ""
+
+#: includes/class-export-prompt.php:525
+msgid "Show which channels, sources and campaigns bring the most visitors, and which of them bring visitors who stay longer, view more pages or reach a goal."
+msgstr ""
+
+#: includes/class-export-prompt.php:526
+msgid "List the pages that attract the most visitors and the pages where most visitors leave."
+msgstr ""
+
+#: includes/class-export-prompt.php:527
+msgid "Point out anything unusual, such as sudden rises or drops, sources that are new or gone, or countries and devices that behave very differently from the rest."
+msgstr ""
+
+#: includes/class-export-prompt.php:528
+msgid "Finish with five concrete actions that could bring more visitors or more conversions, each backed by numbers from the files."
+msgstr ""
+
+#: includes/class-export-prompt.php:533
+msgid "Summarise the main figures and how they changed compared with the comparison period."
+msgstr ""
+
+#: includes/class-export-prompt.php:533
+msgid "Summarise the main figures."
+msgstr ""
+
+#: includes/class-export-prompt.php:534
+msgid "Describe how the figures moved over time: the strongest and weakest points, any steady rise or fall, and sudden spikes or drops."
+msgstr ""
+
+#: includes/class-export-prompt.php:535
+msgid "Look for repeating patterns, such as differences between weekdays and weekends."
+msgstr ""
+
+#: includes/class-export-prompt.php:536
+msgid "Suggest what might explain the changes and what I should check next."
+msgstr ""
+
+#: includes/class-export-prompt.php:541
+msgid "Rank the rows by visitors and say which bring the most traffic."
+msgstr ""
+
+#: includes/class-export-prompt.php:542
+msgid "Compare the quality of the traffic using bounce rate, visit duration and views per visit."
+msgstr ""
+
+#: includes/class-export-prompt.php:544
+msgid "Suggest where to put more marketing effort and what to improve or stop."
+msgstr ""
+
+#: includes/class-export-prompt.php:549
+msgid "Show which rows get the most visitors and pageviews."
+msgstr ""
+
+#: includes/class-export-prompt.php:550
+msgid "Point out what holds attention well and what loses visitors, based on the engagement columns in the file."
+msgstr ""
+
+#: includes/class-export-prompt.php:552
+msgid "Suggest which pages to improve, promote or link to from other pages."
+msgstr ""
+
+#: includes/class-export-prompt.php:557
+msgid "Show which groups bring the most visitors."
+msgstr ""
+
+#: includes/class-export-prompt.php:558
+msgid "Compare how the groups behave, using bounce rate, visit duration and views per visit."
+msgstr ""
+
+#: includes/class-export-prompt.php:560
+msgid "Suggest which audiences deserve more attention, for example with translated content or local campaigns."
+msgstr ""
+
+#: includes/class-export-prompt.php:565
+msgid "Show the share of visitors in each group."
+msgstr ""
+
+#: includes/class-export-prompt.php:566
+msgid "Point out groups with clearly worse engagement than the rest. That can mean the site does not work well on those devices or browsers."
+msgstr ""
+
+#: includes/class-export-prompt.php:568
+msgid "Suggest what to test or fix first."
+msgstr ""
+
+#: includes/class-export-prompt.php:573
+msgid "Show which actions visitors take most often and how many visitors take them."
+msgstr ""
+
+#: includes/class-export-prompt.php:574
+msgid "Point out the actions that matter most for the business, such as form submissions, phone and email clicks and downloads, and any 404 errors that should be fixed."
+msgstr ""
+
+#: includes/class-export-prompt.php:576
+#: includes/class-export-prompt.php:606
+msgid "Suggest how to get more of the valuable actions."
+msgstr ""
+
+#: includes/class-export-prompt.php:581
+msgid "Show which goals convert best and how many visitors reach them."
+msgstr ""
+
+#: includes/class-export-prompt.php:582
+msgid "Say how the goals changed compared with the comparison period."
+msgstr ""
+
+#: includes/class-export-prompt.php:583
+msgid "Suggest ways to raise the conversion rates, starting with the goals that matter most."
+msgstr ""
+
+#: includes/class-export-prompt.php:588
+msgid "Find patterns in the visits: the busiest days and hours, common entry and exit pages, and which sources lead to longer visits."
+msgstr ""
+
+#: includes/class-export-prompt.php:589
+msgid "Use the visitor ID to see how often people come back, keeping the note on visitor counting in mind."
+msgstr ""
+
+#: includes/class-export-prompt.php:590
+msgid "Point out anything unusual, such as many very short visits from one source."
+msgstr ""
+
+#: includes/class-export-prompt.php:591
+msgid "Suggest concrete improvements based on what you find."
+msgstr ""
+
+#: includes/class-export-prompt.php:596
+msgid "Find the most common paths through the site, using Session ID and Previous page."
+msgstr ""
+
+#: includes/class-export-prompt.php:597
+msgid "Show which pages lead to long visits and which pages visits usually end on."
+msgstr ""
+
+#: includes/class-export-prompt.php:598
+msgid "Show the busiest hours and days."
+msgstr ""
+
+#: includes/class-export-prompt.php:599
+msgid "Suggest changes to navigation or content based on what you find."
+msgstr ""
+
+#: includes/class-export-prompt.php:604
+msgid "Show which events happen most, on which pages and at what times."
+msgstr ""
+
+#: includes/class-export-prompt.php:605
+msgid "Connect the events to traffic sources and campaigns to see which visitors take action."
+msgstr ""
+
+#: includes/class-export-prompt.php:614
+msgid "Quote the exact numbers each point is based on. If something cannot be answered from the data, or the numbers are too small to mean much, say so instead of guessing."
 msgstr ""
 
 #: includes/class-exporter.php:41
@@ -336,12 +1109,13 @@ msgstr ""
 
 #: includes/class-exporter.php:49
 #: includes/class-settings-page.php:562
+#: includes/class-settings-page.php:572
 #: assets/js/admin-core.js:221
 #: assets/js/admin.js:164
-#: assets/js/admin.js:389
-#: assets/js/admin.js:1118
-#: assets/js/admin.js:1290
-#: assets/js/admin.js:1461
+#: assets/js/admin.js:404
+#: assets/js/admin.js:1133
+#: assets/js/admin.js:1305
+#: assets/js/admin.js:1476
 msgid "Events"
 msgstr ""
 
@@ -349,125 +1123,252 @@ msgstr ""
 msgid "Conversion rate (%)"
 msgstr ""
 
-#: includes/class-exporter.php:104
+#: includes/class-exporter.php:144
+#: includes/class-exporter.php:438
+msgid "Country code"
+msgstr ""
+
+#: includes/class-exporter.php:145
+#: assets/js/admin-core.js:334
+msgid "Region"
+msgstr ""
+
+#: includes/class-exporter.php:146
+#: assets/js/admin-core.js:339
+msgid "Browser"
+msgstr ""
+
+#: includes/class-exporter.php:147
+#: includes/class-exporter.php:452
+#: assets/js/admin-core.js:341
+msgid "Operating system"
+msgstr ""
+
+#: includes/class-exporter.php:148
+#: assets/js/admin-core.js:346
+#: assets/js/admin.js:1519
+msgid "Event type"
+msgstr ""
+
+#: includes/class-exporter.php:149
+msgid "Latitude"
+msgstr ""
+
+#: includes/class-exporter.php:150
+msgid "Longitude"
+msgstr ""
+
+#: includes/class-exporter.php:162
+#: assets/js/admin-core.js:361
+#: assets/js/admin.js:1499
+msgid "is"
+msgstr ""
+
+#: includes/class-exporter.php:163
+#: assets/js/admin-core.js:362
+msgid "is not"
+msgstr ""
+
+#: includes/class-exporter.php:164
+#: assets/js/admin-core.js:363
+#: assets/js/admin.js:1499
+#: assets/js/admin.js:1516
+msgid "contains"
+msgstr ""
+
+#: includes/class-exporter.php:165
+#: assets/js/admin-core.js:364
+msgid "does not contain"
+msgstr ""
+
+#: includes/class-exporter.php:210
 msgid "You are not allowed to export statistics."
 msgstr ""
 
-#: includes/class-exporter.php:135
+#: includes/class-exporter.php:237
 msgid "Unknown report."
 msgstr ""
 
-#: includes/class-exporter.php:195
+#: includes/class-exporter.php:310
 msgid "Could not create a temporary folder for the export."
 msgstr ""
 
-#: includes/class-exporter.php:246
-#: includes/class-exporter.php:251
+#: includes/class-exporter.php:364
+#: includes/class-exporter.php:369
 msgid "Could not create the ZIP file."
 msgstr ""
 
-#: includes/class-exporter.php:320
+#: includes/class-exporter.php:433
 msgid "Page title"
 msgstr ""
 
-#: includes/class-exporter.php:320
+#: includes/class-exporter.php:433
 msgid "Page path"
 msgstr ""
 
-#: includes/class-exporter.php:321
+#: includes/class-exporter.php:434
 msgid "Entry page title"
 msgstr ""
 
-#: includes/class-exporter.php:321
+#: includes/class-exporter.php:434
 msgid "Entry page path"
 msgstr ""
 
-#: includes/class-exporter.php:322
+#: includes/class-exporter.php:435
 msgid "Exit page title"
 msgstr ""
 
-#: includes/class-exporter.php:322
+#: includes/class-exporter.php:435
 msgid "Exit page path"
 msgstr ""
 
-#: includes/class-exporter.php:323
+#: includes/class-exporter.php:436
 msgid "Previous page title"
 msgstr ""
 
-#: includes/class-exporter.php:323
+#: includes/class-exporter.php:436
 msgid "Previous page path"
 msgstr ""
 
-#: includes/class-exporter.php:324
+#: includes/class-exporter.php:437
 msgid "Next page title"
 msgstr ""
 
-#: includes/class-exporter.php:324
+#: includes/class-exporter.php:437
 msgid "Next page path"
 msgstr ""
 
-#: includes/class-exporter.php:325
+#: includes/class-exporter.php:438
 #: assets/js/admin-core.js:333
 msgid "Country"
 msgstr ""
 
-#: includes/class-exporter.php:325
-msgid "Country code"
-msgstr ""
-
-#: includes/class-exporter.php:326
+#: includes/class-exporter.php:439
 #: assets/js/admin-core.js:336
 msgid "Continent"
 msgstr ""
 
-#: includes/class-exporter.php:326
+#: includes/class-exporter.php:439
 msgid "Continent code"
 msgstr ""
 
-#: includes/class-exporter.php:327
+#: includes/class-exporter.php:440
 #: assets/js/admin-core.js:324
 msgid "Channel"
 msgstr ""
 
-#: includes/class-exporter.php:327
+#: includes/class-exporter.php:440
 msgid "Channel key"
 msgstr ""
 
-#: includes/class-exporter.php:328
+#: includes/class-exporter.php:441
 msgid "Event category"
 msgstr ""
 
-#: includes/class-exporter.php:328
+#: includes/class-exporter.php:441
 msgid "Category key"
 msgstr ""
 
-#: includes/class-exporter.php:334
-msgid "(raw value)"
+#: includes/class-exporter.php:447
+#: assets/js/admin-core.js:329
+msgid "UTM source"
+msgstr ""
+
+#: includes/class-exporter.php:448
+#: assets/js/admin-core.js:330
+msgid "UTM medium"
+msgstr ""
+
+#: includes/class-exporter.php:449
+#: assets/js/admin-core.js:328
+msgid "UTM campaign"
+msgstr ""
+
+#: includes/class-exporter.php:450
+#: assets/js/admin-core.js:331
+msgid "UTM term"
+msgstr ""
+
+#: includes/class-exporter.php:451
+#: assets/js/admin-core.js:332
+msgid "UTM content"
+msgstr ""
+
+#: includes/class-exporter.php:453
+#: assets/js/admin-core.js:342
+msgid "OS version"
+msgstr ""
+
+#: includes/class-exporter.php:454
+#: assets/js/admin-core.js:340
+msgid "Browser version"
+msgstr ""
+
+#: includes/class-exporter.php:455
+#: assets/js/admin-core.js:327
+msgid "Referrer URL"
+msgstr ""
+
+#: includes/class-exporter.php:456
+#: assets/js/admin-core.js:323
+msgid "Content type"
+msgstr ""
+
+#: includes/class-exporter.php:457
+#: assets/js/admin-core.js:347
+#: assets/js/admin.js:1479
+#: assets/js/admin.js:1480
+msgid "Event"
+msgstr ""
+
+#: includes/class-exporter.php:458
+msgid "Event label"
+msgstr ""
+
+#: includes/class-exporter.php:459
+#: assets/js/admin-core.js:344
+msgid "Visitor type"
+msgstr ""
+
+#: includes/class-exporter.php:460
+#: assets/js/admin-core.js:345
+msgid "User type"
+msgstr ""
+
+#: includes/class-exporter.php:461
+#: assets/js/admin-core.js:343
+msgid "Screen size"
+msgstr ""
+
+#. translators: %s: column title
+#: includes/class-exporter.php:465
+#, php-format
+msgid "%s (raw value)"
 msgstr ""
 
 #. translators: %s: metric name
-#: includes/class-exporter.php:378
-#: includes/class-exporter.php:435
+#: includes/class-exporter.php:508
+#: includes/class-exporter.php:565
 #, php-format
 msgid "%s (previous period)"
 msgstr ""
 
-#: includes/class-exporter.php:417
+#: includes/class-exporter.php:547
 msgid "Metric"
 msgstr ""
 
-#: includes/class-exporter.php:417
+#: includes/class-exporter.php:547
 msgid "Change (%)"
 msgstr ""
 
-#: includes/class-exporter.php:427
-#: assets/js/admin.js:553
+#: includes/class-exporter.php:557
+#: assets/js/admin.js:568
 msgid "Period"
 msgstr ""
 
-#: includes/class-exporter.php:432
-#: assets/js/admin.js:525
-#: assets/js/admin.js:553
+#: includes/class-exporter.php:562
+#: assets/js/admin.js:540
+#: assets/js/admin.js:568
 msgid "Previous period"
 msgstr ""
 
@@ -640,7 +1541,7 @@ msgid "We respect the \"Do Not Track\" and \"Global Privacy Control\" signals se
 msgstr ""
 
 #: includes/class-referrer.php:26
-#: assets/js/admin.js:1200
+#: assets/js/admin.js:1215
 msgid "Direct"
 msgstr ""
 
@@ -697,7 +1598,7 @@ msgid "(exit, left the website)"
 msgstr ""
 
 #: includes/class-reports.php:1542
-#: assets/js/admin.js:1466
+#: assets/js/admin.js:1481
 msgid "Outbound links"
 msgstr ""
 
@@ -724,7 +1625,7 @@ msgid "Site searches"
 msgstr ""
 
 #: includes/class-reports.php:1548
-#: assets/js/admin.js:1471
+#: assets/js/admin.js:1486
 msgid "404 errors"
 msgstr ""
 
@@ -779,7 +1680,7 @@ msgstr ""
 
 #: includes/class-reports.php:1581
 #: assets/js/admin-core.js:407
-#: assets/js/admin.js:1622
+#: assets/js/admin.js:1637
 msgid "Direct / None"
 msgstr ""
 
@@ -840,7 +1741,7 @@ msgstr ""
 #: includes/class-reports.php:1618
 #: includes/class-user-agent.php:122
 #: includes/class-user-agent.php:192
-#: assets/js/admin-core.js:1184
+#: assets/js/admin-core.js:1290
 msgid "Other"
 msgstr ""
 
@@ -974,7 +1875,7 @@ msgstr ""
 
 #: includes/class-settings-page.php:220
 #: assets/js/admin-core.js:217
-#: assets/js/admin.js:829
+#: assets/js/admin.js:844
 msgid "Scroll depth"
 msgstr ""
 
@@ -1337,171 +2238,213 @@ msgid "To"
 msgstr ""
 
 #: includes/class-settings-page.php:559
+#: includes/class-settings-page.php:569
 msgid "All reports (ZIP)"
 msgstr ""
 
 #: includes/class-settings-page.php:560
+#: includes/class-settings-page.php:570
 msgid "Visits (sessions)"
 msgstr ""
 
 #: includes/class-settings-page.php:563
+#: includes/class-settings-page.php:573
 msgid "Daily summary"
 msgstr ""
 
-#: includes/class-settings-page.php:569
-msgid "Sample data"
+#: includes/class-settings-page.php:567
+msgid "Prompt for AI tools:"
 msgstr ""
 
-#: includes/class-settings-page.php:570
-msgid "Fill the dashboard with 60 days of realistic sample visits to explore every report. Sample data is clearly separated and can be removed at any time without touching real statistics."
+#: includes/class-settings-page.php:575
+#: assets/js/admin-core.js:835
+#: assets/js/admin.js:192
+msgid "AI prompt"
 msgstr ""
 
-#: includes/class-settings-page.php:572
-msgid "Generate sample data"
-msgstr ""
-
-#: includes/class-settings-page.php:574
-#: assets/js/admin.js:1066
-msgid "Remove sample data"
+#: includes/class-settings-page.php:577
+msgid "Paste the prompt into ChatGPT, Claude, Gemini or another AI chat together with the file, so the AI knows what the columns mean and what to look for. The ZIP also contains it as prompt-for-ai.txt."
 msgstr ""
 
 #: includes/class-settings-page.php:580
-msgid "Maintenance"
+#: assets/js/admin-core.js:884
+msgid "Prompt for AI tools"
+msgstr ""
+
+#: includes/class-settings-page.php:581
+msgid "Paste this into the AI chat together with the file. You can change the text before you copy it."
 msgstr ""
 
 #: includes/class-settings-page.php:582
+#: assets/js/admin-core.js:862
+msgid "Prompt"
+msgstr ""
+
+#: includes/class-settings-page.php:584
+#: assets/js/admin-core.js:885
+#: assets/js/admin-core.js:890
+msgid "Close"
+msgstr ""
+
+#: includes/class-settings-page.php:585
+#: assets/js/admin-core.js:867
+msgid "Copy prompt"
+msgstr ""
+
+#: includes/class-settings-page.php:592
+msgid "Sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:593
+msgid "Fill the dashboard with 60 days of realistic sample visits to explore every report. Sample data is clearly separated and can be removed at any time without touching real statistics."
+msgstr ""
+
+#: includes/class-settings-page.php:595
+msgid "Generate sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:597
+#: assets/js/admin.js:1081
+msgid "Remove sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:603
+msgid "Maintenance"
+msgstr ""
+
+#: includes/class-settings-page.php:605
 msgid "Clear report cache"
 msgstr ""
 
-#: includes/class-settings-page.php:583
+#: includes/class-settings-page.php:606
 msgid "Apply data retention now"
 msgstr ""
 
 #. translators: 1: sessions, 2: pageviews, 3: events, 4: pages
-#: includes/class-settings-page.php:597
+#: includes/class-settings-page.php:620
 #, php-format
 msgid "Stored: %1$s visits, %2$s pageviews, %3$s events, %4$s unique pages."
 msgstr ""
 
-#: includes/class-settings-page.php:609
+#: includes/class-settings-page.php:632
 msgid "Danger zone"
 msgstr ""
 
-#: includes/class-settings-page.php:610
+#: includes/class-settings-page.php:633
 msgid "Permanently delete all collected statistics. Settings and goals are kept. This cannot be undone."
 msgstr ""
 
-#: includes/class-settings-page.php:611
+#: includes/class-settings-page.php:634
 msgid "Delete ALL statistics permanently? This cannot be undone."
 msgstr ""
 
-#: includes/class-settings-page.php:614
+#: includes/class-settings-page.php:637
 msgid "Delete all statistics"
 msgstr ""
 
-#: includes/class-settings-page.php:633
+#: includes/class-settings-page.php:656
 msgid "Plugin updates"
 msgstr ""
 
 #. translators: %s: link to the GitHub repository
-#: includes/class-settings-page.php:638
+#: includes/class-settings-page.php:661
 #, php-format
 msgid "New versions come from the releases of %s on GitHub. They show up on the Plugins screen like any other plugin update, and you can turn on automatic updates for this plugin there."
 msgstr ""
 
-#: includes/class-settings-page.php:645
+#: includes/class-settings-page.php:668
 msgid "Installed version"
 msgstr ""
 
-#: includes/class-settings-page.php:649
+#: includes/class-settings-page.php:672
 msgid "Latest release"
 msgstr ""
 
-#: includes/class-settings-page.php:652
+#: includes/class-settings-page.php:675
 msgid "Update available"
 msgstr ""
 
-#: includes/class-settings-page.php:652
+#: includes/class-settings-page.php:675
 msgid "Up to date"
 msgstr ""
 
 #. translators: %s: time since the release, like "3 days"
-#: includes/class-settings-page.php:657
+#: includes/class-settings-page.php:680
 #, php-format
 msgid "published %s ago"
 msgstr ""
 
-#: includes/class-settings-page.php:660
+#: includes/class-settings-page.php:683
 msgid "Release notes"
 msgstr ""
 
 #. translators: 1: version number, 2: file name
-#: includes/class-settings-page.php:669
+#: includes/class-settings-page.php:692
 #, php-format
 msgid "Release %1$s was skipped because it has no %2$s attached."
 msgstr ""
 
-#: includes/class-settings-page.php:676
+#: includes/class-settings-page.php:699
 msgid "Last checked"
 msgstr ""
 
 #. translators: %s: time since the check, like "5 minutes"
-#: includes/class-settings-page.php:680
+#: includes/class-settings-page.php:703
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: includes/class-settings-page.php:686
+#: includes/class-settings-page.php:709
 #: includes/class-updater.php:584
 msgid "Check for updates"
 msgstr ""
 
 #. translators: %s: version number
-#: includes/class-settings-page.php:691
+#: includes/class-settings-page.php:714
 #, php-format
 msgid "Update to %s now"
 msgstr ""
 
-#: includes/class-settings-page.php:699
+#: includes/class-settings-page.php:722
 msgid "Private repository"
 msgstr ""
 
-#: includes/class-settings-page.php:700
+#: includes/class-settings-page.php:723
 msgid "WordPress can only see the releases of a private repository if it has a GitHub token. On GitHub, create a fine-grained personal access token that has read-only access to the contents of this one repository, and paste it below. A public repository does not need a token, although one raises the limit on how often this site may check."
 msgstr ""
 
-#: includes/class-settings-page.php:702
+#: includes/class-settings-page.php:725
 msgid "A token is set in wp-config.php (PULSE_ANALYTICS_GITHUB_TOKEN). Change or remove it there."
 msgstr ""
 
-#: includes/class-settings-page.php:708
+#: includes/class-settings-page.php:731
 msgid "GitHub token"
 msgstr ""
 
-#: includes/class-settings-page.php:709
+#: includes/class-settings-page.php:732
 msgid "A token is saved. Paste a new one to replace it."
 msgstr ""
 
-#: includes/class-settings-page.php:712
+#: includes/class-settings-page.php:735
 msgid "Remove the saved token"
 msgstr ""
 
-#: includes/class-settings-page.php:714
+#: includes/class-settings-page.php:737
 msgid "Save token"
 msgstr ""
 
 #. translators: %s: line of PHP code
-#: includes/class-settings-page.php:720
+#: includes/class-settings-page.php:743
 #, php-format
 msgid "If you would rather not keep the token in the database, add %s to wp-config.php instead."
 msgstr ""
 
-#: includes/class-settings-page.php:742
+#: includes/class-settings-page.php:765
 msgid "You are not allowed to do this."
 msgstr ""
 
 #. translators: %s: number of visits
-#: includes/class-settings-page.php:839
+#: includes/class-settings-page.php:862
 #, php-format
 msgid "%s visit removed."
 msgid_plural "%s visits removed."
@@ -1597,7 +2540,7 @@ msgid "Conv. rate"
 msgstr ""
 
 #: assets/js/admin-core.js:224
-#: assets/js/admin.js:1581
+#: assets/js/admin.js:1596
 msgid "Completions"
 msgstr ""
 
@@ -1642,44 +2585,12 @@ msgstr ""
 msgid "Exit page"
 msgstr ""
 
-#: assets/js/admin-core.js:323
-msgid "Content type"
-msgstr ""
-
 #: assets/js/admin-core.js:325
 msgid "Source"
 msgstr ""
 
 #: assets/js/admin-core.js:326
 msgid "Referrer"
-msgstr ""
-
-#: assets/js/admin-core.js:327
-msgid "Referrer URL"
-msgstr ""
-
-#: assets/js/admin-core.js:328
-msgid "UTM campaign"
-msgstr ""
-
-#: assets/js/admin-core.js:329
-msgid "UTM source"
-msgstr ""
-
-#: assets/js/admin-core.js:330
-msgid "UTM medium"
-msgstr ""
-
-#: assets/js/admin-core.js:331
-msgid "UTM term"
-msgstr ""
-
-#: assets/js/admin-core.js:332
-msgid "UTM content"
-msgstr ""
-
-#: assets/js/admin-core.js:334
-msgid "Region"
 msgstr ""
 
 #: assets/js/admin-core.js:335
@@ -1694,58 +2605,19 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
-#: assets/js/admin-core.js:339
-msgid "Browser"
-msgstr ""
-
-#: assets/js/admin-core.js:340
-msgid "Browser version"
-msgstr ""
-
-#: assets/js/admin-core.js:341
-msgid "Operating system"
-msgstr ""
-
-#: assets/js/admin-core.js:342
-msgid "OS version"
-msgstr ""
-
-#: assets/js/admin-core.js:343
-msgid "Screen size"
-msgstr ""
-
-#: assets/js/admin-core.js:344
-msgid "Visitor type"
-msgstr ""
-
-#: assets/js/admin-core.js:345
-msgid "User type"
-msgstr ""
-
-#: assets/js/admin-core.js:346
-#: assets/js/admin.js:1504
-msgid "Event type"
-msgstr ""
-
-#: assets/js/admin-core.js:347
-#: assets/js/admin.js:1464
-#: assets/js/admin.js:1465
-msgid "Event"
-msgstr ""
-
 #: assets/js/admin-core.js:348
 msgid "Event detail"
 msgstr ""
 
 #: assets/js/admin-core.js:349
-#: assets/js/admin.js:816
-#: assets/js/admin.js:1579
+#: assets/js/admin.js:831
+#: assets/js/admin.js:1594
 msgid "Goal"
 msgstr ""
 
 #: assets/js/admin-core.js:353
-#: assets/js/admin.js:392
-#: assets/js/admin.js:1324
+#: assets/js/admin.js:407
+#: assets/js/admin.js:1339
 msgid "Content"
 msgstr ""
 
@@ -1758,33 +2630,14 @@ msgid "Location"
 msgstr ""
 
 #: assets/js/admin-core.js:356
-#: assets/js/admin.js:388
-#: assets/js/admin.js:1106
-#: assets/js/admin.js:1421
+#: assets/js/admin.js:403
+#: assets/js/admin.js:1121
+#: assets/js/admin.js:1436
 msgid "Technology"
 msgstr ""
 
 #: assets/js/admin-core.js:357
 msgid "Behaviour"
-msgstr ""
-
-#: assets/js/admin-core.js:361
-#: assets/js/admin.js:1484
-msgid "is"
-msgstr ""
-
-#: assets/js/admin-core.js:362
-msgid "is not"
-msgstr ""
-
-#: assets/js/admin-core.js:363
-#: assets/js/admin.js:1484
-#: assets/js/admin.js:1501
-msgid "contains"
-msgstr ""
-
-#: assets/js/admin-core.js:364
-msgid "does not contain"
 msgstr ""
 
 #: assets/js/admin-core.js:465
@@ -1827,64 +2680,92 @@ msgstr ""
 msgid "No data for this period."
 msgstr ""
 
-#: assets/js/admin-core.js:815
-#: assets/js/admin-core.js:816
+#: assets/js/admin-core.js:817
+#: assets/js/admin-core.js:818
 msgid "Download CSV"
 msgstr ""
 
-#: assets/js/admin-core.js:929
+#: assets/js/admin-core.js:832
+msgid "Copy a prompt that explains this CSV file to an AI tool"
+msgstr ""
+
+#: assets/js/admin-core.js:833
+msgid "AI prompt for this CSV file"
+msgstr ""
+
+#: assets/js/admin-core.js:867
+#: assets/js/admin.js:1395
+#: assets/js/settings.js:88
+msgid "Copied"
+msgstr ""
+
+#: assets/js/admin-core.js:887
+msgid "Paste this into ChatGPT, Claude, Gemini or another AI chat together with the file, so the AI knows what the columns mean and what to look for. You can change the text before you copy it."
+msgstr ""
+
+#: assets/js/admin-core.js:906
+#: assets/js/settings.js:98
+msgid "Writing the prompt..."
+msgstr ""
+
+#: assets/js/admin-core.js:926
+#: assets/js/settings.js:116
+msgid "The prompt could not be loaded. Reload the page and try again."
+msgstr ""
+
+#: assets/js/admin-core.js:1035
 msgid "View details"
 msgstr ""
 
-#: assets/js/admin-core.js:966
-#: assets/js/admin-core.js:1122
+#: assets/js/admin-core.js:1072
+#: assets/js/admin-core.js:1228
 msgid "Open page"
 msgstr ""
 
-#: assets/js/admin-core.js:969
-#: assets/js/admin-core.js:1123
+#: assets/js/admin-core.js:1075
+#: assets/js/admin-core.js:1229
 msgid "Filter by this page"
 msgstr ""
 
-#: assets/js/admin-core.js:975
+#: assets/js/admin-core.js:1081
 msgid "Open page report"
 msgstr ""
 
-#: assets/js/admin-core.js:975
-#: assets/js/admin.js:988
+#: assets/js/admin-core.js:1081
+#: assets/js/admin.js:1003
 msgid "Filter by this value"
 msgstr ""
 
-#: assets/js/admin-core.js:1017
+#: assets/js/admin-core.js:1123
 msgid "Search..."
 msgstr ""
 
-#: assets/js/admin-core.js:1017
+#: assets/js/admin-core.js:1123
 msgid "Search"
 msgstr ""
 
-#: assets/js/admin-core.js:1084
+#: assets/js/admin-core.js:1190
 msgid "No matches."
 msgstr ""
 
-#: assets/js/admin-core.js:1129
-#: assets/js/admin.js:1201
-#: assets/js/admin.js:1620
+#: assets/js/admin-core.js:1235
+#: assets/js/admin.js:1216
+#: assets/js/admin.js:1635
 msgid "new"
 msgstr ""
 
-#: assets/js/admin-core.js:1153
+#: assets/js/admin-core.js:1259
 #, js-format
 msgid "%1$s-%2$s of %3$s"
 msgstr ""
 
-#: assets/js/admin-core.js:1154
-#: assets/js/admin.js:1260
+#: assets/js/admin-core.js:1260
+#: assets/js/admin.js:1275
 msgid "Previous page"
 msgstr ""
 
-#: assets/js/admin-core.js:1155
-#: assets/js/admin.js:1261
+#: assets/js/admin-core.js:1261
+#: assets/js/admin.js:1276
 msgid "Next page"
 msgstr ""
 
@@ -1938,61 +2819,61 @@ msgid "Summary & trend"
 msgstr ""
 
 #: assets/js/admin.js:156
-#: assets/js/admin.js:1218
-#: assets/js/admin.js:1238
+#: assets/js/admin.js:1233
+#: assets/js/admin.js:1253
 msgid "All pages"
 msgstr ""
 
 #: assets/js/admin.js:157
-#: assets/js/admin.js:1092
-#: assets/js/admin.js:1265
-#: assets/js/admin.js:1298
+#: assets/js/admin.js:1107
+#: assets/js/admin.js:1280
+#: assets/js/admin.js:1313
 msgid "Traffic sources"
 msgstr ""
 
 #: assets/js/admin.js:158
-#: assets/js/admin.js:1094
-#: assets/js/admin.js:1268
-#: assets/js/admin.js:1301
+#: assets/js/admin.js:1109
+#: assets/js/admin.js:1283
+#: assets/js/admin.js:1316
 msgid "Channels"
 msgstr ""
 
 #: assets/js/admin.js:159
-#: assets/js/admin.js:386
-#: assets/js/admin.js:1097
-#: assets/js/admin.js:1269
-#: assets/js/admin.js:1320
+#: assets/js/admin.js:401
+#: assets/js/admin.js:1112
+#: assets/js/admin.js:1284
+#: assets/js/admin.js:1335
 msgid "Campaigns"
 msgstr ""
 
 #: assets/js/admin.js:160
-#: assets/js/admin.js:612
-#: assets/js/admin.js:1146
-#: assets/js/admin.js:1275
-#: assets/js/admin.js:1404
+#: assets/js/admin.js:627
+#: assets/js/admin.js:1161
+#: assets/js/admin.js:1290
+#: assets/js/admin.js:1419
 msgid "Countries"
 msgstr ""
 
 #: assets/js/admin.js:161
-#: assets/js/admin.js:612
-#: assets/js/admin.js:1276
-#: assets/js/admin.js:1406
+#: assets/js/admin.js:627
+#: assets/js/admin.js:1291
+#: assets/js/admin.js:1421
 msgid "Cities"
 msgstr ""
 
 #: assets/js/admin.js:162
-#: assets/js/admin.js:1104
-#: assets/js/admin.js:1282
-#: assets/js/admin.js:1284
-#: assets/js/admin.js:1416
+#: assets/js/admin.js:1119
+#: assets/js/admin.js:1297
+#: assets/js/admin.js:1299
+#: assets/js/admin.js:1431
 msgid "Devices"
 msgstr ""
 
 #: assets/js/admin.js:163
-#: assets/js/admin.js:1108
-#: assets/js/admin.js:1285
-#: assets/js/admin.js:1417
-#: assets/js/admin.js:1424
+#: assets/js/admin.js:1123
+#: assets/js/admin.js:1300
+#: assets/js/admin.js:1432
+#: assets/js/admin.js:1439
 msgid "Browsers"
 msgstr ""
 
@@ -2016,906 +2897,912 @@ msgstr ""
 msgid "Download CSV (current filters)"
 msgstr ""
 
-#: assets/js/admin.js:191
+#: assets/js/admin.js:185
+msgid "Copy a prompt that explains this file to an AI tool"
+msgstr ""
+
+#. translators: %s: name of an export, such as "All pages"
+#: assets/js/admin.js:188
+#, js-format
+msgid "AI prompt for %s"
+msgstr ""
+
+#: assets/js/admin.js:206
 #, js-format
 msgid "%s visitor active in the last 5 minutes"
 msgid_plural "%s visitors active in the last 5 minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:200
+#: assets/js/admin.js:215
 msgid "online now"
 msgstr ""
 
-#: assets/js/admin.js:213
+#: assets/js/admin.js:228
 msgid "Refresh"
 msgstr ""
 
-#: assets/js/admin.js:233
+#: assets/js/admin.js:248
 msgid "Filter by"
 msgstr ""
 
-#: assets/js/admin.js:256
+#: assets/js/admin.js:271
 msgid "Type to search..."
 msgstr ""
 
-#: assets/js/admin.js:258
+#: assets/js/admin.js:273
 msgid "Update filter"
 msgstr ""
 
-#: assets/js/admin.js:258
+#: assets/js/admin.js:273
 msgid "Apply filter"
 msgstr ""
 
-#: assets/js/admin.js:267
+#: assets/js/admin.js:282
 msgid "No matching values"
 msgstr ""
 
-#: assets/js/admin.js:267
+#: assets/js/admin.js:282
 msgid "Loading..."
 msgstr ""
 
-#: assets/js/admin.js:327
+#: assets/js/admin.js:342
 msgid "Back"
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:348
 msgid "Remove"
 msgstr ""
 
-#: assets/js/admin.js:353
+#: assets/js/admin.js:368
 msgid "Add filter"
 msgstr ""
 
-#: assets/js/admin.js:360
+#: assets/js/admin.js:375
 msgid "Edit filter"
 msgstr ""
 
-#: assets/js/admin.js:366
+#: assets/js/admin.js:381
 msgid "Remove filter"
 msgstr ""
 
-#: assets/js/admin.js:372
+#: assets/js/admin.js:387
 msgid "Clear all"
 msgstr ""
 
-#: assets/js/admin.js:382
+#: assets/js/admin.js:397
 msgid "Overview"
 msgstr ""
 
-#: assets/js/admin.js:383
+#: assets/js/admin.js:398
 msgid "Real-time"
 msgstr ""
 
-#: assets/js/admin.js:384
-#: assets/js/admin.js:1084
-#: assets/js/admin.js:1225
+#: assets/js/admin.js:399
+#: assets/js/admin.js:1099
+#: assets/js/admin.js:1240
 msgid "Pages"
 msgstr ""
 
-#: assets/js/admin.js:385
-#: assets/js/admin.js:1095
-#: assets/js/admin.js:1145
-#: assets/js/admin.js:1267
-#: assets/js/admin.js:1302
-#: assets/js/admin.js:1321
+#: assets/js/admin.js:400
+#: assets/js/admin.js:1110
+#: assets/js/admin.js:1160
+#: assets/js/admin.js:1282
+#: assets/js/admin.js:1317
+#: assets/js/admin.js:1336
 msgid "Sources"
 msgstr ""
 
-#: assets/js/admin.js:387
-#: assets/js/admin.js:1273
-#: assets/js/admin.js:1401
+#: assets/js/admin.js:402
+#: assets/js/admin.js:1288
+#: assets/js/admin.js:1416
 msgid "Locations"
 msgstr ""
 
-#: assets/js/admin.js:391
-#: assets/js/admin.js:1600
+#: assets/js/admin.js:406
+#: assets/js/admin.js:1615
 msgid "Visitor log"
 msgstr ""
 
-#: assets/js/admin.js:420
+#: assets/js/admin.js:435
 msgid "Interval"
 msgstr ""
 
-#: assets/js/admin.js:421
+#: assets/js/admin.js:436
 msgid "Show as table"
 msgstr ""
 
-#: assets/js/admin.js:457
+#: assets/js/admin.js:472
 msgid "Hourly"
 msgstr ""
 
-#: assets/js/admin.js:457
+#: assets/js/admin.js:472
 msgid "Daily"
 msgstr ""
 
-#: assets/js/admin.js:457
+#: assets/js/admin.js:472
 msgid "Weekly"
 msgstr ""
 
-#: assets/js/admin.js:457
+#: assets/js/admin.js:472
 msgid "Monthly"
 msgstr ""
 
-#: assets/js/admin.js:511
+#: assets/js/admin.js:526
 msgid "Current period"
 msgstr ""
 
-#: assets/js/admin.js:517
+#: assets/js/admin.js:532
 msgid "in progress"
 msgstr ""
 
-#: assets/js/admin.js:602
+#: assets/js/admin.js:617
 msgid "Visitors by location"
 msgstr ""
 
-#: assets/js/admin.js:612
-#: assets/js/admin.js:1405
+#: assets/js/admin.js:627
+#: assets/js/admin.js:1420
 msgid "Regions"
 msgstr ""
 
-#: assets/js/admin.js:619
+#: assets/js/admin.js:634
 msgid "World map of visitors"
 msgstr ""
 
-#: assets/js/admin.js:621
+#: assets/js/admin.js:636
 msgid "Zoom in"
 msgstr ""
 
-#: assets/js/admin.js:621
+#: assets/js/admin.js:636
 msgid "Zoom out"
 msgstr ""
 
-#: assets/js/admin.js:621
+#: assets/js/admin.js:636
 msgid "Reset zoom"
 msgstr ""
 
-#: assets/js/admin.js:639
+#: assets/js/admin.js:654
 msgid "Loading map..."
 msgstr ""
 
-#: assets/js/admin.js:651
+#: assets/js/admin.js:666
 msgid "The map could not be loaded. Country statistics are still listed on the right."
 msgstr ""
 
-#: assets/js/admin.js:695
+#: assets/js/admin.js:710
 msgid "Visitor countries are unknown. Download the free geolocation database to see countries on the map."
 msgstr ""
 
-#: assets/js/admin.js:697
+#: assets/js/admin.js:712
 msgid "Geolocation settings"
 msgstr ""
 
-#: assets/js/admin.js:708
+#: assets/js/admin.js:723
 msgid "City-level data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:750
+#: assets/js/admin.js:765
 msgid "Busiest times"
 msgstr ""
 
-#: assets/js/admin.js:750
+#: assets/js/admin.js:765
 msgid "Pageviews by weekday and hour"
 msgstr ""
 
-#: assets/js/admin.js:774
+#: assets/js/admin.js:789
 msgid "Less"
 msgstr ""
 
-#: assets/js/admin.js:775
+#: assets/js/admin.js:790
 msgid "More"
 msgstr ""
 
-#: assets/js/admin.js:795
+#: assets/js/admin.js:810
 msgid "Track conversions such as contact form submissions, sign-ups or visits to a thank-you page."
 msgstr ""
 
-#: assets/js/admin.js:796
+#: assets/js/admin.js:811
 msgid "Create a goal"
 msgstr ""
 
-#: assets/js/admin.js:807
+#: assets/js/admin.js:822
 msgid "Filter by this goal"
 msgstr ""
 
-#: assets/js/admin.js:818
+#: assets/js/admin.js:833
 msgid "Manage goals"
 msgstr ""
 
-#: assets/js/admin.js:829
+#: assets/js/admin.js:844
 msgid "Share of pageviews that reached each point"
 msgstr ""
 
-#: assets/js/admin.js:838
+#: assets/js/admin.js:853
 msgid "No scroll data yet."
 msgstr ""
 
-#: assets/js/admin.js:844
+#: assets/js/admin.js:859
 #, js-format
 msgid "Reached %s%%"
 msgstr ""
 
-#: assets/js/admin.js:850
+#: assets/js/admin.js:865
 #, js-format
 msgid "Average scroll depth: %1$s of the page (%2$s pageviews measured)."
 msgstr ""
 
-#: assets/js/admin.js:861
+#: assets/js/admin.js:876
 msgid "Insights"
 msgstr ""
 
-#: assets/js/admin.js:878
+#: assets/js/admin.js:893
 msgid "Insights appear once there is enough data."
 msgstr ""
 
-#: assets/js/admin.js:907
+#: assets/js/admin.js:922
 #, js-format
 msgid "Visitors are up %1$s compared with the previous period (%2$s vs. %3$s)."
 msgstr ""
 
-#: assets/js/admin.js:908
+#: assets/js/admin.js:923
 #, js-format
 msgid "Visitors are down %1$s compared with the previous period (%2$s vs. %3$s)."
 msgstr ""
 
-#: assets/js/admin.js:925
+#: assets/js/admin.js:940
 #, js-format
 msgid "Fastest-growing source: %1$s sent %2$s visitors (+%3$s)."
 msgstr ""
 
-#: assets/js/admin.js:926
+#: assets/js/admin.js:941
 #, js-format
 msgid "New traffic source: %1$s sent %2$s visitors."
 msgstr ""
 
-#: assets/js/admin.js:931
+#: assets/js/admin.js:946
 #, js-format
 msgid "AI assistants such as ChatGPT, Perplexity and Gemini sent %1$s visitors (%2$s of all traffic)."
 msgstr ""
 
-#: assets/js/admin.js:935
+#: assets/js/admin.js:950
 #, js-format
 msgid "Most viewed page: \"%1$s\" with %2$s pageviews."
 msgstr ""
 
-#: assets/js/admin.js:944
+#: assets/js/admin.js:959
 #, js-format
 msgid "Trending: pageviews of \"%1$s\" grew by %2$s."
 msgstr ""
 
-#: assets/js/admin.js:949
+#: assets/js/admin.js:964
 #, js-format
 msgid "%s of visitors use a mobile phone, so make sure your main pages work well on small screens."
 msgstr ""
 
-#: assets/js/admin.js:955
+#: assets/js/admin.js:970
 #, js-format
 msgid "Busiest day: %1$s with %2$s visitors."
 msgstr ""
 
-#: assets/js/admin.js:961
+#: assets/js/admin.js:976
 #, js-format
 msgid "Bounce rate improved by %s points."
 msgstr ""
 
-#: assets/js/admin.js:961
+#: assets/js/admin.js:976
 #, js-format
 msgid "Bounce rate worsened by %s points."
 msgstr ""
 
-#: assets/js/admin.js:968
+#: assets/js/admin.js:983
 msgid "Visits per period"
 msgstr ""
 
-#: assets/js/admin.js:1044
+#: assets/js/admin.js:1059
 msgid "Pulse Analytics is installed. Statistics will show up here as soon as people visit your website."
 msgstr ""
 
-#: assets/js/admin.js:1046
+#: assets/js/admin.js:1061
 msgid "Tracking is active on every page of your website (cookieless by default)."
 msgstr ""
 
-#: assets/js/admin.js:1046
+#: assets/js/admin.js:1061
 msgid "Tracking is paused in the settings."
 msgstr ""
 
-#: assets/js/admin.js:1047
+#: assets/js/admin.js:1062
 msgid "Your own visits as an administrator are not counted. To test, open your website in a private/incognito window."
 msgstr ""
 
-#: assets/js/admin.js:1048
+#: assets/js/admin.js:1063
 msgid "Visitor countries are detected for the world map."
 msgstr ""
 
-#: assets/js/admin.js:1048
+#: assets/js/admin.js:1063
 msgid "The free geolocation database is being downloaded in the background (needed for the world map)."
 msgstr ""
 
-#: assets/js/admin.js:1051
+#: assets/js/admin.js:1066
 msgid "Explore with sample data"
 msgstr ""
 
-#: assets/js/admin.js:1052
+#: assets/js/admin.js:1067
 msgid "Visit your website"
 msgstr ""
 
-#: assets/js/admin.js:1065
+#: assets/js/admin.js:1080
 msgid "Sample data is included in these reports."
 msgstr ""
 
-#: assets/js/admin.js:1087
-#: assets/js/admin.js:1219
+#: assets/js/admin.js:1102
+#: assets/js/admin.js:1234
 msgid "Entry pages"
 msgstr ""
 
-#: assets/js/admin.js:1088
-#: assets/js/admin.js:1220
+#: assets/js/admin.js:1103
+#: assets/js/admin.js:1235
 msgid "Exit pages"
 msgstr ""
 
-#: assets/js/admin.js:1096
+#: assets/js/admin.js:1111
 msgid "Referrers"
 msgstr ""
 
-#: assets/js/admin.js:1096
-#: assets/js/admin.js:1303
-#: assets/js/admin.js:1304
+#: assets/js/admin.js:1111
+#: assets/js/admin.js:1318
+#: assets/js/admin.js:1319
 msgid "No referring websites yet."
 msgstr ""
 
-#: assets/js/admin.js:1097
+#: assets/js/admin.js:1112
 msgid "No UTM-tagged campaign visits yet. Use the campaign URL builder on the Campaigns tab."
 msgstr ""
 
-#: assets/js/admin.js:1109
-#: assets/js/admin.js:1286
-#: assets/js/admin.js:1418
-#: assets/js/admin.js:1426
+#: assets/js/admin.js:1124
+#: assets/js/admin.js:1301
+#: assets/js/admin.js:1433
+#: assets/js/admin.js:1441
 msgid "Operating systems"
 msgstr ""
 
-#: assets/js/admin.js:1110
-#: assets/js/admin.js:1428
+#: assets/js/admin.js:1125
+#: assets/js/admin.js:1443
 msgid "Screen sizes"
 msgstr ""
 
-#: assets/js/admin.js:1111
-#: assets/js/admin.js:1408
+#: assets/js/admin.js:1126
+#: assets/js/admin.js:1423
 msgid "Languages"
 msgstr ""
 
-#: assets/js/admin.js:1116
+#: assets/js/admin.js:1131
 msgid "New vs. returning visitors"
 msgstr ""
 
-#: assets/js/admin.js:1120
+#: assets/js/admin.js:1135
 msgid "Event types"
 msgstr ""
 
-#: assets/js/admin.js:1120
+#: assets/js/admin.js:1135
 msgid "No clicks, downloads or form submissions recorded yet."
 msgstr ""
 
-#: assets/js/admin.js:1121
+#: assets/js/admin.js:1136
 msgid "Top events"
 msgstr ""
 
-#: assets/js/admin.js:1135
+#: assets/js/admin.js:1150
 msgid "Pageviews per minute"
 msgstr ""
 
-#: assets/js/admin.js:1135
+#: assets/js/admin.js:1150
 msgid "Last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1144
+#: assets/js/admin.js:1159
 msgid "Active pages"
 msgstr ""
 
-#: assets/js/admin.js:1147
+#: assets/js/admin.js:1162
 msgid "Latest pageviews"
 msgstr ""
 
-#: assets/js/admin.js:1152
+#: assets/js/admin.js:1167
 msgid "Resume"
 msgstr ""
 
-#: assets/js/admin.js:1152
+#: assets/js/admin.js:1167
 msgid "Pause"
 msgstr ""
 
-#: assets/js/admin.js:1159
+#: assets/js/admin.js:1174
 msgid "Nobody right now."
 msgstr ""
 
-#: assets/js/admin.js:1167
+#: assets/js/admin.js:1182
 msgid "visitor on your site right now"
 msgid_plural "visitors on your site right now"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1169
+#: assets/js/admin.js:1184
 msgid "visitors in the last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1170
+#: assets/js/admin.js:1185
 msgid "pageviews in the last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1172
+#: assets/js/admin.js:1187
 #, js-format
 msgid "Updated %s"
 msgstr ""
 
-#: assets/js/admin.js:1182
+#: assets/js/admin.js:1197
 msgid "This minute"
 msgstr ""
 
-#: assets/js/admin.js:1182
+#: assets/js/admin.js:1197
 #, js-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1192
+#: assets/js/admin.js:1207
 msgid "No pageviews in the last 30 minutes."
 msgstr ""
 
-#: assets/js/admin.js:1228
-#: assets/js/admin.js:1229
-#: assets/js/admin.js:1708
+#: assets/js/admin.js:1243
+#: assets/js/admin.js:1244
+#: assets/js/admin.js:1723
 msgid "Content types"
 msgstr ""
 
-#: assets/js/admin.js:1249
+#: assets/js/admin.js:1264
 #, js-format
 msgid "Published %s"
 msgstr ""
 
-#: assets/js/admin.js:1250
+#: assets/js/admin.js:1265
 #, js-format
 msgid "by %s"
 msgstr ""
 
-#: assets/js/admin.js:1251
-#: assets/js/admin.js:1569
+#: assets/js/admin.js:1266
+#: assets/js/admin.js:1584
 msgid "Edit"
 msgstr ""
 
-#: assets/js/admin.js:1252
+#: assets/js/admin.js:1267
 msgid "Filter whole dashboard by this page"
 msgstr ""
 
-#: assets/js/admin.js:1260
+#: assets/js/admin.js:1275
 msgid "Where visitors came from"
 msgstr ""
 
-#: assets/js/admin.js:1261
+#: assets/js/admin.js:1276
 msgid "Where they went next"
 msgstr ""
 
-#: assets/js/admin.js:1290
+#: assets/js/admin.js:1305
 msgid "Events on this page"
 msgstr ""
 
-#: assets/js/admin.js:1290
+#: assets/js/admin.js:1305
 msgid "No clicks, downloads or form submissions on this page yet."
 msgstr ""
 
-#: assets/js/admin.js:1295
+#: assets/js/admin.js:1310
 msgid "Channels over time"
 msgstr ""
 
-#: assets/js/admin.js:1303
+#: assets/js/admin.js:1318
 msgid "Referring sites"
 msgstr ""
 
-#: assets/js/admin.js:1304
+#: assets/js/admin.js:1319
 msgid "Referrer URLs"
 msgstr ""
 
-#: assets/js/admin.js:1308
+#: assets/js/admin.js:1323
 msgid "Tip: add a goal filter (Add filter > Goal) to see conversions and conversion rates for each source."
 msgstr ""
 
-#: assets/js/admin.js:1315
+#: assets/js/admin.js:1330
 msgid "No campaign visits yet. Add UTM parameters to the links you share. The builder below can create them for you."
 msgstr ""
 
-#: assets/js/admin.js:1317
+#: assets/js/admin.js:1332
 msgid "UTM campaigns"
 msgstr ""
 
-#: assets/js/admin.js:1322
+#: assets/js/admin.js:1337
 msgid "Mediums"
 msgstr ""
 
-#: assets/js/admin.js:1323
+#: assets/js/admin.js:1338
 msgid "Terms"
 msgstr ""
 
-#: assets/js/admin.js:1331
+#: assets/js/admin.js:1346
 msgid "Campaign URL builder"
 msgstr ""
 
-#: assets/js/admin.js:1331
+#: assets/js/admin.js:1346
 msgid "Create trackable links for ads, emails and social posts"
 msgstr ""
 
-#: assets/js/admin.js:1333
+#: assets/js/admin.js:1348
 msgid "Generated URL"
 msgstr ""
 
-#: assets/js/admin.js:1334
-#: assets/js/admin.js:1381
+#: assets/js/admin.js:1349
+#: assets/js/admin.js:1396
 msgid "Copy"
 msgstr ""
 
-#: assets/js/admin.js:1336
+#: assets/js/admin.js:1351
 msgid "Website URL"
 msgstr ""
 
-#: assets/js/admin.js:1337
+#: assets/js/admin.js:1352
 msgid "Campaign source"
 msgstr ""
 
-#: assets/js/admin.js:1338
+#: assets/js/admin.js:1353
 msgid "Campaign medium"
 msgstr ""
 
-#: assets/js/admin.js:1339
+#: assets/js/admin.js:1354
 msgid "Campaign name"
 msgstr ""
 
-#: assets/js/admin.js:1340
+#: assets/js/admin.js:1355
 msgid "Campaign term"
 msgstr ""
 
-#: assets/js/admin.js:1340
+#: assets/js/admin.js:1355
 msgid "paid keywords (optional)"
 msgstr ""
 
-#: assets/js/admin.js:1341
+#: assets/js/admin.js:1356
 msgid "Campaign content"
 msgstr ""
 
-#: assets/js/admin.js:1341
+#: assets/js/admin.js:1356
 msgid "ad variant (optional)"
 msgstr ""
 
-#: assets/js/admin.js:1351
+#: assets/js/admin.js:1366
 msgid "Facebook ad"
 msgstr ""
 
-#: assets/js/admin.js:1352
+#: assets/js/admin.js:1367
 msgid "Instagram bio"
 msgstr ""
 
-#: assets/js/admin.js:1353
+#: assets/js/admin.js:1368
 msgid "Email newsletter"
 msgstr ""
 
-#: assets/js/admin.js:1354
+#: assets/js/admin.js:1369
 msgid "Google Ads"
 msgstr ""
 
-#: assets/js/admin.js:1355
+#: assets/js/admin.js:1370
 msgid "WhatsApp share"
 msgstr ""
 
-#: assets/js/admin.js:1356
+#: assets/js/admin.js:1371
 msgid "QR code / print"
 msgstr ""
 
-#: assets/js/admin.js:1358
+#: assets/js/admin.js:1373
 msgid "Quick fill:"
 msgstr ""
 
-#: assets/js/admin.js:1368
+#: assets/js/admin.js:1383
 msgid "Enter a valid website URL"
 msgstr ""
 
-#: assets/js/admin.js:1380
-msgid "Copied"
-msgstr ""
-
-#: assets/js/admin.js:1405
+#: assets/js/admin.js:1420
 msgid "Region data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:1406
+#: assets/js/admin.js:1421
 msgid "City data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:1407
+#: assets/js/admin.js:1422
 msgid "Continents"
 msgstr ""
 
-#: assets/js/admin.js:1425
+#: assets/js/admin.js:1440
 msgid "Browser versions"
 msgstr ""
 
-#: assets/js/admin.js:1427
+#: assets/js/admin.js:1442
 msgid "OS versions"
 msgstr ""
 
-#: assets/js/admin.js:1429
+#: assets/js/admin.js:1444
 msgid "Device types"
 msgstr ""
 
-#: assets/js/admin.js:1452
+#: assets/js/admin.js:1467
 #, js-format
 msgid "%s visitor"
 msgid_plural "%s visitors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1464
+#: assets/js/admin.js:1479
 msgid "All events"
 msgstr ""
 
-#: assets/js/admin.js:1464
+#: assets/js/admin.js:1479
 msgid "No events recorded yet."
 msgstr ""
 
-#: assets/js/admin.js:1465
+#: assets/js/admin.js:1480
 msgid "Custom"
 msgstr ""
 
-#: assets/js/admin.js:1465
+#: assets/js/admin.js:1480
 msgid "Add data-pa-event=\"Name\" to any button or link to track clicks."
 msgstr ""
 
-#: assets/js/admin.js:1466
+#: assets/js/admin.js:1481
 msgid "Destination"
 msgstr ""
 
-#: assets/js/admin.js:1467
+#: assets/js/admin.js:1482
 msgid "Downloads"
 msgstr ""
 
-#: assets/js/admin.js:1467
+#: assets/js/admin.js:1482
 msgid "File"
 msgstr ""
 
-#: assets/js/admin.js:1468
+#: assets/js/admin.js:1483
 msgid "Forms"
 msgstr ""
 
-#: assets/js/admin.js:1468
+#: assets/js/admin.js:1483
 msgid "Form"
 msgstr ""
 
-#: assets/js/admin.js:1469
+#: assets/js/admin.js:1484
 msgid "Email & phone"
 msgstr ""
 
-#: assets/js/admin.js:1469
+#: assets/js/admin.js:1484
 msgid "Contact link"
 msgstr ""
 
-#: assets/js/admin.js:1470
+#: assets/js/admin.js:1485
 msgid "Site search"
 msgstr ""
 
-#: assets/js/admin.js:1470
+#: assets/js/admin.js:1485
 msgid "Search term"
 msgstr ""
 
-#: assets/js/admin.js:1470
+#: assets/js/admin.js:1485
 msgid "No internal searches yet."
 msgstr ""
 
-#: assets/js/admin.js:1471
+#: assets/js/admin.js:1486
 msgid "Missing URL"
 msgstr ""
 
-#: assets/js/admin.js:1471
+#: assets/js/admin.js:1486
 msgid "No broken links found."
 msgstr ""
 
-#: assets/js/admin.js:1472
+#: assets/js/admin.js:1487
 msgid "Details"
 msgstr ""
 
-#: assets/js/admin.js:1472
+#: assets/js/admin.js:1487
 msgid "Detail (URL, page, label)"
 msgstr ""
 
-#: assets/js/admin.js:1479
+#: assets/js/admin.js:1494
 msgid "Goals & conversions"
 msgstr ""
 
-#: assets/js/admin.js:1484
-#: assets/js/admin.js:1501
+#: assets/js/admin.js:1499
+#: assets/js/admin.js:1516
 msgid "starts with"
 msgstr ""
 
-#: assets/js/admin.js:1484
-#: assets/js/admin.js:1501
+#: assets/js/admin.js:1499
+#: assets/js/admin.js:1516
 msgid "ends with"
 msgstr ""
 
-#: assets/js/admin.js:1484
-#: assets/js/admin.js:1501
+#: assets/js/admin.js:1499
+#: assets/js/admin.js:1516
 msgid "matches regex"
 msgstr ""
 
-#: assets/js/admin.js:1486
+#: assets/js/admin.js:1501
 #, js-format
 msgid "Event %1$s \"%2$s\""
 msgstr ""
 
-#: assets/js/admin.js:1488
+#: assets/js/admin.js:1503
 #, js-format
 msgid "Page %1$s \"%2$s\""
 msgstr ""
 
-#: assets/js/admin.js:1496
+#: assets/js/admin.js:1511
 msgid "e.g. Contact form sent"
 msgstr ""
 
-#: assets/js/admin.js:1497
+#: assets/js/admin.js:1512
 msgid "Event (form, click, download, etc.)"
 msgstr ""
 
-#: assets/js/admin.js:1497
+#: assets/js/admin.js:1512
 msgid "Page visit (e.g. thank-you page)"
 msgstr ""
 
-#: assets/js/admin.js:1499
+#: assets/js/admin.js:1514
 msgid "Any event type"
 msgstr ""
 
-#: assets/js/admin.js:1501
+#: assets/js/admin.js:1516
 msgid "is exactly"
 msgstr ""
 
-#: assets/js/admin.js:1510
+#: assets/js/admin.js:1525
 msgid "e.g. contact (form name) or CTA Click"
 msgstr ""
 
-#: assets/js/admin.js:1510
+#: assets/js/admin.js:1525
 msgid "e.g. /thank-you/"
 msgstr ""
 
-#: assets/js/admin.js:1511
+#: assets/js/admin.js:1526
 msgid "Matches the event name: form id/name, clicked link host, file name, phone number or your custom event name."
 msgstr ""
 
-#: assets/js/admin.js:1511
+#: assets/js/admin.js:1526
 msgid "Matches the page path (the part after your domain). You can paste a full URL."
 msgstr ""
 
-#: assets/js/admin.js:1527
+#: assets/js/admin.js:1542
 msgid "Edit goal"
 msgstr ""
 
-#: assets/js/admin.js:1527
+#: assets/js/admin.js:1542
 msgid "Add a goal"
 msgstr ""
 
-#: assets/js/admin.js:1529
+#: assets/js/admin.js:1544
 msgid "Name"
 msgstr ""
 
-#: assets/js/admin.js:1530
+#: assets/js/admin.js:1545
 msgid "Goal type"
 msgstr ""
 
-#: assets/js/admin.js:1532
+#: assets/js/admin.js:1547
 msgid "Match"
 msgstr ""
 
-#: assets/js/admin.js:1533
+#: assets/js/admin.js:1548
 msgid "Value"
 msgstr ""
 
-#: assets/js/admin.js:1538
+#: assets/js/admin.js:1553
 msgid "Save goal"
 msgstr ""
 
-#: assets/js/admin.js:1538
+#: assets/js/admin.js:1553
 msgid "Add goal"
 msgstr ""
 
-#: assets/js/admin.js:1539
+#: assets/js/admin.js:1554
 msgid "Cancel"
 msgstr ""
 
-#: assets/js/admin.js:1552
+#: assets/js/admin.js:1567
 msgid "No goals yet. A goal counts a conversion, for example a contact form submission, a click on your phone number or a visit to a thank-you page. Once you add one, you can see which channels and campaigns bring in customers."
 msgstr ""
 
-#: assets/js/admin.js:1568
+#: assets/js/admin.js:1583
 msgid "See which sources convert"
 msgstr ""
 
-#: assets/js/admin.js:1568
+#: assets/js/admin.js:1583
 msgid "Analyze"
 msgstr ""
 
-#: assets/js/admin.js:1570
+#: assets/js/admin.js:1585
 msgid "Delete"
 msgstr ""
 
-#: assets/js/admin.js:1571
+#: assets/js/admin.js:1586
 #, js-format
 msgid "Delete the goal \"%s\"? Your statistics are not affected."
 msgstr ""
 
-#: assets/js/admin.js:1580
+#: assets/js/admin.js:1595
 msgid "Unique visitors who completed the goal"
 msgstr ""
 
-#: assets/js/admin.js:1581
+#: assets/js/admin.js:1596
 msgid "Total number of times the goal was completed"
 msgstr ""
 
-#: assets/js/admin.js:1582
+#: assets/js/admin.js:1597
 msgid "Conversion rate"
 msgstr ""
 
-#: assets/js/admin.js:1587
+#: assets/js/admin.js:1602
 #, js-format
 msgid "Conversion rate is the share of all %s visitors in this period who completed the goal."
 msgstr ""
 
-#: assets/js/admin.js:1600
+#: assets/js/admin.js:1615
 msgid "Every visit with its journey through your site"
 msgstr ""
 
-#: assets/js/admin.js:1602
+#: assets/js/admin.js:1617
 msgid "Load more"
 msgstr ""
 
-#: assets/js/admin.js:1613
+#: assets/js/admin.js:1628
 msgid "Unknown location"
 msgstr ""
 
-#: assets/js/admin.js:1620
+#: assets/js/admin.js:1635
 msgid "returning"
 msgstr ""
 
-#: assets/js/admin.js:1656
+#: assets/js/admin.js:1671
 #, js-format
 msgid "%1$s on page, scrolled %2$s"
 msgstr ""
 
-#: assets/js/admin.js:1686
+#: assets/js/admin.js:1701
 msgid "No visits in this period."
 msgstr ""
 
-#: assets/js/admin.js:1705
+#: assets/js/admin.js:1720
 msgid "Content performance"
 msgstr ""
 
-#: assets/js/admin.js:1709
+#: assets/js/admin.js:1724
 msgid "Authors"
 msgstr ""
 
-#: assets/js/admin.js:1710
+#: assets/js/admin.js:1725
 msgid "Categories"
 msgstr ""
 
-#: assets/js/admin.js:1713
+#: assets/js/admin.js:1728
 msgid "Top content"
 msgstr ""
 
-#: assets/js/admin.js:1763
+#: assets/js/admin.js:1778
 msgid "Reports"
 msgstr ""
 
-#: assets/js/admin.js:1767
+#: assets/js/admin.js:1782
 msgid "IP geolocation by"
 msgstr ""
 
-#: assets/js/admin.js:1768
+#: assets/js/admin.js:1783
 msgid "Map data: Natural Earth"
 msgstr ""
 
-#: assets/js/admin.js:1769
+#: assets/js/admin.js:1784
 msgid "Flags: Twemoji (CC BY 4.0)"
 msgstr ""
 
