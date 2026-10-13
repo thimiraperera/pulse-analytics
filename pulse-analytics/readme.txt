@@ -34,7 +34,7 @@ Every report can be filtered. Click any row to filter by it, or use Add filter t
 
 = Exporting =
 
-Each card and table has a CSV button that uses the current filters and dates. If you want everything, choose "All reports in one ZIP file" from the Export menu: you get every report as its own CSV file, plus the raw visits, pageviews and events. Settings > Tools has the same downloads for any period. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
+Each card and table has a CSV button that uses the current filters and dates. The Export menu also has "All reports in one ZIP file", with every report as its own CSV file plus the raw visits, pageviews and events. Settings > Tools has the same downloads for any period. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
 
 = Elsewhere in the admin =
 
@@ -52,22 +52,20 @@ You can also respect Do Not Track, wait for consent from a cookie banner (works 
 
 == Installation ==
 
-1. Download pulse-analytics.zip from the latest release on GitHub (https://github.com/thimiraperera/pulse-analytics/releases/latest). In WordPress, go to Plugins > Add New > Upload Plugin, choose the file and click Install Now. Then click Activate.
-2. WordPress opens the Statistics page. Tracking is already running on every page of the site.
-3. If you want to look around first, click "Explore with sample data". You can remove it later under Statistics > Settings > Tools.
-4. When you have a minute, go through Statistics > Settings. The tracking mode, the excluded roles and the email reports are the ones worth checking.
+1. Download pulse-analytics.zip from the latest release on GitHub: https://github.com/thimiraperera/pulse-analytics/releases/latest
+2. In WordPress, go to Plugins > Add New > Upload Plugin, choose the file, click Install Now and then Activate.
 
-Administrators are not counted by default. To see tracking working, open the site in a private window and watch the Real-time tab.
+Tracking starts on every page of the site as soon as the plugin is active. Administrators are not counted by default.
 
 == Frequently Asked Questions ==
 
 = How does it know which country a visitor is from? =
 
-If the site runs behind Cloudflare, the country comes from the CF-IPCountry header. Other CDNs (CloudFront, Vercel, App Engine) and server GeoIP modules work the same way. Otherwise the plugin downloads the free DB-IP Lite country database (about 4 MB) after activation and updates it once a month. For regions and cities, switch to the DB-IP City database, turn on location headers in Cloudflare, or use MaxMind GeoLite2 with a free license key.
+If the site runs behind Cloudflare, the country comes from the CF-IPCountry header. Other CDNs (CloudFront, Vercel, App Engine) and server GeoIP modules work the same way. Otherwise the plugin downloads the free DB-IP Lite country database (about 4 MB) after activation and updates it once a month. Regions and cities need the DB-IP City database, location headers from Cloudflare, or MaxMind GeoLite2 with a free license key.
 
 = Does it work with caching plugins? =
 
-Yes. The counting happens in the browser with a small script of about 5 KB (gzipped), so cached pages are counted too. If your optimisation plugin delays JavaScript until the visitor interacts with the page, exclude pulse-analytics/assets/js/tracker.js from that setting. Otherwise you will miss visitors who leave quickly.
+Yes. The counting happens in the browser with a small script of about 5 KB (gzipped), so cached pages are counted too. Optimisation plugins that delay JavaScript until the visitor interacts with the page also delay the tracker (pulse-analytics/assets/js/tracker.js), and visitors who leave quickly are then not counted.
 
 = My security plugin blocks the REST API. Will tracking still work? =
 
@@ -75,7 +73,7 @@ Yes. The script falls back to admin-ajax.php by itself.
 
 = Do I need a cookie banner? =
 
-In the default cookieless mode nothing is saved on the visitor's device, so in most places no consent is needed for these statistics. If you switch to the persistent visitor ID mode for exact new and returning visitor numbers, turn on "Wait for consent" and connect it to your banner. Rules differ by country, so check what applies to you.
+In the default cookieless mode nothing is saved on the visitor's device. The persistent visitor ID mode, which gives exact new and returning visitor numbers, keeps an ID in the browser. With "Wait for consent" turned on, it only starts after the visitor accepts your cookie banner.
 
 = How do I track a button? =
 
@@ -91,7 +89,7 @@ In four database tables: wp_pulse_sessions, wp_pulse_pageviews, wp_pulse_pages a
 
 = How do updates work? =
 
-The plugin is not on WordPress.org. New versions come from the releases of its GitHub repository, https://github.com/thimiraperera/pulse-analytics. WordPress checks for them along with its other updates, and they show up on the Plugins screen like any other plugin update. You can turn on automatic updates for this plugin there. To check right away, use the "Check for updates" link under the plugin name or go to Statistics > Settings > Updates.
+New versions are published as releases on GitHub (https://github.com/thimiraperera/pulse-analytics). WordPress checks for them along with its other updates and shows them on the Plugins screen, where automatic updates can be turned on. Statistics > Settings > Updates shows the latest version and has a button to check right away.
 
 = Does it connect to other services? =
 
