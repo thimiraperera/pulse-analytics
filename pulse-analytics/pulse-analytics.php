@@ -1,0 +1,45 @@
+<?php
+/**
+ * Plugin Name:       Pulse Analytics
+ * Description:       Self-hosted website statistics. See visitors, pages, traffic sources, campaigns, countries on a world map and goals, and export any report to CSV.
+ * Version:           0.1.0
+ * Requires at least: 6.0
+ * Requires PHP:      7.4
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       pulse-analytics
+ * Domain Path:       /languages
+ *
+ * @package PulseAnalytics
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+define( 'PULSE_ANALYTICS_VERSION', '0.1.0' );
+define( 'PULSE_ANALYTICS_FILE', __FILE__ );
+define( 'PULSE_ANALYTICS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PULSE_ANALYTICS_URL', plugin_dir_url( __FILE__ ) );
+
+/*
+ * Autoloader: PulseAnalytics\Some_Class => includes/class-some-class.php
+ */
+spl_autoload_register(
+	static function ( $class ) {
+		$prefix = 'PulseAnalytics\\';
+		if ( 0 !== strpos( $class, $prefix ) ) {
+			return;
+		}
+		$relative = substr( $class, strlen( $prefix ) );
+		$file     = PULSE_ANALYTICS_PATH . 'includes/class-' . strtolower( str_replace( '_', '-', $relative ) ) . '.php';
+		if ( is_readable( $file ) ) {
+			require_once $file;
+		}
+	}
+);
+
+register_activation_hook( __FILE__, array( 'PulseAnalytics\\Installer', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'PulseAnalytics\\Installer', 'deactivate' ) );
+
+add_action( 'plugins_loaded', array( 'PulseAnalytics\\Plugin', 'instance' ) );

@@ -1,0 +1,23 @@
+/* Pulse Analytics: settings screen */
+.pa-settings .nav-tab-wrapper { margin-bottom: 16px; }
+.pa-settings .form-table th { width: 220px; }
+.pa-check { display: flex; align-items: flex-start; gap: 6px; margin: 0 0 6px; }
+.pa-check input[type="checkbox"] { margin-top: 2px; }
+.pa-check-help { margin: -2px 0 10px 24px !important; }
+.pa-radio { display: inline-flex; align-items: center; gap: 6px; margin: 4px 0; }
+.pa-roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 2px 16px; margin-bottom: 8px; }
+.pa-grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 24px; }
+.pa-card { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; max-width: 980px; }
+.pa-card h2 { margin: 0 0 8px; font-size: 15px; }
+.pa-card.pa-danger { border-color: #e6b8b8; }
+.pa-tools { max-width: 980px; }
+.pa-inline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pa-inline label { display: inline-flex; gap: 6px; align-items: center; margin-right: 8px; }
+.pa-pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #f0f0f1; color: #3c434a; font-size: 12px; font-weight: 600; margin-right: 6px; }
+.pa-pill-ok { background: #e3f4e3; color: #006300; }
+.pa-pill-warn { background: #fdf0d5; color: #7a4d00; }
+.pa-error { color: #b32d2e; }
+code { word-break: break-word; }
+@media (max-width: 782px) {
+	.pa-settings .form-table th { width: auto; }
+}

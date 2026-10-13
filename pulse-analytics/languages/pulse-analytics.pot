@@ -1,0 +1,2722 @@
+# Copyright (C) 2026 
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pulse Analytics 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pulse-analytics\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-13T03:46:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: pulse-analytics\n"
+
+#. Plugin Name of the plugin
+#: pulse-analytics.php
+msgid "Pulse Analytics"
+msgstr ""
+
+#. Description of the plugin
+#: pulse-analytics.php
+msgid "Self-hosted website statistics. See visitors, pages, traffic sources, campaigns, countries on a world map and goals, and export any report to CSV."
+msgstr ""
+
+#. translators: %s: number of pageviews today
+#: includes/class-admin-bar.php:61
+#, php-format
+msgid "%s view today"
+msgid_plural "%s views today"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of pageviews in 30 days
+#: includes/class-admin-bar.php:65
+#, php-format
+msgid "%s views in the last 30 days. Click to open the page report."
+msgstr ""
+
+#: includes/class-admin.php:39
+#: includes/class-admin.php:40
+#: includes/class-admin.php:47
+#: includes/class-admin.php:175
+#: includes/class-admin.php:247
+#: includes/class-post-stats.php:142
+#: assets/js/admin.js:202
+msgid "Statistics"
+msgstr ""
+
+#: includes/class-admin.php:47
+msgid "Dashboard"
+msgstr ""
+
+#: includes/class-admin.php:171
+msgid "You are not allowed to view statistics."
+msgstr ""
+
+#: includes/class-admin.php:179
+msgid "Loading statistics..."
+msgstr ""
+
+#: includes/class-admin.php:182
+msgid "The statistics dashboard needs JavaScript."
+msgstr ""
+
+#: includes/class-admin.php:215
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-admin.php:216
+msgid "The geolocation database was downloaded successfully."
+msgstr ""
+
+#: includes/class-admin.php:217
+msgid "The geolocation database could not be downloaded."
+msgstr ""
+
+#: includes/class-admin.php:218
+msgid "Sample data was generated. Explore the dashboard!"
+msgstr ""
+
+#: includes/class-admin.php:219
+msgid "Sample data was removed."
+msgstr ""
+
+#: includes/class-admin.php:220
+msgid "All statistics were deleted."
+msgstr ""
+
+#: includes/class-admin.php:221
+msgid "Report cache cleared."
+msgstr ""
+
+#: includes/class-admin.php:222
+msgid "Old data was purged according to your retention setting."
+msgstr ""
+
+#: includes/class-admin.php:223
+msgid "A test report was sent."
+msgstr ""
+
+#: includes/class-admin.php:224
+msgid "The test email could not be sent. Check that your site is able to send email."
+msgstr ""
+
+#: includes/class-admin.php:248
+#: includes/class-settings-page.php:41
+#: assets/js/admin.js:212
+#: assets/js/admin.js:1050
+msgid "Settings"
+msgstr ""
+
+#: includes/class-collector.php:155
+#: includes/class-demo-data.php:394
+#: includes/class-reports.php:1616
+msgid "Search results"
+msgstr ""
+
+#: includes/class-countries.php:26
+msgid "Africa"
+msgstr ""
+
+#: includes/class-countries.php:27
+msgid "Antarctica"
+msgstr ""
+
+#: includes/class-countries.php:28
+msgid "Asia"
+msgstr ""
+
+#: includes/class-countries.php:29
+msgid "Europe"
+msgstr ""
+
+#: includes/class-countries.php:30
+msgid "North America"
+msgstr ""
+
+#: includes/class-countries.php:31
+msgid "Oceania"
+msgstr ""
+
+#: includes/class-countries.php:32
+msgid "South America"
+msgstr ""
+
+#: includes/class-countries.php:75
+#: includes/class-reports.php:1100
+#: includes/class-reports.php:1567
+#: includes/class-reports.php:1575
+#: assets/js/admin-core.js:369
+#: assets/js/admin-core.js:373
+#: assets/js/admin-core.js:380
+msgid "Unknown"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:33
+msgid "Website statistics (last 30 days)"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:78
+#: includes/class-email-reports.php:96
+#: includes/class-email-reports.php:133
+#: includes/class-email-reports.php:134
+#: includes/class-exporter.php:33
+#: assets/js/admin-core.js:210
+msgid "Visitors"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:79
+#: includes/class-email-reports.php:98
+#: includes/class-email-reports.php:132
+#: includes/class-exporter.php:35
+#: includes/class-settings-page.php:554
+#: assets/js/admin-core.js:212
+msgid "Pageviews"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:80
+msgid "Visitors today"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:81
+#: includes/class-email-reports.php:99
+#: assets/js/admin-core.js:214
+msgid "Bounce rate"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:99
+#: includes/class-email-reports.php:132
+#: assets/js/admin.js:1083
+msgid "Top pages"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:105
+#: includes/class-dashboard-widget.php:116
+msgid "No data yet."
+msgstr ""
+
+#: includes/class-dashboard-widget.php:110
+#: includes/class-email-reports.php:133
+msgid "Top sources"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:122
+msgid "View full statistics"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:123
+msgid "Real-time view"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:150
+msgid "Visitors per day"
+msgstr ""
+
+#: includes/class-demo-data.php:472
+msgid "Contact form submitted"
+msgstr ""
+
+#: includes/class-demo-data.php:481
+msgid "Clicked a call-to-action"
+msgstr ""
+
+#. translators: 1: site name, 2: start date, 3: end date
+#: includes/class-email-reports.php:82
+#, php-format
+msgid "[%1$s] Website statistics for %2$s to %3$s"
+msgstr ""
+
+#: includes/class-email-reports.php:97
+#: includes/class-exporter.php:34
+#: assets/js/admin-core.js:211
+msgid "Visits"
+msgstr ""
+
+#: includes/class-email-reports.php:100
+msgid "Avg. visit duration"
+msgstr ""
+
+#: includes/class-email-reports.php:107
+msgid "Website statistics"
+msgstr ""
+
+#: includes/class-email-reports.php:134
+msgid "Top countries"
+msgstr ""
+
+#: includes/class-email-reports.php:149
+#: assets/js/admin.js:387
+#: assets/js/admin.js:785
+msgid "Goals"
+msgstr ""
+
+#: includes/class-email-reports.php:149
+#: includes/class-exporter.php:45
+#: assets/js/admin-core.js:222
+#: assets/js/admin.js:1577
+msgid "Conversions"
+msgstr ""
+
+#: includes/class-email-reports.php:149
+msgid "Rate"
+msgstr ""
+
+#: includes/class-email-reports.php:156
+msgid "Open full statistics"
+msgstr ""
+
+#: includes/class-email-reports.php:157
+msgid "Sent by Pulse Analytics. You can change or turn off these emails under Statistics > Settings."
+msgstr ""
+
+#: includes/class-exporter.php:36
+#: assets/js/admin-core.js:213
+msgid "Views per visit"
+msgstr ""
+
+#: includes/class-exporter.php:37
+msgid "Bounce rate (%)"
+msgstr ""
+
+#: includes/class-exporter.php:38
+msgid "Avg. duration (seconds)"
+msgstr ""
+
+#: includes/class-exporter.php:39
+msgid "Avg. time on page (seconds)"
+msgstr ""
+
+#: includes/class-exporter.php:40
+msgid "Avg. scroll depth (%)"
+msgstr ""
+
+#: includes/class-exporter.php:41
+#: assets/js/admin-core.js:218
+msgid "Entrances"
+msgstr ""
+
+#: includes/class-exporter.php:42
+#: assets/js/admin-core.js:219
+msgid "Exits"
+msgstr ""
+
+#: includes/class-exporter.php:43
+msgid "Exit rate (%)"
+msgstr ""
+
+#: includes/class-exporter.php:44
+#: includes/class-settings-page.php:555
+#: assets/js/admin-core.js:221
+#: assets/js/admin.js:162
+#: assets/js/admin.js:386
+#: assets/js/admin.js:1115
+#: assets/js/admin.js:1287
+#: assets/js/admin.js:1458
+msgid "Events"
+msgstr ""
+
+#: includes/class-exporter.php:46
+msgid "Conversion rate (%)"
+msgstr ""
+
+#: includes/class-exporter.php:55
+msgid "You are not allowed to export statistics."
+msgstr ""
+
+#: includes/class-exporter.php:97
+msgid "Unknown report."
+msgstr ""
+
+#: includes/class-exporter.php:150
+msgid "Page title"
+msgstr ""
+
+#: includes/class-exporter.php:150
+msgid "Page path"
+msgstr ""
+
+#: includes/class-exporter.php:151
+msgid "Entry page title"
+msgstr ""
+
+#: includes/class-exporter.php:151
+msgid "Entry page path"
+msgstr ""
+
+#: includes/class-exporter.php:152
+msgid "Exit page title"
+msgstr ""
+
+#: includes/class-exporter.php:152
+msgid "Exit page path"
+msgstr ""
+
+#: includes/class-exporter.php:153
+msgid "Previous page title"
+msgstr ""
+
+#: includes/class-exporter.php:153
+msgid "Previous page path"
+msgstr ""
+
+#: includes/class-exporter.php:154
+msgid "Next page title"
+msgstr ""
+
+#: includes/class-exporter.php:154
+msgid "Next page path"
+msgstr ""
+
+#: includes/class-exporter.php:155
+#: assets/js/admin-core.js:333
+msgid "Country"
+msgstr ""
+
+#: includes/class-exporter.php:155
+msgid "Country code"
+msgstr ""
+
+#: includes/class-exporter.php:156
+#: assets/js/admin-core.js:336
+msgid "Continent"
+msgstr ""
+
+#: includes/class-exporter.php:156
+msgid "Continent code"
+msgstr ""
+
+#: includes/class-exporter.php:157
+#: assets/js/admin-core.js:324
+msgid "Channel"
+msgstr ""
+
+#: includes/class-exporter.php:157
+msgid "Channel key"
+msgstr ""
+
+#: includes/class-exporter.php:158
+msgid "Event category"
+msgstr ""
+
+#: includes/class-exporter.php:158
+msgid "Category key"
+msgstr ""
+
+#: includes/class-exporter.php:164
+msgid "(raw value)"
+msgstr ""
+
+#. translators: %s: metric name
+#: includes/class-exporter.php:208
+#: includes/class-exporter.php:266
+#, php-format
+msgid "%s (previous period)"
+msgstr ""
+
+#: includes/class-exporter.php:248
+msgid "Metric"
+msgstr ""
+
+#: includes/class-exporter.php:248
+msgid "Change (%)"
+msgstr ""
+
+#: includes/class-exporter.php:258
+#: assets/js/admin.js:550
+msgid "Period"
+msgstr ""
+
+#: includes/class-exporter.php:263
+#: assets/js/admin.js:522
+#: assets/js/admin.js:550
+msgid "Previous period"
+msgstr ""
+
+#: includes/class-geoip.php:35
+msgid "DB-IP Lite Country (free, about 4 MB, recommended)"
+msgstr ""
+
+#: includes/class-geoip.php:36
+msgid "DB-IP Lite City (free, about 60 MB download and 130 MB on disk, adds regions, cities and map bubbles)"
+msgstr ""
+
+#: includes/class-geoip.php:37
+msgid "MaxMind GeoLite2 Country (needs a free license key)"
+msgstr ""
+
+#: includes/class-geoip.php:38
+msgid "MaxMind GeoLite2 City (needs a free license key)"
+msgstr ""
+
+#: includes/class-geoip.php:39
+msgid "Custom .mmdb file on this server"
+msgstr ""
+
+#: includes/class-geoip.php:40
+msgid "No database (CDN headers only)"
+msgstr ""
+
+#: includes/class-geoip.php:295
+msgid "The selected geolocation source cannot be downloaded automatically."
+msgstr ""
+
+#: includes/class-geoip.php:301
+msgid "The PHP zlib extension is required to unpack the database."
+msgstr ""
+
+#: includes/class-geoip.php:309
+msgid "Could not create the data folder in wp-content/uploads."
+msgstr ""
+
+#: includes/class-geoip.php:329
+msgid "Download failed."
+msgstr ""
+
+#: includes/class-geoip.php:335
+msgid "Enter your MaxMind license key first."
+msgstr ""
+
+#: includes/class-geoip.php:347
+msgid "MaxMind download failed. Check your license key."
+msgstr ""
+
+#: includes/class-geoip.php:363
+msgid "The downloaded file is not a valid geolocation database."
+msgstr ""
+
+#: includes/class-geoip.php:376
+msgid "Could not move the database into place."
+msgstr ""
+
+#: includes/class-geoip.php:447
+#: includes/class-geoip.php:476
+msgid "Could not open the downloaded archive."
+msgstr ""
+
+#: includes/class-geoip.php:452
+#: includes/class-geoip.php:496
+msgid "Could not write the database file."
+msgstr ""
+
+#: includes/class-geoip.php:463
+msgid "The downloaded archive was empty."
+msgstr ""
+
+#: includes/class-geoip.php:509
+msgid "The archive ended unexpectedly."
+msgstr ""
+
+#: includes/class-geoip.php:522
+msgid "No database file was found in the downloaded archive."
+msgstr ""
+
+#: includes/class-goals.php:60
+msgid "A goal needs a name and a value to match."
+msgstr ""
+
+#: includes/class-goals.php:63
+msgid "The regular expression is not valid."
+msgstr ""
+
+#: includes/class-post-stats.php:66
+msgid "Views (30d)"
+msgstr ""
+
+#: includes/class-post-stats.php:92
+msgid "Open page statistics"
+msgstr ""
+
+#: includes/class-post-stats.php:155
+msgid "Statistics appear here once the post is published and visited."
+msgstr ""
+
+#: includes/class-post-stats.php:198
+#: assets/js/admin-core.js:464
+msgid "Today"
+msgstr ""
+
+#: includes/class-post-stats.php:199
+#: assets/js/admin-core.js:466
+msgid "Last 7 days"
+msgstr ""
+
+#: includes/class-post-stats.php:200
+#: assets/js/admin-core.js:467
+msgid "Last 30 days"
+msgstr ""
+
+#: includes/class-post-stats.php:201
+#: assets/js/admin-core.js:473
+msgid "All time"
+msgstr ""
+
+#: includes/class-post-stats.php:202
+msgid "Avg. time on page"
+msgstr ""
+
+#: includes/class-post-stats.php:210
+msgid "Detailed page statistics"
+msgstr ""
+
+#: includes/class-privacy.php:36
+msgid "Pulse Analytics is self-hosted. Statistics are stored in the database of this website and are not shared with anyone else."
+msgstr ""
+
+#: includes/class-privacy.php:37
+msgid "Suggested text:"
+msgstr ""
+
+#: includes/class-privacy.php:38
+msgid "We collect anonymous usage statistics to understand how our website is used and to improve it. This includes the pages you visit, how long you stay, the website or campaign that referred you, your approximate location (country, and possibly region and city) derived from your IP address, your browser, operating system, device type, screen size and language."
+msgstr ""
+
+#: includes/class-privacy.php:40
+msgid "A random identifier is saved in the local storage of your browser so we can recognise returning visits. It does not contain any personal information."
+msgstr ""
+
+#: includes/class-privacy.php:42
+msgid "No cookies or similar identifiers are stored on your device; visits are counted with a daily-changing anonymous hash."
+msgstr ""
+
+#: includes/class-privacy.php:45
+msgid "Your IP address is stored together with the statistics."
+msgstr ""
+
+#: includes/class-privacy.php:47
+msgid "An anonymised (shortened) version of your IP address is stored."
+msgstr ""
+
+#: includes/class-privacy.php:49
+msgid "Your IP address is not stored."
+msgstr ""
+
+#. translators: %d: number of months
+#: includes/class-privacy.php:54
+#, php-format
+msgid "Statistics are deleted automatically after %d months."
+msgstr ""
+
+#: includes/class-privacy.php:57
+msgid "We respect the \"Do Not Track\" and \"Global Privacy Control\" signals sent by browsers."
+msgstr ""
+
+#: includes/class-referrer.php:26
+#: assets/js/admin.js:1197
+msgid "Direct"
+msgstr ""
+
+#: includes/class-referrer.php:27
+msgid "Organic Search"
+msgstr ""
+
+#: includes/class-referrer.php:28
+msgid "Paid Search"
+msgstr ""
+
+#: includes/class-referrer.php:29
+msgid "Organic Social"
+msgstr ""
+
+#: includes/class-referrer.php:30
+msgid "Paid Social"
+msgstr ""
+
+#: includes/class-referrer.php:31
+msgid "AI Assistants"
+msgstr ""
+
+#: includes/class-referrer.php:32
+msgid "Email"
+msgstr ""
+
+#: includes/class-referrer.php:33
+msgid "Referral"
+msgstr ""
+
+#: includes/class-referrer.php:34
+msgid "Display"
+msgstr ""
+
+#: includes/class-referrer.php:35
+msgid "Affiliates"
+msgstr ""
+
+#: includes/class-referrer.php:36
+msgid "Other Campaigns"
+msgstr ""
+
+#: includes/class-reports.php:1171
+msgid "(unknown page)"
+msgstr ""
+
+#: includes/class-reports.php:1433
+msgid "(entrance, no previous page)"
+msgstr ""
+
+#: includes/class-reports.php:1452
+msgid "(exit, left the website)"
+msgstr ""
+
+#: includes/class-reports.php:1542
+#: assets/js/admin.js:1463
+msgid "Outbound links"
+msgstr ""
+
+#: includes/class-reports.php:1543
+#: includes/class-settings-page.php:211
+msgid "File downloads"
+msgstr ""
+
+#: includes/class-reports.php:1544
+#: includes/class-settings-page.php:212
+msgid "Form submissions"
+msgstr ""
+
+#: includes/class-reports.php:1545
+msgid "Email link clicks"
+msgstr ""
+
+#: includes/class-reports.php:1546
+msgid "Phone link clicks"
+msgstr ""
+
+#: includes/class-reports.php:1547
+msgid "Site searches"
+msgstr ""
+
+#: includes/class-reports.php:1548
+#: assets/js/admin.js:1468
+msgid "404 errors"
+msgstr ""
+
+#: includes/class-reports.php:1549
+#: includes/class-settings-page.php:226
+msgid "Custom events"
+msgstr ""
+
+#: includes/class-reports.php:1570
+#: assets/js/admin-core.js:367
+msgid "Desktop"
+msgstr ""
+
+#: includes/class-reports.php:1571
+#: assets/js/admin-core.js:367
+msgid "Mobile"
+msgstr ""
+
+#: includes/class-reports.php:1572
+#: assets/js/admin-core.js:367
+msgid "Tablet"
+msgstr ""
+
+#: includes/class-reports.php:1573
+#: assets/js/admin-core.js:367
+msgid "TV"
+msgstr ""
+
+#: includes/class-reports.php:1577
+#: includes/class-reports.php:2141
+#: assets/js/admin-core.js:402
+msgid "New visitors"
+msgstr ""
+
+#: includes/class-reports.php:1577
+#: includes/class-reports.php:2145
+#: assets/js/admin-core.js:402
+msgid "Returning visitors"
+msgstr ""
+
+#: includes/class-reports.php:1579
+#: includes/class-reports.php:2152
+#: assets/js/admin-core.js:403
+msgid "Logged-in users"
+msgstr ""
+
+#: includes/class-reports.php:1579
+#: includes/class-reports.php:2156
+#: assets/js/admin-core.js:403
+msgid "Guests"
+msgstr ""
+
+#: includes/class-reports.php:1581
+#: assets/js/admin-core.js:407
+#: assets/js/admin.js:1619
+msgid "Direct / None"
+msgstr ""
+
+#: includes/class-reports.php:1583
+msgid "(unknown version)"
+msgstr ""
+
+#: includes/class-reports.php:1587
+#: includes/class-reports.php:1619
+#: assets/js/admin-core.js:408
+msgid "(not set)"
+msgstr ""
+
+#: includes/class-reports.php:1601
+msgid "(unknown author)"
+msgstr ""
+
+#: includes/class-reports.php:1605
+msgid "(unknown category)"
+msgstr ""
+
+#: includes/class-reports.php:1608
+msgid "Front page"
+msgstr ""
+
+#: includes/class-reports.php:1609
+msgid "Blog index"
+msgstr ""
+
+#: includes/class-reports.php:1610
+msgid "Category archives"
+msgstr ""
+
+#: includes/class-reports.php:1611
+msgid "Tag archives"
+msgstr ""
+
+#: includes/class-reports.php:1612
+msgid "Taxonomy archives"
+msgstr ""
+
+#: includes/class-reports.php:1613
+msgid "Author archives"
+msgstr ""
+
+#: includes/class-reports.php:1614
+msgid "Archives"
+msgstr ""
+
+#: includes/class-reports.php:1615
+msgid "Date archives"
+msgstr ""
+
+#: includes/class-reports.php:1617
+msgid "404 pages"
+msgstr ""
+
+#: includes/class-reports.php:1618
+#: includes/class-user-agent.php:122
+#: includes/class-user-agent.php:192
+#: assets/js/admin-core.js:1184
+msgid "Other"
+msgstr ""
+
+#: includes/class-rest-controller.php:123
+msgid "This report could not be loaded."
+msgstr ""
+
+#: includes/class-rest-controller.php:177
+msgid "Unknown dimension."
+msgstr ""
+
+#: includes/class-rest-controller.php:227
+msgid "Session not found."
+msgstr ""
+
+#: includes/class-rest-controller.php:264
+msgid "Unknown report type."
+msgstr ""
+
+#: includes/class-rest-controller.php:320
+msgid "Map data download is disabled in the settings."
+msgstr ""
+
+#: includes/class-rest-controller.php:324
+msgid "The map data could not be downloaded by the server."
+msgstr ""
+
+#: includes/class-rest-controller.php:329
+msgid "The map data was invalid."
+msgstr ""
+
+#: includes/class-settings-page.php:41
+#: includes/class-settings-page.php:97
+msgid "Statistics settings"
+msgstr ""
+
+#: includes/class-settings-page.php:65
+#: includes/class-settings-page.php:184
+msgid "Tracking"
+msgstr ""
+
+#: includes/class-settings-page.php:66
+msgid "Geolocation"
+msgstr ""
+
+#: includes/class-settings-page.php:67
+msgid "Privacy & data"
+msgstr ""
+
+#: includes/class-settings-page.php:68
+msgid "Access & display"
+msgstr ""
+
+#: includes/class-settings-page.php:69
+#: includes/class-settings-page.php:498
+msgid "Email reports"
+msgstr ""
+
+#: includes/class-settings-page.php:70
+msgid "Tools"
+msgstr ""
+
+#: includes/class-settings-page.php:90
+msgid "You are not allowed to manage these settings."
+msgstr ""
+
+#: includes/class-settings-page.php:98
+msgid "Open dashboard"
+msgstr ""
+
+#: includes/class-settings-page.php:185
+msgid "Collect statistics"
+msgstr ""
+
+#: includes/class-settings-page.php:185
+msgid "Untick to pause tracking without deactivating the plugin."
+msgstr ""
+
+#: includes/class-settings-page.php:188
+msgid "Visitor counting"
+msgstr ""
+
+#: includes/class-settings-page.php:191
+msgid "Cookieless (recommended)"
+msgstr ""
+
+#: includes/class-settings-page.php:192
+msgid "Nothing is saved in the browser. Each visitor is counted with an anonymous hash that changes every day, so in most countries you do not need a cookie banner for it. The downside is that a returning visitor is only recognised on the same day."
+msgstr ""
+
+#: includes/class-settings-page.php:193
+msgid "Persistent visitor ID"
+msgstr ""
+
+#: includes/class-settings-page.php:194
+msgid "Saves a random ID in local storage, so new and returning visitors are counted exactly. In the EU and UK this usually needs consent. If you use a consent banner, turn on \"Wait for consent\" on the Privacy tab."
+msgstr ""
+
+#: includes/class-settings-page.php:199
+msgid "Exclude logged-in roles"
+msgstr ""
+
+#: includes/class-settings-page.php:202
+msgid "Visits from users with these roles are not counted. Tip: to test tracking, open your site in a private window."
+msgstr ""
+
+#: includes/class-settings-page.php:203
+msgid "Link visits of other logged-in users to their account (shown in the visitor log)"
+msgstr ""
+
+#: includes/class-settings-page.php:207
+msgid "Automatic event tracking"
+msgstr ""
+
+#: includes/class-settings-page.php:210
+msgid "Outbound link clicks"
+msgstr ""
+
+#: includes/class-settings-page.php:212
+msgid "Includes Contact Form 7, WPForms, Gravity Forms, Elementor, Fluent Forms and Forminator successes."
+msgstr ""
+
+#: includes/class-settings-page.php:213
+msgid "Email (mailto:) and phone (tel:) clicks"
+msgstr ""
+
+#: includes/class-settings-page.php:214
+#: assets/js/admin-core.js:217
+#: assets/js/admin.js:826
+msgid "Scroll depth"
+msgstr ""
+
+#: includes/class-settings-page.php:215
+msgid "Internal site searches"
+msgstr ""
+
+#: includes/class-settings-page.php:216
+msgid "404 (page not found) errors"
+msgstr ""
+
+#: includes/class-settings-page.php:217
+msgid "Single-page navigation (history API)"
+msgstr ""
+
+#: includes/class-settings-page.php:217
+msgid "Only needed for themes that load pages without a full reload."
+msgstr ""
+
+#: includes/class-settings-page.php:222
+msgid "Download file types"
+msgstr ""
+
+#: includes/class-settings-page.php:228
+msgid "Track any button or link without code by adding attributes:"
+msgstr ""
+
+#: includes/class-settings-page.php:230
+msgid "Or from JavaScript:"
+msgstr ""
+
+#: includes/class-settings-page.php:234
+msgid "Keep query parameters"
+msgstr ""
+
+#: includes/class-settings-page.php:237
+msgid "Other query parameters are removed from page addresses so reports are not split into thousands of URLs. Campaign (utm_*) and click IDs are always captured separately."
+msgstr ""
+
+#: includes/class-settings-page.php:241
+msgid "Session timeout"
+msgstr ""
+
+#: includes/class-settings-page.php:242
+msgid "minutes of inactivity"
+msgstr ""
+
+#: includes/class-settings-page.php:245
+msgid "Exclude IP addresses"
+msgstr ""
+
+#. translators: %s: current IP address
+#: includes/class-settings-page.php:251
+#, php-format
+msgid "One per line; ranges (CIDR) and * wildcards work. Your current IP address: %s"
+msgstr ""
+
+#: includes/class-settings-page.php:257
+msgid "Exclude pages"
+msgstr ""
+
+#: includes/class-settings-page.php:260
+msgid "Paths that should never be tracked, one per line (* as wildcard)."
+msgstr ""
+
+#: includes/class-settings-page.php:264
+msgid "This browser"
+msgstr ""
+
+#: includes/class-settings-page.php:266
+#: assets/js/settings.js:28
+msgid "Exclude this browser from statistics"
+msgstr ""
+
+#: includes/class-settings-page.php:268
+msgid "Useful for team members who are not logged in. Stored in this browser only."
+msgstr ""
+
+#: includes/class-settings-page.php:272
+msgid "Visitor IP detection"
+msgstr ""
+
+#: includes/class-settings-page.php:277
+msgid "Automatic (recommended)"
+msgstr ""
+
+#: includes/class-settings-page.php:292
+msgid "Additional domains"
+msgstr ""
+
+#: includes/class-settings-page.php:295
+msgid "Other domains that show this site (they are also treated as internal, not as referrers)."
+msgstr ""
+
+#: includes/class-settings-page.php:313
+msgid "Database status"
+msgstr ""
+
+#: includes/class-settings-page.php:315
+msgid "Active"
+msgstr ""
+
+#. translators: 1: database type, 2: file size, 3: date
+#: includes/class-settings-page.php:320
+#, php-format
+msgid "%1$s, %2$s, updated %3$s"
+msgstr ""
+
+#: includes/class-settings-page.php:329
+msgid "No database"
+msgstr ""
+
+#: includes/class-settings-page.php:329
+msgid "Only CDN headers, such as CF-IPCountry from Cloudflare, are used."
+msgstr ""
+
+#: includes/class-settings-page.php:331
+msgid "Not downloaded yet"
+msgstr ""
+
+#: includes/class-settings-page.php:331
+msgid "Countries show as \"Unknown\" until a database is available, unless your CDN sends location headers."
+msgstr ""
+
+#. translators: %s: error message
+#: includes/class-settings-page.php:334
+#, php-format
+msgid "Last download error: %s"
+msgstr ""
+
+#: includes/class-settings-page.php:337
+msgid "Cloudflare country headers detected. Countries work even without a database."
+msgstr ""
+
+#. translators: 1: IP address, 2: location
+#: includes/class-settings-page.php:343
+#, php-format
+msgid "Test lookup for your IP %1$s: %2$s"
+msgstr ""
+
+#. translators: 1: IP address, 2: location
+#: includes/class-settings-page.php:343
+msgid "not found"
+msgstr ""
+
+#. translators: %s: IP address
+#: includes/class-settings-page.php:346
+#, php-format
+msgid "Your IP %s is a private/local address, so it cannot be geolocated (normal on a local test site)."
+msgstr ""
+
+#: includes/class-settings-page.php:351
+msgid "Update database now"
+msgstr ""
+
+#: includes/class-settings-page.php:351
+msgid "Download database now"
+msgstr ""
+
+#: includes/class-settings-page.php:356
+msgid "CDN location headers"
+msgstr ""
+
+#: includes/class-settings-page.php:357
+msgid "Use location headers from Cloudflare, CloudFront, Vercel, Google App Engine and server GeoIP modules"
+msgstr ""
+
+#: includes/class-settings-page.php:357
+msgid "Fast and accurate. On Cloudflare, turn on \"Add visitor location headers\" under Rules > Transform Rules > Managed Transforms to get cities too."
+msgstr ""
+
+#: includes/class-settings-page.php:360
+msgid "Database"
+msgstr ""
+
+#. translators: %s: link to db-ip.com
+#: includes/class-settings-page.php:371
+#, php-format
+msgid "DB-IP Lite databases are free and licensed under CC BY 4.0 (%s)."
+msgstr ""
+
+#: includes/class-settings-page.php:379
+msgid "MaxMind license key"
+msgstr ""
+
+#: includes/class-settings-page.php:382
+msgid "Create a free account at maxmind.com, then generate a license key under \"Manage License Keys\"."
+msgstr ""
+
+#: includes/class-settings-page.php:386
+msgid "Custom database path"
+msgstr ""
+
+#: includes/class-settings-page.php:389
+msgid "Absolute path to any MaxMind-format (.mmdb) country or city database on the server."
+msgstr ""
+
+#: includes/class-settings-page.php:393
+msgid "Updates"
+msgstr ""
+
+#: includes/class-settings-page.php:394
+msgid "Update the database automatically every month"
+msgstr ""
+
+#: includes/class-settings-page.php:409
+msgid "Browser privacy signals"
+msgstr ""
+
+#: includes/class-settings-page.php:410
+msgid "Do not track visitors who send a \"Do Not Track\" or \"Global Privacy Control\" signal"
+msgstr ""
+
+#: includes/class-settings-page.php:413
+msgid "Consent"
+msgstr ""
+
+#: includes/class-settings-page.php:415
+msgid "Wait for consent before tracking"
+msgstr ""
+
+#: includes/class-settings-page.php:415
+msgid "Works automatically with consent plugins that support the WP Consent API (statistics category). Otherwise call pulseAnalytics.consent() from your banner when the visitor agrees."
+msgstr ""
+
+#: includes/class-settings-page.php:419
+msgid "IP addresses"
+msgstr ""
+
+#: includes/class-settings-page.php:422
+msgid "Do not store (recommended)"
+msgstr ""
+
+#: includes/class-settings-page.php:423
+msgid "Store anonymised (last part removed, e.g. 203.0.113.0)"
+msgstr ""
+
+#: includes/class-settings-page.php:424
+msgid "Store full IP address (this is personal data, so check your local privacy law)"
+msgstr ""
+
+#: includes/class-settings-page.php:426
+msgid "IP addresses are always used in memory for geolocation and are never sent anywhere."
+msgstr ""
+
+#: includes/class-settings-page.php:430
+msgid "Data retention"
+msgstr ""
+
+#: includes/class-settings-page.php:432
+msgid "months"
+msgstr ""
+
+#: includes/class-settings-page.php:433
+msgid "Older statistics are deleted automatically every night. 0 keeps data forever."
+msgstr ""
+
+#: includes/class-settings-page.php:437
+msgid "Block referrer spam"
+msgstr ""
+
+#: includes/class-settings-page.php:440
+msgid "Visits referred by these domains are ignored (a list of well-known spam domains is always blocked)."
+msgstr ""
+
+#: includes/class-settings-page.php:444
+msgid "Visitor opt-out"
+msgstr ""
+
+#: includes/class-settings-page.php:445
+msgid "Add the shortcode [pulse_optout] to your privacy policy page to let visitors exclude themselves."
+msgstr ""
+
+#: includes/class-settings-page.php:448
+msgid "Uninstall"
+msgstr ""
+
+#: includes/class-settings-page.php:449
+msgid "Delete all statistics and settings when the plugin is deleted"
+msgstr ""
+
+#: includes/class-settings-page.php:464
+msgid "Who can view statistics"
+msgstr ""
+
+#: includes/class-settings-page.php:467
+msgid "Administrators always have access. Only administrators can change settings and goals."
+msgstr ""
+
+#: includes/class-settings-page.php:471
+msgid "Show statistics in"
+msgstr ""
+
+#: includes/class-settings-page.php:474
+msgid "WordPress dashboard widget"
+msgstr ""
+
+#: includes/class-settings-page.php:475
+msgid "Admin bar (views of the page you are looking at)"
+msgstr ""
+
+#: includes/class-settings-page.php:476
+msgid "Views column in post and page lists"
+msgstr ""
+
+#: includes/class-settings-page.php:477
+msgid "Statistics box in the post editor"
+msgstr ""
+
+#: includes/class-settings-page.php:482
+msgid "External assets"
+msgstr ""
+
+#: includes/class-settings-page.php:483
+msgid "Load map shapes, flag icons and website favicons from public CDNs (admin screens only)"
+msgstr ""
+
+#: includes/class-settings-page.php:483
+msgid "The world map outline (Natural Earth, via jsDelivr) is downloaded once and cached on your server. Your visitors never load anything from these services."
+msgstr ""
+
+#: includes/class-settings-page.php:499
+msgid "Send a summary report by email"
+msgstr ""
+
+#: includes/class-settings-page.php:502
+msgid "Frequency"
+msgstr ""
+
+#: includes/class-settings-page.php:505
+msgid "Weekly (last 7 days)"
+msgstr ""
+
+#: includes/class-settings-page.php:506
+msgid "Monthly (previous month)"
+msgstr ""
+
+#: includes/class-settings-page.php:511
+msgid "Recipients"
+msgstr ""
+
+#: includes/class-settings-page.php:514
+msgid "Comma separated. Leave empty to use the site admin email."
+msgstr ""
+
+#: includes/class-settings-page.php:518
+msgid "Send a test report now"
+msgstr ""
+
+#: includes/class-settings-page.php:545
+msgid "Export raw data (CSV)"
+msgstr ""
+
+#: includes/class-settings-page.php:546
+msgid "Choose a period and download every visit, pageview or event as a spreadsheet. Each report in the dashboard also has its own CSV button that respects your filters."
+msgstr ""
+
+#: includes/class-settings-page.php:548
+msgid "From"
+msgstr ""
+
+#: includes/class-settings-page.php:549
+msgid "To"
+msgstr ""
+
+#: includes/class-settings-page.php:553
+msgid "Visits (sessions)"
+msgstr ""
+
+#: includes/class-settings-page.php:556
+msgid "Daily summary"
+msgstr ""
+
+#: includes/class-settings-page.php:562
+msgid "Sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:563
+msgid "Fill the dashboard with 60 days of realistic sample visits to explore every report. Sample data is clearly separated and can be removed at any time without touching real statistics."
+msgstr ""
+
+#: includes/class-settings-page.php:565
+msgid "Generate sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:567
+#: assets/js/admin.js:1063
+msgid "Remove sample data"
+msgstr ""
+
+#: includes/class-settings-page.php:573
+msgid "Maintenance"
+msgstr ""
+
+#: includes/class-settings-page.php:575
+msgid "Clear report cache"
+msgstr ""
+
+#: includes/class-settings-page.php:576
+msgid "Apply data retention now"
+msgstr ""
+
+#. translators: 1: sessions, 2: pageviews, 3: events, 4: pages
+#: includes/class-settings-page.php:590
+#, php-format
+msgid "Stored: %1$s visits, %2$s pageviews, %3$s events, %4$s unique pages."
+msgstr ""
+
+#: includes/class-settings-page.php:602
+msgid "Danger zone"
+msgstr ""
+
+#: includes/class-settings-page.php:603
+msgid "Permanently delete all collected statistics. Settings and goals are kept. This cannot be undone."
+msgstr ""
+
+#: includes/class-settings-page.php:604
+msgid "Delete ALL statistics permanently? This cannot be undone."
+msgstr ""
+
+#: includes/class-settings-page.php:607
+msgid "Delete all statistics"
+msgstr ""
+
+#: includes/class-settings-page.php:625
+msgid "You are not allowed to do this."
+msgstr ""
+
+#. translators: %s: number of visits
+#: includes/class-settings-page.php:722
+#, php-format
+msgid "%s visit removed."
+msgid_plural "%s visits removed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tracker.php:169
+msgid "Exclude me from anonymous website statistics"
+msgstr ""
+
+#: assets/js/admin-core.js:215
+msgid "Visit duration"
+msgstr ""
+
+#: assets/js/admin-core.js:216
+msgid "Time on page"
+msgstr ""
+
+#: assets/js/admin-core.js:220
+msgid "Exit rate"
+msgstr ""
+
+#: assets/js/admin-core.js:223
+msgid "Conv. rate"
+msgstr ""
+
+#: assets/js/admin-core.js:224
+#: assets/js/admin.js:1578
+msgid "Completions"
+msgstr ""
+
+#: assets/js/admin-core.js:242
+msgid "No data for the comparison period"
+msgstr ""
+
+#: assets/js/admin-core.js:248
+#, js-format
+msgid "Previous period: %s"
+msgstr ""
+
+#: assets/js/admin-core.js:304
+#, js-format
+msgid "Week of %s"
+msgstr ""
+
+#: assets/js/admin-core.js:309
+#, js-format
+msgid "%ss ago"
+msgstr ""
+
+#: assets/js/admin-core.js:310
+#, js-format
+msgid "%sm ago"
+msgstr ""
+
+#: assets/js/admin-core.js:311
+#, js-format
+msgid "%sh ago"
+msgstr ""
+
+#: assets/js/admin-core.js:320
+msgid "Page"
+msgstr ""
+
+#: assets/js/admin-core.js:321
+msgid "Entry page"
+msgstr ""
+
+#: assets/js/admin-core.js:322
+msgid "Exit page"
+msgstr ""
+
+#: assets/js/admin-core.js:323
+msgid "Content type"
+msgstr ""
+
+#: assets/js/admin-core.js:325
+msgid "Source"
+msgstr ""
+
+#: assets/js/admin-core.js:326
+msgid "Referrer"
+msgstr ""
+
+#: assets/js/admin-core.js:327
+msgid "Referrer URL"
+msgstr ""
+
+#: assets/js/admin-core.js:328
+msgid "UTM campaign"
+msgstr ""
+
+#: assets/js/admin-core.js:329
+msgid "UTM source"
+msgstr ""
+
+#: assets/js/admin-core.js:330
+msgid "UTM medium"
+msgstr ""
+
+#: assets/js/admin-core.js:331
+msgid "UTM term"
+msgstr ""
+
+#: assets/js/admin-core.js:332
+msgid "UTM content"
+msgstr ""
+
+#: assets/js/admin-core.js:334
+msgid "Region"
+msgstr ""
+
+#: assets/js/admin-core.js:335
+msgid "City"
+msgstr ""
+
+#: assets/js/admin-core.js:337
+msgid "Language"
+msgstr ""
+
+#: assets/js/admin-core.js:338
+msgid "Device"
+msgstr ""
+
+#: assets/js/admin-core.js:339
+msgid "Browser"
+msgstr ""
+
+#: assets/js/admin-core.js:340
+msgid "Browser version"
+msgstr ""
+
+#: assets/js/admin-core.js:341
+msgid "Operating system"
+msgstr ""
+
+#: assets/js/admin-core.js:342
+msgid "OS version"
+msgstr ""
+
+#: assets/js/admin-core.js:343
+msgid "Screen size"
+msgstr ""
+
+#: assets/js/admin-core.js:344
+msgid "Visitor type"
+msgstr ""
+
+#: assets/js/admin-core.js:345
+msgid "User type"
+msgstr ""
+
+#: assets/js/admin-core.js:346
+#: assets/js/admin.js:1501
+msgid "Event type"
+msgstr ""
+
+#: assets/js/admin-core.js:347
+#: assets/js/admin.js:1461
+#: assets/js/admin.js:1462
+msgid "Event"
+msgstr ""
+
+#: assets/js/admin-core.js:348
+msgid "Event detail"
+msgstr ""
+
+#: assets/js/admin-core.js:349
+#: assets/js/admin.js:813
+#: assets/js/admin.js:1576
+msgid "Goal"
+msgstr ""
+
+#: assets/js/admin-core.js:353
+#: assets/js/admin.js:389
+#: assets/js/admin.js:1321
+msgid "Content"
+msgstr ""
+
+#: assets/js/admin-core.js:354
+msgid "Acquisition"
+msgstr ""
+
+#: assets/js/admin-core.js:355
+msgid "Location"
+msgstr ""
+
+#: assets/js/admin-core.js:356
+#: assets/js/admin.js:385
+#: assets/js/admin.js:1103
+#: assets/js/admin.js:1418
+msgid "Technology"
+msgstr ""
+
+#: assets/js/admin-core.js:357
+msgid "Behaviour"
+msgstr ""
+
+#: assets/js/admin-core.js:361
+#: assets/js/admin.js:1481
+msgid "is"
+msgstr ""
+
+#: assets/js/admin-core.js:362
+msgid "is not"
+msgstr ""
+
+#: assets/js/admin-core.js:363
+#: assets/js/admin.js:1481
+#: assets/js/admin.js:1498
+msgid "contains"
+msgstr ""
+
+#: assets/js/admin-core.js:364
+msgid "does not contain"
+msgstr ""
+
+#: assets/js/admin-core.js:465
+msgid "Yesterday"
+msgstr ""
+
+#: assets/js/admin-core.js:468
+msgid "Last 90 days"
+msgstr ""
+
+#: assets/js/admin-core.js:469
+msgid "This month"
+msgstr ""
+
+#: assets/js/admin-core.js:470
+msgid "Last month"
+msgstr ""
+
+#: assets/js/admin-core.js:471
+msgid "This year"
+msgstr ""
+
+#: assets/js/admin-core.js:472
+msgid "Last 12 months"
+msgstr ""
+
+#: assets/js/admin-core.js:695
+msgid "No data"
+msgstr ""
+
+#: assets/js/admin-core.js:763
+msgid "Something went wrong."
+msgstr ""
+
+#: assets/js/admin-core.js:764
+msgid "Retry"
+msgstr ""
+
+#: assets/js/admin-core.js:769
+msgid "No data for this period."
+msgstr ""
+
+#: assets/js/admin-core.js:815
+#: assets/js/admin-core.js:816
+msgid "Download CSV"
+msgstr ""
+
+#: assets/js/admin-core.js:929
+msgid "View details"
+msgstr ""
+
+#: assets/js/admin-core.js:966
+#: assets/js/admin-core.js:1122
+msgid "Open page"
+msgstr ""
+
+#: assets/js/admin-core.js:969
+#: assets/js/admin-core.js:1123
+msgid "Filter by this page"
+msgstr ""
+
+#: assets/js/admin-core.js:975
+msgid "Open page report"
+msgstr ""
+
+#: assets/js/admin-core.js:975
+#: assets/js/admin.js:985
+msgid "Filter by this value"
+msgstr ""
+
+#: assets/js/admin-core.js:1017
+msgid "Search..."
+msgstr ""
+
+#: assets/js/admin-core.js:1017
+msgid "Search"
+msgstr ""
+
+#: assets/js/admin-core.js:1084
+msgid "No matches."
+msgstr ""
+
+#: assets/js/admin-core.js:1129
+#: assets/js/admin.js:1198
+#: assets/js/admin.js:1617
+msgid "new"
+msgstr ""
+
+#: assets/js/admin-core.js:1153
+#, js-format
+msgid "%1$s-%2$s of %3$s"
+msgstr ""
+
+#: assets/js/admin-core.js:1154
+#: assets/js/admin.js:1257
+msgid "Previous page"
+msgstr ""
+
+#: assets/js/admin-core.js:1155
+#: assets/js/admin.js:1258
+msgid "Next page"
+msgstr ""
+
+#: assets/js/admin.js:77
+#: assets/js/admin.js:123
+msgid "Custom range"
+msgstr ""
+
+#: assets/js/admin.js:114
+msgid "Start date"
+msgstr ""
+
+#: assets/js/admin.js:115
+msgid "End date"
+msgstr ""
+
+#: assets/js/admin.js:124
+msgid "to"
+msgstr ""
+
+#: assets/js/admin.js:125
+msgid "Apply"
+msgstr ""
+
+#: assets/js/admin.js:133
+msgid "Comparison"
+msgstr ""
+
+#: assets/js/admin.js:134
+msgid "Compare: previous period"
+msgstr ""
+
+#: assets/js/admin.js:135
+msgid "Compare: previous year"
+msgstr ""
+
+#: assets/js/admin.js:136
+msgid "No comparison"
+msgstr ""
+
+#: assets/js/admin.js:149
+msgid "Export"
+msgstr ""
+
+#: assets/js/admin.js:153
+msgid "Summary & trend"
+msgstr ""
+
+#: assets/js/admin.js:154
+#: assets/js/admin.js:1215
+#: assets/js/admin.js:1235
+msgid "All pages"
+msgstr ""
+
+#: assets/js/admin.js:155
+#: assets/js/admin.js:1089
+#: assets/js/admin.js:1262
+#: assets/js/admin.js:1295
+msgid "Traffic sources"
+msgstr ""
+
+#: assets/js/admin.js:156
+#: assets/js/admin.js:1091
+#: assets/js/admin.js:1265
+#: assets/js/admin.js:1298
+msgid "Channels"
+msgstr ""
+
+#: assets/js/admin.js:157
+#: assets/js/admin.js:383
+#: assets/js/admin.js:1094
+#: assets/js/admin.js:1266
+#: assets/js/admin.js:1317
+msgid "Campaigns"
+msgstr ""
+
+#: assets/js/admin.js:158
+#: assets/js/admin.js:609
+#: assets/js/admin.js:1143
+#: assets/js/admin.js:1272
+#: assets/js/admin.js:1401
+msgid "Countries"
+msgstr ""
+
+#: assets/js/admin.js:159
+#: assets/js/admin.js:609
+#: assets/js/admin.js:1273
+#: assets/js/admin.js:1403
+msgid "Cities"
+msgstr ""
+
+#: assets/js/admin.js:160
+#: assets/js/admin.js:1101
+#: assets/js/admin.js:1279
+#: assets/js/admin.js:1281
+#: assets/js/admin.js:1413
+msgid "Devices"
+msgstr ""
+
+#: assets/js/admin.js:161
+#: assets/js/admin.js:1105
+#: assets/js/admin.js:1282
+#: assets/js/admin.js:1414
+#: assets/js/admin.js:1421
+msgid "Browsers"
+msgstr ""
+
+#: assets/js/admin.js:163
+msgid "Goal conversions"
+msgstr ""
+
+#: assets/js/admin.js:165
+msgid "Raw data: visits"
+msgstr ""
+
+#: assets/js/admin.js:166
+msgid "Raw data: pageviews"
+msgstr ""
+
+#: assets/js/admin.js:167
+msgid "Raw data: events"
+msgstr ""
+
+#: assets/js/admin.js:169
+msgid "Download CSV (current filters)"
+msgstr ""
+
+#: assets/js/admin.js:188
+#, js-format
+msgid "%s visitor active in the last 5 minutes"
+msgid_plural "%s visitors active in the last 5 minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/admin.js:197
+msgid "online now"
+msgstr ""
+
+#: assets/js/admin.js:210
+msgid "Refresh"
+msgstr ""
+
+#: assets/js/admin.js:230
+msgid "Filter by"
+msgstr ""
+
+#: assets/js/admin.js:253
+msgid "Type to search..."
+msgstr ""
+
+#: assets/js/admin.js:255
+msgid "Update filter"
+msgstr ""
+
+#: assets/js/admin.js:255
+msgid "Apply filter"
+msgstr ""
+
+#: assets/js/admin.js:264
+msgid "No matching values"
+msgstr ""
+
+#: assets/js/admin.js:264
+msgid "Loading..."
+msgstr ""
+
+#: assets/js/admin.js:324
+msgid "Back"
+msgstr ""
+
+#: assets/js/admin.js:330
+msgid "Remove"
+msgstr ""
+
+#: assets/js/admin.js:350
+msgid "Add filter"
+msgstr ""
+
+#: assets/js/admin.js:357
+msgid "Edit filter"
+msgstr ""
+
+#: assets/js/admin.js:363
+msgid "Remove filter"
+msgstr ""
+
+#: assets/js/admin.js:369
+msgid "Clear all"
+msgstr ""
+
+#: assets/js/admin.js:379
+msgid "Overview"
+msgstr ""
+
+#: assets/js/admin.js:380
+msgid "Real-time"
+msgstr ""
+
+#: assets/js/admin.js:381
+#: assets/js/admin.js:1081
+#: assets/js/admin.js:1222
+msgid "Pages"
+msgstr ""
+
+#: assets/js/admin.js:382
+#: assets/js/admin.js:1092
+#: assets/js/admin.js:1142
+#: assets/js/admin.js:1264
+#: assets/js/admin.js:1299
+#: assets/js/admin.js:1318
+msgid "Sources"
+msgstr ""
+
+#: assets/js/admin.js:384
+#: assets/js/admin.js:1270
+#: assets/js/admin.js:1398
+msgid "Locations"
+msgstr ""
+
+#: assets/js/admin.js:388
+#: assets/js/admin.js:1597
+msgid "Visitor log"
+msgstr ""
+
+#: assets/js/admin.js:417
+msgid "Interval"
+msgstr ""
+
+#: assets/js/admin.js:418
+msgid "Show as table"
+msgstr ""
+
+#: assets/js/admin.js:454
+msgid "Hourly"
+msgstr ""
+
+#: assets/js/admin.js:454
+msgid "Daily"
+msgstr ""
+
+#: assets/js/admin.js:454
+msgid "Weekly"
+msgstr ""
+
+#: assets/js/admin.js:454
+msgid "Monthly"
+msgstr ""
+
+#: assets/js/admin.js:508
+msgid "Current period"
+msgstr ""
+
+#: assets/js/admin.js:514
+msgid "in progress"
+msgstr ""
+
+#: assets/js/admin.js:599
+msgid "Visitors by location"
+msgstr ""
+
+#: assets/js/admin.js:609
+#: assets/js/admin.js:1402
+msgid "Regions"
+msgstr ""
+
+#: assets/js/admin.js:616
+msgid "World map of visitors"
+msgstr ""
+
+#: assets/js/admin.js:618
+msgid "Zoom in"
+msgstr ""
+
+#: assets/js/admin.js:618
+msgid "Zoom out"
+msgstr ""
+
+#: assets/js/admin.js:618
+msgid "Reset zoom"
+msgstr ""
+
+#: assets/js/admin.js:636
+msgid "Loading map..."
+msgstr ""
+
+#: assets/js/admin.js:648
+msgid "The map could not be loaded. Country statistics are still listed on the right."
+msgstr ""
+
+#: assets/js/admin.js:692
+msgid "Visitor countries are unknown. Download the free geolocation database to see countries on the map."
+msgstr ""
+
+#: assets/js/admin.js:694
+msgid "Geolocation settings"
+msgstr ""
+
+#: assets/js/admin.js:705
+msgid "City-level data needs the DB-IP City database or Cloudflare location headers."
+msgstr ""
+
+#: assets/js/admin.js:747
+msgid "Busiest times"
+msgstr ""
+
+#: assets/js/admin.js:747
+msgid "Pageviews by weekday and hour"
+msgstr ""
+
+#: assets/js/admin.js:771
+msgid "Less"
+msgstr ""
+
+#: assets/js/admin.js:772
+msgid "More"
+msgstr ""
+
+#: assets/js/admin.js:792
+msgid "Track conversions such as contact form submissions, sign-ups or visits to a thank-you page."
+msgstr ""
+
+#: assets/js/admin.js:793
+msgid "Create a goal"
+msgstr ""
+
+#: assets/js/admin.js:804
+msgid "Filter by this goal"
+msgstr ""
+
+#: assets/js/admin.js:815
+msgid "Manage goals"
+msgstr ""
+
+#: assets/js/admin.js:826
+msgid "Share of pageviews that reached each point"
+msgstr ""
+
+#: assets/js/admin.js:835
+msgid "No scroll data yet."
+msgstr ""
+
+#: assets/js/admin.js:841
+#, js-format
+msgid "Reached %s%%"
+msgstr ""
+
+#: assets/js/admin.js:847
+#, js-format
+msgid "Average scroll depth: %1$s of the page (%2$s pageviews measured)."
+msgstr ""
+
+#: assets/js/admin.js:858
+msgid "Insights"
+msgstr ""
+
+#: assets/js/admin.js:875
+msgid "Insights appear once there is enough data."
+msgstr ""
+
+#: assets/js/admin.js:904
+#, js-format
+msgid "Visitors are up %1$s compared with the previous period (%2$s vs. %3$s)."
+msgstr ""
+
+#: assets/js/admin.js:905
+#, js-format
+msgid "Visitors are down %1$s compared with the previous period (%2$s vs. %3$s)."
+msgstr ""
+
+#: assets/js/admin.js:922
+#, js-format
+msgid "Fastest-growing source: %1$s sent %2$s visitors (+%3$s)."
+msgstr ""
+
+#: assets/js/admin.js:923
+#, js-format
+msgid "New traffic source: %1$s sent %2$s visitors."
+msgstr ""
+
+#: assets/js/admin.js:928
+#, js-format
+msgid "AI assistants such as ChatGPT, Perplexity and Gemini sent %1$s visitors (%2$s of all traffic)."
+msgstr ""
+
+#: assets/js/admin.js:932
+#, js-format
+msgid "Most viewed page: \"%1$s\" with %2$s pageviews."
+msgstr ""
+
+#: assets/js/admin.js:941
+#, js-format
+msgid "Trending: pageviews of \"%1$s\" grew by %2$s."
+msgstr ""
+
+#: assets/js/admin.js:946
+#, js-format
+msgid "%s of visitors use a mobile phone, so make sure your main pages work well on small screens."
+msgstr ""
+
+#: assets/js/admin.js:952
+#, js-format
+msgid "Busiest day: %1$s with %2$s visitors."
+msgstr ""
+
+#: assets/js/admin.js:958
+#, js-format
+msgid "Bounce rate improved by %s points."
+msgstr ""
+
+#: assets/js/admin.js:958
+#, js-format
+msgid "Bounce rate worsened by %s points."
+msgstr ""
+
+#: assets/js/admin.js:965
+msgid "Visits per period"
+msgstr ""
+
+#: assets/js/admin.js:1041
+msgid "Pulse Analytics is installed. Statistics will show up here as soon as people visit your website."
+msgstr ""
+
+#: assets/js/admin.js:1043
+msgid "Tracking is active on every page of your website (cookieless by default)."
+msgstr ""
+
+#: assets/js/admin.js:1043
+msgid "Tracking is paused in the settings."
+msgstr ""
+
+#: assets/js/admin.js:1044
+msgid "Your own visits as an administrator are not counted. To test, open your website in a private/incognito window."
+msgstr ""
+
+#: assets/js/admin.js:1045
+msgid "Visitor countries are detected for the world map."
+msgstr ""
+
+#: assets/js/admin.js:1045
+msgid "The free geolocation database is being downloaded in the background (needed for the world map)."
+msgstr ""
+
+#: assets/js/admin.js:1048
+msgid "Explore with sample data"
+msgstr ""
+
+#: assets/js/admin.js:1049
+msgid "Visit your website"
+msgstr ""
+
+#: assets/js/admin.js:1062
+msgid "Sample data is included in these reports."
+msgstr ""
+
+#: assets/js/admin.js:1084
+#: assets/js/admin.js:1216
+msgid "Entry pages"
+msgstr ""
+
+#: assets/js/admin.js:1085
+#: assets/js/admin.js:1217
+msgid "Exit pages"
+msgstr ""
+
+#: assets/js/admin.js:1093
+msgid "Referrers"
+msgstr ""
+
+#: assets/js/admin.js:1093
+#: assets/js/admin.js:1300
+#: assets/js/admin.js:1301
+msgid "No referring websites yet."
+msgstr ""
+
+#: assets/js/admin.js:1094
+msgid "No UTM-tagged campaign visits yet. Use the campaign URL builder on the Campaigns tab."
+msgstr ""
+
+#: assets/js/admin.js:1106
+#: assets/js/admin.js:1283
+#: assets/js/admin.js:1415
+#: assets/js/admin.js:1423
+msgid "Operating systems"
+msgstr ""
+
+#: assets/js/admin.js:1107
+#: assets/js/admin.js:1425
+msgid "Screen sizes"
+msgstr ""
+
+#: assets/js/admin.js:1108
+#: assets/js/admin.js:1405
+msgid "Languages"
+msgstr ""
+
+#: assets/js/admin.js:1113
+msgid "New vs. returning visitors"
+msgstr ""
+
+#: assets/js/admin.js:1117
+msgid "Event types"
+msgstr ""
+
+#: assets/js/admin.js:1117
+msgid "No clicks, downloads or form submissions recorded yet."
+msgstr ""
+
+#: assets/js/admin.js:1118
+msgid "Top events"
+msgstr ""
+
+#: assets/js/admin.js:1132
+msgid "Pageviews per minute"
+msgstr ""
+
+#: assets/js/admin.js:1132
+msgid "Last 30 minutes"
+msgstr ""
+
+#: assets/js/admin.js:1141
+msgid "Active pages"
+msgstr ""
+
+#: assets/js/admin.js:1144
+msgid "Latest pageviews"
+msgstr ""
+
+#: assets/js/admin.js:1149
+msgid "Resume"
+msgstr ""
+
+#: assets/js/admin.js:1149
+msgid "Pause"
+msgstr ""
+
+#: assets/js/admin.js:1156
+msgid "Nobody right now."
+msgstr ""
+
+#: assets/js/admin.js:1164
+msgid "visitor on your site right now"
+msgid_plural "visitors on your site right now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/admin.js:1166
+msgid "visitors in the last 30 minutes"
+msgstr ""
+
+#: assets/js/admin.js:1167
+msgid "pageviews in the last 30 minutes"
+msgstr ""
+
+#: assets/js/admin.js:1169
+#, js-format
+msgid "Updated %s"
+msgstr ""
+
+#: assets/js/admin.js:1179
+msgid "This minute"
+msgstr ""
+
+#: assets/js/admin.js:1179
+#, js-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/admin.js:1189
+msgid "No pageviews in the last 30 minutes."
+msgstr ""
+
+#: assets/js/admin.js:1225
+#: assets/js/admin.js:1226
+#: assets/js/admin.js:1705
+msgid "Content types"
+msgstr ""
+
+#: assets/js/admin.js:1246
+#, js-format
+msgid "Published %s"
+msgstr ""
+
+#: assets/js/admin.js:1247
+#, js-format
+msgid "by %s"
+msgstr ""
+
+#: assets/js/admin.js:1248
+#: assets/js/admin.js:1566
+msgid "Edit"
+msgstr ""
+
+#: assets/js/admin.js:1249
+msgid "Filter whole dashboard by this page"
+msgstr ""
+
+#: assets/js/admin.js:1257
+msgid "Where visitors came from"
+msgstr ""
+
+#: assets/js/admin.js:1258
+msgid "Where they went next"
+msgstr ""
+
+#: assets/js/admin.js:1287
+msgid "Events on this page"
+msgstr ""
+
+#: assets/js/admin.js:1287
+msgid "No clicks, downloads or form submissions on this page yet."
+msgstr ""
+
+#: assets/js/admin.js:1292
+msgid "Channels over time"
+msgstr ""
+
+#: assets/js/admin.js:1300
+msgid "Referring sites"
+msgstr ""
+
+#: assets/js/admin.js:1301
+msgid "Referrer URLs"
+msgstr ""
+
+#: assets/js/admin.js:1305
+msgid "Tip: add a goal filter (Add filter > Goal) to see conversions and conversion rates for each source."
+msgstr ""
+
+#: assets/js/admin.js:1312
+msgid "No campaign visits yet. Add UTM parameters to the links you share. The builder below can create them for you."
+msgstr ""
+
+#: assets/js/admin.js:1314
+msgid "UTM campaigns"
+msgstr ""
+
+#: assets/js/admin.js:1319
+msgid "Mediums"
+msgstr ""
+
+#: assets/js/admin.js:1320
+msgid "Terms"
+msgstr ""
+
+#: assets/js/admin.js:1328
+msgid "Campaign URL builder"
+msgstr ""
+
+#: assets/js/admin.js:1328
+msgid "Create trackable links for ads, emails and social posts"
+msgstr ""
+
+#: assets/js/admin.js:1330
+msgid "Generated URL"
+msgstr ""
+
+#: assets/js/admin.js:1331
+#: assets/js/admin.js:1378
+msgid "Copy"
+msgstr ""
+
+#: assets/js/admin.js:1333
+msgid "Website URL"
+msgstr ""
+
+#: assets/js/admin.js:1334
+msgid "Campaign source"
+msgstr ""
+
+#: assets/js/admin.js:1335
+msgid "Campaign medium"
+msgstr ""
+
+#: assets/js/admin.js:1336
+msgid "Campaign name"
+msgstr ""
+
+#: assets/js/admin.js:1337
+msgid "Campaign term"
+msgstr ""
+
+#: assets/js/admin.js:1337
+msgid "paid keywords (optional)"
+msgstr ""
+
+#: assets/js/admin.js:1338
+msgid "Campaign content"
+msgstr ""
+
+#: assets/js/admin.js:1338
+msgid "ad variant (optional)"
+msgstr ""
+
+#: assets/js/admin.js:1348
+msgid "Facebook ad"
+msgstr ""
+
+#: assets/js/admin.js:1349
+msgid "Instagram bio"
+msgstr ""
+
+#: assets/js/admin.js:1350
+msgid "Email newsletter"
+msgstr ""
+
+#: assets/js/admin.js:1351
+msgid "Google Ads"
+msgstr ""
+
+#: assets/js/admin.js:1352
+msgid "WhatsApp share"
+msgstr ""
+
+#: assets/js/admin.js:1353
+msgid "QR code / print"
+msgstr ""
+
+#: assets/js/admin.js:1355
+msgid "Quick fill:"
+msgstr ""
+
+#: assets/js/admin.js:1365
+msgid "Enter a valid website URL"
+msgstr ""
+
+#: assets/js/admin.js:1377
+msgid "Copied"
+msgstr ""
+
+#: assets/js/admin.js:1402
+msgid "Region data needs the DB-IP City database or Cloudflare location headers."
+msgstr ""
+
+#: assets/js/admin.js:1403
+msgid "City data needs the DB-IP City database or Cloudflare location headers."
+msgstr ""
+
+#: assets/js/admin.js:1404
+msgid "Continents"
+msgstr ""
+
+#: assets/js/admin.js:1422
+msgid "Browser versions"
+msgstr ""
+
+#: assets/js/admin.js:1424
+msgid "OS versions"
+msgstr ""
+
+#: assets/js/admin.js:1426
+msgid "Device types"
+msgstr ""
+
+#: assets/js/admin.js:1449
+#, js-format
+msgid "%s visitor"
+msgid_plural "%s visitors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/admin.js:1461
+msgid "All events"
+msgstr ""
+
+#: assets/js/admin.js:1461
+msgid "No events recorded yet."
+msgstr ""
+
+#: assets/js/admin.js:1462
+msgid "Custom"
+msgstr ""
+
+#: assets/js/admin.js:1462
+msgid "Add data-pa-event=\"Name\" to any button or link to track clicks."
+msgstr ""
+
+#: assets/js/admin.js:1463
+msgid "Destination"
+msgstr ""
+
+#: assets/js/admin.js:1464
+msgid "Downloads"
+msgstr ""
+
+#: assets/js/admin.js:1464
+msgid "File"
+msgstr ""
+
+#: assets/js/admin.js:1465
+msgid "Forms"
+msgstr ""
+
+#: assets/js/admin.js:1465
+msgid "Form"
+msgstr ""
+
+#: assets/js/admin.js:1466
+msgid "Email & phone"
+msgstr ""
+
+#: assets/js/admin.js:1466
+msgid "Contact link"
+msgstr ""
+
+#: assets/js/admin.js:1467
+msgid "Site search"
+msgstr ""
+
+#: assets/js/admin.js:1467
+msgid "Search term"
+msgstr ""
+
+#: assets/js/admin.js:1467
+msgid "No internal searches yet."
+msgstr ""
+
+#: assets/js/admin.js:1468
+msgid "Missing URL"
+msgstr ""
+
+#: assets/js/admin.js:1468
+msgid "No broken links found."
+msgstr ""
+
+#: assets/js/admin.js:1469
+msgid "Details"
+msgstr ""
+
+#: assets/js/admin.js:1469
+msgid "Detail (URL, page, label)"
+msgstr ""
+
+#: assets/js/admin.js:1476
+msgid "Goals & conversions"
+msgstr ""
+
+#: assets/js/admin.js:1481
+#: assets/js/admin.js:1498
+msgid "starts with"
+msgstr ""
+
+#: assets/js/admin.js:1481
+#: assets/js/admin.js:1498
+msgid "ends with"
+msgstr ""
+
+#: assets/js/admin.js:1481
+#: assets/js/admin.js:1498
+msgid "matches regex"
+msgstr ""
+
+#: assets/js/admin.js:1483
+#, js-format
+msgid "Event %1$s \"%2$s\""
+msgstr ""
+
+#: assets/js/admin.js:1485
+#, js-format
+msgid "Page %1$s \"%2$s\""
+msgstr ""
+
+#: assets/js/admin.js:1493
+msgid "e.g. Contact form sent"
+msgstr ""
+
+#: assets/js/admin.js:1494
+msgid "Event (form, click, download, etc.)"
+msgstr ""
+
+#: assets/js/admin.js:1494
+msgid "Page visit (e.g. thank-you page)"
+msgstr ""
+
+#: assets/js/admin.js:1496
+msgid "Any event type"
+msgstr ""
+
+#: assets/js/admin.js:1498
+msgid "is exactly"
+msgstr ""
+
+#: assets/js/admin.js:1507
+msgid "e.g. contact (form name) or CTA Click"
+msgstr ""
+
+#: assets/js/admin.js:1507
+msgid "e.g. /thank-you/"
+msgstr ""
+
+#: assets/js/admin.js:1508
+msgid "Matches the event name: form id/name, clicked link host, file name, phone number or your custom event name."
+msgstr ""
+
+#: assets/js/admin.js:1508
+msgid "Matches the page path (the part after your domain). You can paste a full URL."
+msgstr ""
+
+#: assets/js/admin.js:1524
+msgid "Edit goal"
+msgstr ""
+
+#: assets/js/admin.js:1524
+msgid "Add a goal"
+msgstr ""
+
+#: assets/js/admin.js:1526
+msgid "Name"
+msgstr ""
+
+#: assets/js/admin.js:1527
+msgid "Goal type"
+msgstr ""
+
+#: assets/js/admin.js:1529
+msgid "Match"
+msgstr ""
+
+#: assets/js/admin.js:1530
+msgid "Value"
+msgstr ""
+
+#: assets/js/admin.js:1535
+msgid "Save goal"
+msgstr ""
+
+#: assets/js/admin.js:1535
+msgid "Add goal"
+msgstr ""
+
+#: assets/js/admin.js:1536
+msgid "Cancel"
+msgstr ""
+
+#: assets/js/admin.js:1549
+msgid "No goals yet. A goal counts a conversion, for example a contact form submission, a click on your phone number or a visit to a thank-you page. Once you add one, you can see which channels and campaigns bring in customers."
+msgstr ""
+
+#: assets/js/admin.js:1565
+msgid "See which sources convert"
+msgstr ""
+
+#: assets/js/admin.js:1565
+msgid "Analyze"
+msgstr ""
+
+#: assets/js/admin.js:1567
+msgid "Delete"
+msgstr ""
+
+#: assets/js/admin.js:1568
+#, js-format
+msgid "Delete the goal \"%s\"? Your statistics are not affected."
+msgstr ""
+
+#: assets/js/admin.js:1577
+msgid "Unique visitors who completed the goal"
+msgstr ""
+
+#: assets/js/admin.js:1578
+msgid "Total number of times the goal was completed"
+msgstr ""
+
+#: assets/js/admin.js:1579
+msgid "Conversion rate"
+msgstr ""
+
+#: assets/js/admin.js:1584
+#, js-format
+msgid "Conversion rate is the share of all %s visitors in this period who completed the goal."
+msgstr ""
+
+#: assets/js/admin.js:1597
+msgid "Every visit with its journey through your site"
+msgstr ""
+
+#: assets/js/admin.js:1599
+msgid "Load more"
+msgstr ""
+
+#: assets/js/admin.js:1610
+msgid "Unknown location"
+msgstr ""
+
+#: assets/js/admin.js:1617
+msgid "returning"
+msgstr ""
+
+#: assets/js/admin.js:1653
+#, js-format
+msgid "%1$s on page, scrolled %2$s"
+msgstr ""
+
+#: assets/js/admin.js:1683
+msgid "No visits in this period."
+msgstr ""
+
+#: assets/js/admin.js:1702
+msgid "Content performance"
+msgstr ""
+
+#: assets/js/admin.js:1706
+msgid "Authors"
+msgstr ""
+
+#: assets/js/admin.js:1707
+msgid "Categories"
+msgstr ""
+
+#: assets/js/admin.js:1710
+msgid "Top content"
+msgstr ""
+
+#: assets/js/admin.js:1760
+msgid "Reports"
+msgstr ""
+
+#: assets/js/admin.js:1764
+msgid "IP geolocation by"
+msgstr ""
+
+#: assets/js/admin.js:1765
+msgid "Map data: Natural Earth"
+msgstr ""
+
+#: assets/js/admin.js:1766
+msgid "Flags: Twemoji (CC BY 4.0)"
+msgstr ""
+
+#: assets/js/settings.js:28
+msgid "Include this browser again"
+msgstr ""
+
+#: assets/js/settings.js:29
+msgid "Excluded"
+msgstr ""
+
+#: assets/js/settings.js:29
+msgid "Counted"
+msgstr ""

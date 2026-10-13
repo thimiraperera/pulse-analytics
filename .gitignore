@@ -1,0 +1,15 @@
+# Built locally or by the release workflow
+pulse-analytics.zip
+*.zip
+
+# Test databases made by dev/tests/make_mmdb.py
+*.mmdb
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+vendor/
