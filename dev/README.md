@@ -25,6 +25,26 @@ wp eval-file dev/tests/test-units.php /tmp/mmdb/test-24.mmdb   # adds the GeoIP 
 
 `test-units.php` puts your geolocation settings back the way they were when it finishes.
 
+The updater test fakes GitHub, so it works before anything is released. Copy the fake into the test site's mu-plugins folder, build zips of a pretend newer version and run the test:
+
+```
+cp dev/tests/updater-mock.php /path/to/site/wp-content/mu-plugins/
+php dev/tests/make-update-zips.php pulse-analytics /tmp/zips 90.3.0
+wp eval-file dev/tests/test-updater.php /tmp/zips/release.zip
+```
+
+The fake stays switched on afterwards, so `wp plugin update pulse-analytics` installs 90.3.0 from it. Only try that on a copy of the plugin, never on a symlink to your working folder, or the update replaces your code. When you are done, delete updater-mock.php and run `wp option delete pulse_mock_github`.
+
+## Version numbers
+
+`set-version.sh` changes the version in the plugin header, the `PULSE_ANALYTICS_VERSION` constant and the Stable tag in readme.txt in one go:
+
+```
+bash dev/set-version.sh 0.3.0
+```
+
+The release workflow calls it too. The main README explains how releases work.
+
 ## How the plugin fits together
 
 Tracking: `assets/js/tracker.js` posts each pageview to `POST /wp-json/pulse-analytics/v1/collect` (or to `admin-ajax.php?action=pulse_collect` if the REST API is blocked). `includes/class-collector.php` turns that into rows. Time on page and scroll depth arrive later with a signed pageview id, and clicks and form submissions come in as events.
@@ -39,6 +59,8 @@ Data lives in four tables (with the site's table prefix):
 Reports: every number on the Statistics page comes from `includes/class-reports.php` through `POST /wp-json/pulse-analytics/v1/report`, which takes several widgets in one request. Results are cached in transients (1 minute when the range includes today, 6 hours otherwise). `includes/class-query.php` validates the date range and filters.
 
 Scheduled tasks: `pulse_analytics_daily` deletes data older than the retention setting, updates the geolocation database when it is out of date and sends the email report when one is due.
+
+Updates: the `Update URI` line in the plugin header points at the GitHub repository. Because of it WordPress does not ask WordPress.org about this plugin (which matters, since WordPress.org has a different plugin with the same slug) and calls `includes/class-updater.php` instead. The updater reads the release list from the GitHub API, keeps it for three hours and offers the highest version that has `pulse-analytics.zip` attached. The release notes fill the "View details" window. For a private repository it downloads the zip through the API with a token, then follows GitHub's redirect to the file without the token.
 
 Filters for other code:
 

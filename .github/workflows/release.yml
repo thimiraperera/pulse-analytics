@@ -1,0 +1,71 @@
+# Publishes a GitHub release with pulse-analytics.zip whenever the plugin changes on main.
+# WordPress sites with the plugin installed pick the new version up from these releases.
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pulse-analytics/**'
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Which part of the version to raise (ignored if the version in the code has not been released yet)'
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Check PHP and JavaScript for syntax errors
+        run: |
+          find pulse-analytics -name '*.php' -print0 | xargs -0 -n 1 php -l > /dev/null
+          for file in pulse-analytics/assets/js/*.js; do node --check "$file"; done
+
+      - name: Work out the version and release notes
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+          NOTES_FILE: ${{ runner.temp }}/notes.md
+        run: bash .github/scripts/prepare-release.sh
+
+      - name: Commit the new version number
+        if: steps.version.outputs.bumped == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --quiet --all --message "Release $VERSION"
+          git push origin HEAD:main || { git pull --rebase origin main && git push origin HEAD:main; }
+
+      - name: Build pulse-analytics.zip
+        if: steps.version.outputs.release == 'true'
+        run: git archive --format=zip --prefix=pulse-analytics/ --output=pulse-analytics.zip HEAD:pulse-analytics
+
+      - name: Publish the release
+        if: steps.version.outputs.release == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" pulse-analytics.zip \
+            --title "Pulse Analytics $VERSION" \
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            --target "$(git rev-parse HEAD)"
+          echo "Released [Pulse Analytics $VERSION](https://github.com/${{ github.repository }}/releases/tag/v$VERSION)." >> "$GITHUB_STEP_SUMMARY"
