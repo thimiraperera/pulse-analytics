@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
-# Sets the plugin version in the three places that hold it: the plugin header,
-# the PULSE_ANALYTICS_VERSION constant and the Stable tag in readme.txt.
+# Sets the version in the plugin header, the PULSE_ANALYTICS_VERSION constant
+# and the Stable tag in readme.txt.
 #
-#   bash dev/set-version.sh 0.3.0
-#
-# The release workflow uses it too, when it raises the version by itself.
+#   bash .github/scripts/set-version.sh 0.3.0
 set -euo pipefail
 
 version=${1:-}
 if ! [[ $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-	echo "Usage: bash dev/set-version.sh 1.2.3" >&2
+	echo "Usage: bash .github/scripts/set-version.sh 1.2.3" >&2
 	exit 1
 fi
 
-root=$(cd "$(dirname "$0")/.." && pwd)
+root=$(cd "$(dirname "$0")/../.." && pwd)
 main="$root/pulse-analytics/pulse-analytics.php"
 readme="$root/pulse-analytics/readme.txt"
 

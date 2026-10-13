@@ -1,5 +1,4 @@
-# Publishes a GitHub release with pulse-analytics.zip whenever the plugin changes on main.
-# WordPress sites with the plugin installed pick the new version up from these releases.
+# Builds pulse-analytics.zip and publishes a release when the plugin changes on main.
 name: Release
 
 on:
