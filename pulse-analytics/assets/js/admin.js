@@ -150,6 +150,8 @@
 		button.addEventListener('click', function () {
 			if (popoverEl) { closePopover(); return; }
 			var items = [
+				['all', null, __('All reports in one ZIP file', 'pulse-analytics')],
+				'sep',
 				['summary', null, __('Summary & trend', 'pulse-analytics')],
 				['breakdown', 'page', __('All pages', 'pulse-analytics')],
 				['breakdown', 'source', __('Traffic sources', 'pulse-analytics')],
@@ -172,7 +174,8 @@
 					menu.appendChild(h('hr'));
 					return;
 				}
-				menu.appendChild(h('a', { 'class': 'pa-menu-item', role: 'menuitem', href: App.exportUrl(item[0], { dimension: item[1], interval: state.interval }), onclick: closePopover }, [icon(item[0] === 'breakdown' || item[0] === 'summary' || item[0] === 'goals' ? 'table' : 'file'), h('span', { text: item[2] })]));
+				var itemIcon = item[0] === 'all' ? 'download' : (item[0] === 'breakdown' || item[0] === 'summary' || item[0] === 'goals' ? 'table' : 'file');
+				menu.appendChild(h('a', { 'class': 'pa-menu-item' + (item[0] === 'all' ? ' is-strong' : ''), role: 'menuitem', href: App.exportUrl(item[0], { dimension: item[1], interval: state.interval }), onclick: closePopover }, [icon(itemIcon), h('span', { text: item[2] })]));
 			});
 			openPopover(button, menu, { alignRight: true, focus: false });
 		});

@@ -523,7 +523,7 @@ class Settings_Page {
 	 * Tools tab.
 	 */
 	private function render_tools() {
-		$export = function ( $type, $label ) {
+		$export = function ( $type, $label, $class = 'button' ) {
 			$url = wp_nonce_url(
 				add_query_arg(
 					array(
@@ -536,20 +536,21 @@ class Settings_Page {
 				),
 				'pulse_analytics_export'
 			);
-			return '<a class="button" href="' . esc_url( $url ) . '" data-pa-export="' . esc_attr( $type ) . '">' . esc_html( $label ) . '</a>';
+			return '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $url ) . '" data-pa-export="' . esc_attr( $type ) . '">' . esc_html( $label ) . '</a>';
 		};
 		$has_demo = Demo_Data::exists();
 		?>
 		<div class="pa-tools">
 			<div class="pa-card">
-				<h2><?php esc_html_e( 'Export raw data (CSV)', 'pulse-analytics' ); ?></h2>
-				<p><?php esc_html_e( 'Choose a period and download every visit, pageview or event as a spreadsheet. Each report in the dashboard also has its own CSV button that respects your filters.', 'pulse-analytics' ); ?></p>
+				<h2><?php esc_html_e( 'Export data (CSV)', 'pulse-analytics' ); ?></h2>
+				<p><?php esc_html_e( 'Choose a period, then download one file or all of them at once. The ZIP has every report from the dashboard as its own CSV file, plus the raw visits, pageviews and events. Each report in the dashboard also has its own CSV button that uses your filters.', 'pulse-analytics' ); ?></p>
 				<p class="pa-inline">
 					<label><?php esc_html_e( 'From', 'pulse-analytics' ); ?> <input type="date" id="pa-export-start" value="<?php echo esc_attr( Helpers::today( -29 ) ); ?>" /></label>
 					<label><?php esc_html_e( 'To', 'pulse-analytics' ); ?> <input type="date" id="pa-export-end" value="<?php echo esc_attr( Helpers::today() ); ?>" /></label>
 				</p>
 				<p class="pa-inline">
 					<?php
+					echo $export( 'all', __( 'All reports (ZIP)', 'pulse-analytics' ), 'button button-primary' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the closure.
 					echo $export( 'sessions', __( 'Visits (sessions)', 'pulse-analytics' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the closure.
 					echo $export( 'pageviews', __( 'Pageviews', 'pulse-analytics' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo $export( 'events', __( 'Events', 'pulse-analytics' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

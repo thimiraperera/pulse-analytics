@@ -12,9 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Streams CSV files through admin-post.php.
+ * Streams CSV files (or a ZIP with all of them) through admin-post.php.
  */
 class Exporter {
+
+	/**
+	 * Report types that are not breakdowns.
+	 */
+	const TYPES = array( 'summary', 'sessions', 'pageviews', 'events', 'goals' );
 
 	/**
 	 * Registers hooks.
@@ -48,6 +53,50 @@ class Exporter {
 	}
 
 	/**
+	 * Files in the "all reports" ZIP: file name => array( type, dimension ).
+	 *
+	 * @return array<string,array{0:string,1:string}>
+	 */
+	public static function zip_contents() {
+		return array(
+			'summary-and-trend.csv' => array( 'summary', '' ),
+			'pages.csv'             => array( 'breakdown', 'page' ),
+			'entry-pages.csv'       => array( 'breakdown', 'entry_page' ),
+			'exit-pages.csv'        => array( 'breakdown', 'exit_page' ),
+			'content-types.csv'     => array( 'breakdown', 'post_type' ),
+			'authors.csv'           => array( 'breakdown', 'author' ),
+			'categories.csv'        => array( 'breakdown', 'category' ),
+			'channels.csv'          => array( 'breakdown', 'channel' ),
+			'sources.csv'           => array( 'breakdown', 'source' ),
+			'referrers.csv'         => array( 'breakdown', 'referrer' ),
+			'referrer-urls.csv'     => array( 'breakdown', 'referrer_url' ),
+			'utm-campaigns.csv'     => array( 'breakdown', 'utm_campaign' ),
+			'utm-sources.csv'       => array( 'breakdown', 'utm_source' ),
+			'utm-mediums.csv'       => array( 'breakdown', 'utm_medium' ),
+			'utm-terms.csv'         => array( 'breakdown', 'utm_term' ),
+			'utm-content.csv'       => array( 'breakdown', 'utm_content' ),
+			'countries.csv'         => array( 'breakdown', 'country' ),
+			'regions.csv'           => array( 'breakdown', 'region' ),
+			'cities.csv'            => array( 'breakdown', 'city' ),
+			'continents.csv'        => array( 'breakdown', 'continent' ),
+			'languages.csv'         => array( 'breakdown', 'language' ),
+			'devices.csv'           => array( 'breakdown', 'device' ),
+			'browsers.csv'          => array( 'breakdown', 'browser' ),
+			'browser-versions.csv'  => array( 'breakdown', 'browser_version' ),
+			'operating-systems.csv' => array( 'breakdown', 'os' ),
+			'os-versions.csv'       => array( 'breakdown', 'os_version' ),
+			'screen-sizes.csv'      => array( 'breakdown', 'screen' ),
+			'new-vs-returning.csv'  => array( 'breakdown', 'visitor_type' ),
+			'event-types.csv'       => array( 'breakdown', 'event_category' ),
+			'events.csv'            => array( 'breakdown', 'event_name' ),
+			'goals.csv'             => array( 'goals', '' ),
+			'raw-visits.csv'        => array( 'sessions', '' ),
+			'raw-pageviews.csv'     => array( 'pageviews', '' ),
+			'raw-events.csv'        => array( 'events', '' ),
+		);
+	}
+
+	/**
 	 * Handles an export request.
 	 */
 	public function handle() {
@@ -72,57 +121,178 @@ class Exporter {
 		// phpcs:enable
 
 		if ( function_exists( 'set_time_limit' ) ) {
-			@set_time_limit( 600 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			@set_time_limit( 900 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 		$reports = new Reports();
 
-		switch ( $type ) {
-			case 'summary':
-				$this->export_summary( $reports, $query, $interval );
-				break;
-			case 'sessions':
-				$this->export_sessions( $reports, $query );
-				break;
-			case 'pageviews':
-				$this->export_pageviews( $reports, $query );
-				break;
-			case 'events':
-				$this->export_events( $reports, $query );
-				break;
-			case 'goals':
-				$this->export_goals( $reports, $query );
-				break;
-			default:
-				if ( ! $reports->is_dimension( $dimension ) ) {
-					wp_die( esc_html__( 'Unknown report.', 'pulse-analytics' ) );
-				}
-				$this->export_breakdown( $reports, $query, $dimension );
+		if ( 'all' === $type ) {
+			$this->send_zip( $reports, $query, $interval );
+			exit;
 		}
-		exit;
-	}
 
-	/**
-	 * Opens the output stream with download headers.
-	 *
-	 * @param string $name  File name part.
-	 * @param Query  $query Query (for the date range in the name).
-	 * @return resource
-	 */
-	private function open( $name, Query $query ) {
-		$filename = sanitize_file_name( 'pulse-analytics-' . $name . '-' . $query->start . '-to-' . $query->end . '.csv' );
+		if ( ! in_array( $type, self::TYPES, true ) ) {
+			if ( ! $reports->is_dimension( $dimension ) ) {
+				wp_die( esc_html__( 'Unknown report.', 'pulse-analytics' ) );
+			}
+			$type = 'breakdown';
+		}
+
+		$filename = sanitize_file_name( 'pulse-analytics-' . ( 'breakdown' === $type ? str_replace( '_', '-', $dimension ) : $type ) . '-' . $query->start . '-to-' . $query->end . '.csv' );
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
 		header( 'X-Content-Type-Options: nosniff' );
 		$out = fopen( 'php://output', 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
-		fwrite( $out, "\xEF\xBB\xBF" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- UTF-8 BOM so Excel shows non-Latin text correctly.
-		return $out;
+		$this->write( $out, $type, $dimension, $interval, $reports, $query );
+		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+		exit;
+	}
+
+	/**
+	 * Writes one report as CSV. Starts with a UTF-8 byte order mark so Excel reads non-Latin text.
+	 *
+	 * @param resource $out       Stream.
+	 * @param string   $type      Report type.
+	 * @param string   $dimension Dimension (breakdowns only).
+	 * @param string   $interval  Interval (summary only).
+	 * @param Reports  $reports   Engine.
+	 * @param Query    $query     Query.
+	 */
+	private function write( $out, $type, $dimension, $interval, Reports $reports, Query $query ) {
+		fwrite( $out, "\xEF\xBB\xBF" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+		switch ( $type ) {
+			case 'summary':
+				$this->summary_rows( $out, $reports, $query, $interval );
+				break;
+			case 'sessions':
+				$this->session_rows( $out, $reports, $query );
+				break;
+			case 'pageviews':
+				$this->pageview_rows( $out, $reports, $query );
+				break;
+			case 'events':
+				$this->event_rows( $out, $reports, $query );
+				break;
+			case 'goals':
+				$this->goal_rows( $out, $reports, $query );
+				break;
+			default:
+				$this->breakdown_rows( $out, $reports, $query, $dimension );
+		}
+	}
+
+	/**
+	 * Builds a ZIP with every report as a separate CSV file and sends it.
+	 *
+	 * @param Reports $reports  Engine.
+	 * @param Query   $query    Query.
+	 * @param string  $interval Interval for the summary.
+	 */
+	private function send_zip( Reports $reports, Query $query, $interval ) {
+		$folder = 'pulse-analytics-' . $query->start . '-to-' . $query->end;
+		$dir    = trailingslashit( get_temp_dir() ) . $folder . '-' . wp_generate_password( 8, false, false );
+		if ( ! wp_mkdir_p( $dir ) ) {
+			wp_die( esc_html__( 'Could not create a temporary folder for the export.', 'pulse-analytics' ) );
+		}
+
+		$files = array();
+		foreach ( self::zip_contents() as $name => $report ) {
+			$path = $dir . '/' . $name;
+			$out  = fopen( $path, 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+			if ( ! $out ) {
+				continue;
+			}
+			$this->write( $out, $report[0], $report[1], $interval, $reports, $query );
+			fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+			$files[ $name ] = $path;
+		}
+		$about = $dir . '/about-this-export.txt';
+		file_put_contents( $about, $this->about_text( $query ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+		$files['about-this-export.txt'] = $about;
+
+		$zip_path = $dir . '.zip';
+		$created  = $this->create_zip( $zip_path, $files, $folder );
+		foreach ( $files as $path ) {
+			wp_delete_file( $path );
+		}
+		@rmdir( $dir ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_operations_rmdir
+
+		if ( is_wp_error( $created ) ) {
+			wp_delete_file( $zip_path );
+			wp_die( esc_html( $created->get_error_message() ) );
+		}
+
+		nocache_headers();
+		header( 'Content-Type: application/zip' );
+		header( 'Content-Disposition: attachment; filename="' . sanitize_file_name( $folder . '.zip' ) . '"' );
+		header( 'Content-Length: ' . filesize( $zip_path ) );
+		header( 'X-Content-Type-Options: nosniff' );
+		readfile( $zip_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_readfile
+		wp_delete_file( $zip_path );
+	}
+
+	/**
+	 * Packs files into a ZIP (ZipArchive when available, otherwise the PclZip copy bundled with WordPress).
+	 *
+	 * @param string $zip_path Target file.
+	 * @param array  $files    Name inside the archive => path on disk.
+	 * @param string $folder   Folder name inside the archive.
+	 * @return true|\WP_Error
+	 */
+	private function create_zip( $zip_path, array $files, $folder ) {
+		if ( class_exists( 'ZipArchive' ) ) {
+			$zip = new \ZipArchive();
+			if ( true !== $zip->open( $zip_path, \ZipArchive::CREATE | \ZipArchive::OVERWRITE ) ) {
+				return new \WP_Error( 'pulse_zip', __( 'Could not create the ZIP file.', 'pulse-analytics' ) );
+			}
+			foreach ( $files as $name => $path ) {
+				$zip->addFile( $path, $folder . '/' . $name );
+			}
+			return $zip->close() ? true : new \WP_Error( 'pulse_zip', __( 'Could not create the ZIP file.', 'pulse-analytics' ) );
+		}
+
+		require_once ABSPATH . 'wp-admin/includes/class-pclzip.php';
+		$archive = new \PclZip( $zip_path );
+		$result  = $archive->create( array_values( $files ), PCLZIP_OPT_REMOVE_ALL_PATH, PCLZIP_OPT_ADD_PATH, $folder );
+		return 0 === $result ? new \WP_Error( 'pulse_zip', $archive->errorInfo( true ) ) : true;
+	}
+
+	/**
+	 * Short description of the export, saved as a text file in the ZIP.
+	 *
+	 * @param Query $query Query.
+	 * @return string
+	 */
+	private function about_text( Query $query ) {
+		$previous = $query->previous();
+		$filters  = array();
+		foreach ( $query->filters as $filter ) {
+			// Page filters hold a path, so name the path column rather than the title.
+			$columns   = $this->dimension_columns( $filter['dim'] );
+			$label     = '_page' === substr( '_' . $filter['dim'], -5 ) ? $columns[1] : $columns[0];
+			$filters[] = $label . ' ' . str_replace( '_', ' ', $filter['op'] ) . ' ' . implode( ', ', (array) $filter['value'] );
+		}
+		$user  = wp_get_current_user();
+		$lines = array(
+			'Pulse Analytics export',
+			'',
+			'Website:  ' . wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) . ' (' . home_url( '/' ) . ')',
+			'Period:   ' . $query->start . ' to ' . $query->end,
+			'Compared: ' . ( $previous ? $previous->start . ' to ' . $previous->end : 'no comparison' ),
+			'Filters:  ' . ( $filters ? implode( '; ', $filters ) : 'none' ),
+			'Exported: ' . Helpers::now() . ( $user->exists() ? ' by ' . $user->display_name : '' ),
+			'',
+			'Every CSV file opens in Excel, Google Sheets or Numbers.',
+			'Durations are in seconds and rates are in percent.',
+			'Files starting with "raw-" have one row per visit, pageview or event.',
+		);
+		return implode( "\r\n", $lines ) . "\r\n";
 	}
 
 	/**
 	 * Writes one CSV row, neutralising spreadsheet formulas in text cells.
 	 *
-	 * @param resource $out  Stream.
+	 * @param resource $out   Stream.
 	 * @param array    $cells Cells.
 	 */
 	private function row( $out, array $cells ) {
@@ -165,16 +335,17 @@ class Exporter {
 	}
 
 	/**
-	 * Full breakdown export (all rows).
+	 * Full breakdown (all rows).
 	 *
-	 * @param Reports $reports   Engine.
-	 * @param Query   $query     Query.
-	 * @param string  $dimension Dimension.
+	 * @param resource $out       Stream.
+	 * @param Reports  $reports   Engine.
+	 * @param Query    $query     Query.
+	 * @param string   $dimension Dimension.
 	 */
-	private function export_breakdown( Reports $reports, Query $query, $dimension ) {
-		$out    = $this->open( str_replace( '_', '-', $dimension ), $query );
+	private function breakdown_rows( $out, Reports $reports, Query $query, $dimension ) {
 		$labels = self::metric_labels();
 		$header = null;
+		$extras = array();
 		$offset = 0;
 		$chunk  = 1000;
 		$total  = 0;
@@ -192,7 +363,6 @@ class Exporter {
 			if ( null === $header ) {
 				list( $label_title, $key_title ) = $this->dimension_columns( $dimension );
 				$header                          = array( $label_title, $key_title );
-				$extras                          = array();
 				foreach ( array( 'country', 'region', 'browser', 'os', 'category', 'lat', 'lon' ) as $extra ) {
 					if ( $rows && array_key_exists( $extra, $rows[0] ) ) {
 						$extras[] = $extra;
@@ -229,18 +399,17 @@ class Exporter {
 			$total  += count( $rows );
 			$more    = count( $rows ) === $chunk && in_array( $dimension, array( 'page', 'entry_page', 'exit_page', 'referrer', 'referrer_url', 'city', 'region', 'event_name', 'event_label', 'utm_campaign', 'utm_term', 'utm_content', 'source', 'screen', 'language', 'browser_version', 'os_version' ), true );
 		} while ( $more && $total < 100000 );
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 
 	/**
 	 * Summary metrics plus the time series.
 	 *
-	 * @param Reports $reports  Engine.
-	 * @param Query   $query    Query.
-	 * @param string  $interval Interval.
+	 * @param resource $out      Stream.
+	 * @param Reports  $reports  Engine.
+	 * @param Query    $query    Query.
+	 * @param string   $interval Interval.
 	 */
-	private function export_summary( Reports $reports, Query $query, $interval ) {
-		$out     = $this->open( 'summary', $query );
+	private function summary_rows( $out, Reports $reports, Query $query, $interval ) {
 		$labels  = self::metric_labels();
 		$summary = $reports->summary( $query );
 		$keys    = array( 'visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'avg_duration' );
@@ -280,17 +449,16 @@ class Exporter {
 			}
 			$this->row( $out, $cells );
 		}
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 
 	/**
-	 * Raw sessions.
+	 * Raw visits.
 	 *
-	 * @param Reports $reports Engine.
-	 * @param Query   $query   Query.
+	 * @param resource $out     Stream.
+	 * @param Reports  $reports Engine.
+	 * @param Query    $query   Query.
 	 */
-	private function export_sessions( Reports $reports, Query $query ) {
-		$out = $this->open( 'sessions', $query );
+	private function session_rows( $out, Reports $reports, Query $query ) {
 		$this->row( $out, array( 'Session ID', 'Visitor ID (anonymous)', 'Started', 'Last activity', 'Duration (seconds)', 'Pageviews', 'Events', 'New visitor', 'Entry page', 'Entry page title', 'Exit page', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM term', 'UTM content', 'Country', 'Region', 'City', 'Device', 'Browser', 'Browser version', 'OS', 'OS version', 'Screen', 'Language', 'User', 'IP address' ) );
 		$reports->each_session(
 			$query,
@@ -298,17 +466,16 @@ class Exporter {
 				$this->row( $out, array( $s['id'], $s['visitor_hash'], $s['created_at'], $s['updated_at'], $s['duration'], $s['pageviews'], $s['events'], $s['is_new'] ? 'yes' : 'no', $s['entry_path'], $s['entry_title'], $s['exit_path'], $s['channel_label'], $s['source'], $s['referrer_url'], $s['utm_source'], $s['utm_medium'], $s['utm_campaign'], $s['utm_term'], $s['utm_content'], $s['country_name'], $s['region'], $s['city'], $s['device'], $s['browser'], $s['browser_version'], $s['os'], $s['os_version'], $s['screen'], $s['language'], $s['user'], $s['ip'] ) );
 			}
 		);
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 
 	/**
 	 * Raw pageviews.
 	 *
-	 * @param Reports $reports Engine.
-	 * @param Query   $query   Query.
+	 * @param resource $out     Stream.
+	 * @param Reports  $reports Engine.
+	 * @param Query    $query   Query.
 	 */
-	private function export_pageviews( Reports $reports, Query $query ) {
-		$out      = $this->open( 'pageviews', $query );
+	private function pageview_rows( $out, Reports $reports, Query $query ) {
 		$channels = Referrer::channels();
 		$this->row( $out, array( 'Pageview ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Page path', 'Page title', 'Content type', 'Previous page', 'Time on page (seconds)', 'Scroll depth (%)', 'New visitor', 'Country', 'Region', 'City', 'Device', 'Browser', 'OS', 'Channel', 'Source', 'Referrer', 'UTM source', 'UTM medium', 'UTM campaign' ) );
 		$reports->each_pageview(
@@ -317,17 +484,16 @@ class Exporter {
 				$this->row( $out, array( $p['id'], $p['session_id'], $p['visitor_hash'], $p['created_at'], $p['path'], $p['title'], $p['post_type'], $p['prev_path'], $p['duration'], $p['scroll_depth'], $p['is_new'] ? 'yes' : 'no', Countries::name( $p['country'] ), $p['region'], $p['city'], $p['device'], $p['browser'], $p['os'], isset( $channels[ $p['channel'] ] ) ? $channels[ $p['channel'] ] : $p['channel'], $p['source'], $p['referrer_url'], $p['utm_source'], $p['utm_medium'], $p['utm_campaign'] ) );
 			}
 		);
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 
 	/**
 	 * Raw events.
 	 *
-	 * @param Reports $reports Engine.
-	 * @param Query   $query   Query.
+	 * @param resource $out     Stream.
+	 * @param Reports  $reports Engine.
+	 * @param Query    $query   Query.
 	 */
-	private function export_events( Reports $reports, Query $query ) {
-		$out  = $this->open( 'events', $query );
+	private function event_rows( $out, Reports $reports, Query $query ) {
 		$cats = Reports::event_categories();
 		$this->row( $out, array( 'Event ID', 'Session ID', 'Visitor ID (anonymous)', 'Time', 'Category', 'Name', 'Label', 'Page', 'Country', 'City', 'Device', 'Channel', 'Source', 'UTM campaign' ) );
 		$reports->each_event(
@@ -336,17 +502,16 @@ class Exporter {
 				$this->row( $out, array( $e['id'], $e['session_id'], $e['visitor_hash'], $e['created_at'], isset( $cats[ $e['category'] ] ) ? $cats[ $e['category'] ] : $e['category'], $e['name'], $e['label'], $e['path'], Countries::name( $e['country'] ), $e['city'], $e['device'], $e['channel'], $e['source'], $e['utm_campaign'] ) );
 			}
 		);
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 
 	/**
 	 * Goal conversions.
 	 *
-	 * @param Reports $reports Engine.
-	 * @param Query   $query   Query.
+	 * @param resource $out     Stream.
+	 * @param Reports  $reports Engine.
+	 * @param Query    $query   Query.
 	 */
-	private function export_goals( Reports $reports, Query $query ) {
-		$out    = $this->open( 'goals', $query );
+	private function goal_rows( $out, Reports $reports, Query $query ) {
 		$result = $reports->goals( $query );
 		$header = array( 'Goal', 'Type', 'Match', 'Value', 'Conversions (visitors)', 'Completions', 'Conversion rate (%)' );
 		if ( '' !== $query->compare ) {
@@ -360,6 +525,5 @@ class Exporter {
 			}
 			$this->row( $out, $cells );
 		}
-		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 	}
 }
