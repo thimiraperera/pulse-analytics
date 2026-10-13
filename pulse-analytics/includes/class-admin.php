@@ -26,6 +26,7 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 		add_action( 'admin_notices', array( $this, 'notices' ) );
+		add_action( 'network_admin_notices', array( $this, 'notices' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( PULSE_ANALYTICS_FILE ), array( $this, 'action_links' ) );
 		add_filter( 'admin_body_class', array( $this, 'body_class' ) );
 	}
@@ -222,6 +223,9 @@ class Admin {
 			'purged'         => array( 'success', __( 'Old data was purged according to your retention setting.', 'pulse-analytics' ) ),
 			'email_sent'     => array( 'success', __( 'A test report was sent.', 'pulse-analytics' ) ),
 			'email_failed'   => array( 'error', __( 'The test email could not be sent. Check that your site is able to send email.', 'pulse-analytics' ) ),
+			'update_checked' => array( 'success', __( 'Checked GitHub for updates.', 'pulse-analytics' ) ),
+			'update_error'   => array( 'error', __( 'Could not check GitHub for updates.', 'pulse-analytics' ) ),
+			'token_invalid'  => array( 'error', __( 'That does not look like a GitHub token. Nothing was saved.', 'pulse-analytics' ) ),
 		);
 		if ( ! isset( $messages[ $notice ] ) ) {
 			return;

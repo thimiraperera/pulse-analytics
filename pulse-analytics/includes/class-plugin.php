@@ -61,6 +61,7 @@ final class Plugin {
 		( new Privacy() )->hooks();
 		( new Admin_Bar() )->hooks();
 		( new Installer() )->hooks();
+		( new Updater() )->hooks();
 
 		if ( is_admin() ) {
 			( new Admin() )->hooks();

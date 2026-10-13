@@ -34,7 +34,7 @@ Every report can be filtered. Click any row to filter by it, or use Add filter t
 
 = Exporting =
 
-Each card and table has a CSV button that uses the current filters and dates. Under Settings > Tools you can also download the raw visits, pageviews and events. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
+Each card and table has a CSV button that uses the current filters and dates. If you want everything, choose "All reports in one ZIP file" from the Export menu: you get every report as its own CSV file, plus the raw visits, pageviews and events. Settings > Tools has the same downloads for any period. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
 
 = Elsewhere in the admin =
 
@@ -52,7 +52,7 @@ You can also respect Do Not Track, wait for consent from a cookie banner (works 
 
 == Installation ==
 
-1. Go to Plugins > Add New > Upload Plugin, choose pulse-analytics.zip and click Install Now. Then click Activate.
+1. Download pulse-analytics.zip from the latest release on GitHub (https://github.com/thimiraperera/pulse-analytics/releases/latest). In WordPress, go to Plugins > Add New > Upload Plugin, choose the file and click Install Now. Then click Activate.
 2. WordPress opens the Statistics page. Tracking is already running on every page of the site.
 3. If you want to look around first, click "Explore with sample data". You can remove it later under Statistics > Settings > Tools.
 4. When you have a minute, go through Statistics > Settings. The tracking mode, the excluded roles and the email reports are the ones worth checking.
@@ -89,9 +89,13 @@ Not noticeably. The script loads with defer and sends its data in the background
 
 In four database tables: wp_pulse_sessions, wp_pulse_pageviews, wp_pulse_pages and wp_pulse_events (with your table prefix). Deleting the plugin keeps the data unless you tick "Delete all statistics and settings when the plugin is deleted" on the Privacy tab.
 
+= How do updates work? =
+
+The plugin is not on WordPress.org. New versions come from the releases of its GitHub repository, https://github.com/thimiraperera/pulse-analytics. WordPress checks for them along with its other updates, and they show up on the Plugins screen like any other plugin update. You can turn on automatic updates for this plugin there. To check right away, use the "Check for updates" link under the plugin name or go to Statistics > Settings > Updates.
+
 = Does it connect to other services? =
 
-Only your server does, never your visitors. It downloads the geolocation database from download.db-ip.com once a month and the world map outline from cdn.jsdelivr.net once. On the Statistics page your own browser loads flag icons from jsDelivr and website icons from DuckDuckGo. You can turn that off under Settings > Access & display.
+Only your server does, never your visitors. It downloads the geolocation database from download.db-ip.com once a month and the world map outline from cdn.jsdelivr.net once. A few times a day it asks api.github.com whether there is a new version of the plugin. On the Statistics page your own browser loads flag icons from jsDelivr and website icons from DuckDuckGo. You can turn that off under Settings > Access & display.
 
 == Changelog ==
 

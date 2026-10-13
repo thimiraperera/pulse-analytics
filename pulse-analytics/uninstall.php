@@ -61,3 +61,7 @@ if ( is_multisite() ) {
 } else {
 	pulse_analytics_uninstall_site();
 }
+
+// The GitHub token and the cached release are only useful to the plugin, so they always go.
+delete_site_option( 'pulse_analytics_github_token' );
+delete_site_transient( 'pulse_analytics_release' );

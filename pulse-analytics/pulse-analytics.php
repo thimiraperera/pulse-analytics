@@ -1,14 +1,18 @@
 <?php
 /**
  * Plugin Name:       Pulse Analytics
+ * Plugin URI:        https://github.com/thimiraperera/pulse-analytics
  * Description:       Self-hosted website statistics. See visitors, pages, traffic sources, campaigns, countries on a world map and goals, and export any report to CSV.
  * Version:           0.1.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
+ * Author:            Thimira Perera
+ * Author URI:        https://github.com/thimiraperera
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       pulse-analytics
  * Domain Path:       /languages
+ * Update URI:        https://github.com/thimiraperera/pulse-analytics
  *
  * @package PulseAnalytics
  */

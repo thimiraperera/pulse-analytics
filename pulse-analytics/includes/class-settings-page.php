@@ -61,7 +61,7 @@ class Settings_Page {
 	 * @return array<string,string>
 	 */
 	private function tabs() {
-		return array(
+		$tabs = array(
 			'tracking' => __( 'Tracking', 'pulse-analytics' ),
 			'geo'      => __( 'Geolocation', 'pulse-analytics' ),
 			'privacy'  => __( 'Privacy & data', 'pulse-analytics' ),
@@ -69,6 +69,10 @@ class Settings_Page {
 			'email'    => __( 'Email reports', 'pulse-analytics' ),
 			'tools'    => __( 'Tools', 'pulse-analytics' ),
 		);
+		if ( current_user_can( 'update_plugins' ) ) {
+			$tabs['updates'] = __( 'Updates', 'pulse-analytics' );
+		}
+		return $tabs;
 	}
 
 	/**
@@ -105,6 +109,8 @@ class Settings_Page {
 			<?php
 			if ( 'tools' === $tab ) {
 				$this->render_tools();
+			} elseif ( 'updates' === $tab ) {
+				$this->render_updates();
 			} else {
 				?>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="pa-settings-form">
@@ -607,6 +613,116 @@ class Settings_Page {
 					<?php wp_nonce_field( 'pulse_analytics_reset' ); ?>
 					<button type="submit" class="button button-link-delete"><?php esc_html_e( 'Delete all statistics', 'pulse-analytics' ); ?></button>
 				</form>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Updates tab: where updates come from, the last check and the token for private repositories.
+	 */
+	private function render_updates() {
+		$release = ( new Updater() )->release();
+		$latest  = isset( $release['version'] ) ? $release['version'] : '';
+		$newer   = '' !== $latest && version_compare( $latest, PULSE_ANALYTICS_VERSION, '>' );
+		$install = $newer ? Updater::update_url() : '';
+		$token   = Updater::token_source();
+		?>
+		<div class="pa-tools">
+			<div class="pa-card">
+				<h2><?php esc_html_e( 'Plugin updates', 'pulse-analytics' ); ?></h2>
+				<p>
+					<?php
+					printf(
+						/* translators: %s: link to the GitHub repository */
+						esc_html__( 'New versions come from the releases of %s on GitHub. They show up on the Plugins screen like any other plugin update, and you can turn on automatic updates for this plugin there.', 'pulse-analytics' ),
+						'<a href="' . esc_url( Updater::repository_url() ) . '">' . esc_html( Updater::repository() ) . '</a>'
+					);
+					?>
+				</p>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Installed version', 'pulse-analytics' ); ?></th>
+						<td><?php echo esc_html( PULSE_ANALYTICS_VERSION ); ?></td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Latest release', 'pulse-analytics' ); ?></th>
+						<td>
+							<?php if ( '' !== $latest ) : ?>
+								<span class="pa-pill <?php echo $newer ? 'pa-pill-warn' : 'pa-pill-ok'; ?>"><?php echo $newer ? esc_html__( 'Update available', 'pulse-analytics' ) : esc_html__( 'Up to date', 'pulse-analytics' ); ?></span>
+								<?php
+								echo esc_html( $latest );
+								if ( ! empty( $release['date'] ) ) {
+									/* translators: %s: time since the release, like "3 days" */
+									echo ' &middot; ' . esc_html( sprintf( __( 'published %s ago', 'pulse-analytics' ), human_time_diff( strtotime( $release['date'] ) ) ) );
+								}
+								?>
+								&middot; <a href="<?php echo esc_url( $release['url'] ); ?>"><?php esc_html_e( 'Release notes', 'pulse-analytics' ); ?></a>
+							<?php endif; ?>
+							<?php if ( ! empty( $release['error'] ) ) : ?>
+								<p class="pa-error"><?php echo esc_html( $release['error'] ); ?></p>
+							<?php endif; ?>
+							<?php if ( ! empty( $release['skipped'] ) ) : ?>
+								<p class="description">
+									<?php
+									/* translators: 1: version number, 2: file name */
+									echo esc_html( sprintf( __( 'Release %1$s was skipped because it has no %2$s attached.', 'pulse-analytics' ), $release['skipped'], Updater::ASSET ) );
+									?>
+								</p>
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Last checked', 'pulse-analytics' ); ?></th>
+						<td>
+							<?php
+							/* translators: %s: time since the check, like "5 minutes" */
+							echo esc_html( sprintf( __( '%s ago', 'pulse-analytics' ), human_time_diff( (int) $release['checked'] ) ) );
+							?>
+						</td>
+					</tr>
+				</table>
+				<p class="pa-inline">
+					<a class="button" href="<?php echo esc_url( Updater::check_url() ); ?>"><?php esc_html_e( 'Check for updates', 'pulse-analytics' ); ?></a>
+					<?php if ( '' !== $install ) : ?>
+						<a class="button button-primary" href="<?php echo esc_url( $install ); ?>">
+							<?php
+							/* translators: %s: version number */
+							echo esc_html( sprintf( __( 'Update to %s now', 'pulse-analytics' ), $latest ) );
+							?>
+						</a>
+					<?php endif; ?>
+				</p>
+			</div>
+
+			<div class="pa-card">
+				<h2><?php esc_html_e( 'Private repository', 'pulse-analytics' ); ?></h2>
+				<p><?php esc_html_e( 'WordPress can only see the releases of a private repository if it has a GitHub token. On GitHub, create a fine-grained personal access token that has read-only access to the contents of this one repository, and paste it below. A public repository does not need a token, although one raises the limit on how often this site may check.', 'pulse-analytics' ); ?></p>
+				<?php if ( 'constant' === $token ) : ?>
+					<p><?php esc_html_e( 'A token is set in wp-config.php (PULSE_ANALYTICS_GITHUB_TOKEN). Change or remove it there.', 'pulse-analytics' ); ?></p>
+				<?php else : ?>
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+						<input type="hidden" name="action" value="pulse_analytics_github_token" />
+						<?php wp_nonce_field( 'pulse_analytics_github_token' ); ?>
+						<p>
+							<label for="pa-github-token" class="screen-reader-text"><?php esc_html_e( 'GitHub token', 'pulse-analytics' ); ?></label>
+							<input type="password" id="pa-github-token" name="github_token" class="regular-text" autocomplete="off" spellcheck="false" placeholder="<?php echo 'saved' === $token ? esc_attr__( 'A token is saved. Paste a new one to replace it.', 'pulse-analytics' ) : 'github_pat_...'; ?>" />
+						</p>
+						<?php if ( 'saved' === $token ) : ?>
+							<p><label><input type="checkbox" name="remove_token" value="1" /> <?php esc_html_e( 'Remove the saved token', 'pulse-analytics' ); ?></label></p>
+						<?php endif; ?>
+						<p><button type="submit" class="button"><?php esc_html_e( 'Save token', 'pulse-analytics' ); ?></button></p>
+					</form>
+					<p class="description">
+						<?php
+						printf(
+							/* translators: %s: line of PHP code */
+							esc_html__( 'If you would rather not keep the token in the database, add %s to wp-config.php instead.', 'pulse-analytics' ),
+							"<code>define( 'PULSE_ANALYTICS_GITHUB_TOKEN', '...' );</code>"
+						);
+						?>
+					</p>
+				<?php endif; ?>
 			</div>
 		</div>
 		<?php
