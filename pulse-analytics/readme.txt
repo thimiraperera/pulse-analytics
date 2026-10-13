@@ -3,7 +3,7 @@ Tags: analytics, statistics, stats, visitors, marketing
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,11 @@ The plugin is not on WordPress.org. New versions come from the releases of its G
 Only your server does, never your visitors. It downloads the geolocation database from download.db-ip.com once a month and the world map outline from cdn.jsdelivr.net once. A few times a day it asks api.github.com whether there is a new version of the plugin. On the Statistics page your own browser loads flag icons from jsDelivr and website icons from DuckDuckGo. You can turn that off under Settings > Access & display.
 
 == Changelog ==
+
+= 0.2.0 =
+* Download every report at once: the Export menu and Settings > Tools now have a ZIP file with all reports and the raw data.
+* Updates now come from GitHub releases and show up on the Plugins screen. Automatic updates can be turned on there.
+* New Updates tab in the settings, with a button to check right away and a place for a token if the repository is private.
 
 = 0.1.0 =
 * First release.
