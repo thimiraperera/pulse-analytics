@@ -383,8 +383,15 @@
 			filterBarEl.appendChild(chip);
 		});
 		filterBarEl.appendChild(add);
-		if (state.filters.length > 1) {
-			filterBarEl.appendChild(h('button', { type: 'button', 'class': 'pa-link-btn', text: __('Clear all', 'pulse-analytics'), onclick: App.clearFilters }));
+		if (state.filters.length) {
+			filterBarEl.appendChild(h('button', {
+				type: 'button',
+				'class': 'pa-btn pa-btn-clear',
+				onclick: function () {
+					closePopover();
+					App.clearFilters();
+				}
+			}, [icon('close'), h('span', { text: __('Clear all filters', 'pulse-analytics') })]));
 		}
 	}
 

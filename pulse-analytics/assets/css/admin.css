@@ -177,6 +177,9 @@
 .pa-chip-dim { color: var(--pa-ink-2); }
 .pa-chip-op { color: var(--pa-muted); }
 .pa-chip-x { border: 0; background: transparent; padding: 0 9px 0 4px; cursor: pointer; color: var(--pa-ink-2); display: inline-flex; align-items: center; }
+.pa-btn-clear .pa-i { color: var(--pa-muted); }
+.pa-btn-clear:hover { border-color: var(--pa-bad); background: var(--pa-bad-bg); color: var(--pa-bad); }
+.pa-btn-clear:hover .pa-i { color: var(--pa-bad); }
 .pa-chip-x:hover { color: var(--pa-bad); }
 .pa-chip-x .pa-i { width: 14px; height: 14px; }
 .pa-filter-pop { width: 460px; padding: 10px; }
