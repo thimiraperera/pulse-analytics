@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pulse Analytics 0.3.0\n"
+"Project-Id-Version: Pulse Analytics 0.3.1\n"
 "Report-Msgid-Bugs-To: https://github.com/thimiraperera/pulse-analytics/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T05:40:50+00:00\n"
+"POT-Creation-Date: 2026-10-14T14:46:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pulse-analytics\n"
@@ -134,7 +134,7 @@ msgstr ""
 #: includes/class-admin.php:252
 #: includes/class-settings-page.php:41
 #: assets/js/admin.js:230
-#: assets/js/admin.js:1068
+#: assets/js/admin.js:1075
 msgid "Settings"
 msgstr ""
 
@@ -217,7 +217,7 @@ msgstr ""
 
 #: includes/class-dashboard-widget.php:99
 #: includes/class-email-reports.php:132
-#: assets/js/admin.js:1101
+#: assets/js/admin.js:1108
 msgid "Top pages"
 msgstr ""
 
@@ -276,15 +276,15 @@ msgid "Top countries"
 msgstr ""
 
 #: includes/class-email-reports.php:149
-#: assets/js/admin.js:405
-#: assets/js/admin.js:803
+#: assets/js/admin.js:412
+#: assets/js/admin.js:810
 msgid "Goals"
 msgstr ""
 
 #: includes/class-email-reports.php:149
 #: includes/class-exporter.php:50
 #: assets/js/admin-core.js:222
-#: assets/js/admin.js:1595
+#: assets/js/admin.js:1602
 msgid "Conversions"
 msgstr ""
 
@@ -1112,10 +1112,10 @@ msgstr ""
 #: includes/class-settings-page.php:572
 #: assets/js/admin-core.js:221
 #: assets/js/admin.js:164
-#: assets/js/admin.js:404
-#: assets/js/admin.js:1133
-#: assets/js/admin.js:1305
-#: assets/js/admin.js:1476
+#: assets/js/admin.js:411
+#: assets/js/admin.js:1140
+#: assets/js/admin.js:1312
+#: assets/js/admin.js:1483
 msgid "Events"
 msgstr ""
 
@@ -1146,7 +1146,7 @@ msgstr ""
 
 #: includes/class-exporter.php:148
 #: assets/js/admin-core.js:346
-#: assets/js/admin.js:1519
+#: assets/js/admin.js:1526
 msgid "Event type"
 msgstr ""
 
@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: includes/class-exporter.php:162
 #: assets/js/admin-core.js:361
-#: assets/js/admin.js:1499
+#: assets/js/admin.js:1506
 msgid "is"
 msgstr ""
 
@@ -1171,8 +1171,8 @@ msgstr ""
 
 #: includes/class-exporter.php:164
 #: assets/js/admin-core.js:363
-#: assets/js/admin.js:1499
-#: assets/js/admin.js:1516
+#: assets/js/admin.js:1506
+#: assets/js/admin.js:1523
 msgid "contains"
 msgstr ""
 
@@ -1316,8 +1316,8 @@ msgstr ""
 
 #: includes/class-exporter.php:457
 #: assets/js/admin-core.js:347
-#: assets/js/admin.js:1479
-#: assets/js/admin.js:1480
+#: assets/js/admin.js:1486
+#: assets/js/admin.js:1487
 msgid "Event"
 msgstr ""
 
@@ -1362,13 +1362,13 @@ msgid "Change (%)"
 msgstr ""
 
 #: includes/class-exporter.php:557
-#: assets/js/admin.js:568
+#: assets/js/admin.js:575
 msgid "Period"
 msgstr ""
 
 #: includes/class-exporter.php:562
-#: assets/js/admin.js:540
-#: assets/js/admin.js:568
+#: assets/js/admin.js:547
+#: assets/js/admin.js:575
 msgid "Previous period"
 msgstr ""
 
@@ -1541,7 +1541,7 @@ msgid "We respect the \"Do Not Track\" and \"Global Privacy Control\" signals se
 msgstr ""
 
 #: includes/class-referrer.php:26
-#: assets/js/admin.js:1215
+#: assets/js/admin.js:1222
 msgid "Direct"
 msgstr ""
 
@@ -1598,7 +1598,7 @@ msgid "(exit, left the website)"
 msgstr ""
 
 #: includes/class-reports.php:1542
-#: assets/js/admin.js:1481
+#: assets/js/admin.js:1488
 msgid "Outbound links"
 msgstr ""
 
@@ -1625,7 +1625,7 @@ msgid "Site searches"
 msgstr ""
 
 #: includes/class-reports.php:1548
-#: assets/js/admin.js:1486
+#: assets/js/admin.js:1493
 msgid "404 errors"
 msgstr ""
 
@@ -1680,7 +1680,7 @@ msgstr ""
 
 #: includes/class-reports.php:1581
 #: assets/js/admin-core.js:407
-#: assets/js/admin.js:1637
+#: assets/js/admin.js:1644
 msgid "Direct / None"
 msgstr ""
 
@@ -1875,7 +1875,7 @@ msgstr ""
 
 #: includes/class-settings-page.php:220
 #: assets/js/admin-core.js:217
-#: assets/js/admin.js:844
+#: assets/js/admin.js:851
 msgid "Scroll depth"
 msgstr ""
 
@@ -2304,7 +2304,7 @@ msgid "Generate sample data"
 msgstr ""
 
 #: includes/class-settings-page.php:597
-#: assets/js/admin.js:1081
+#: assets/js/admin.js:1088
 msgid "Remove sample data"
 msgstr ""
 
@@ -2540,7 +2540,7 @@ msgid "Conv. rate"
 msgstr ""
 
 #: assets/js/admin-core.js:224
-#: assets/js/admin.js:1596
+#: assets/js/admin.js:1603
 msgid "Completions"
 msgstr ""
 
@@ -2610,14 +2610,14 @@ msgid "Event detail"
 msgstr ""
 
 #: assets/js/admin-core.js:349
-#: assets/js/admin.js:831
-#: assets/js/admin.js:1594
+#: assets/js/admin.js:838
+#: assets/js/admin.js:1601
 msgid "Goal"
 msgstr ""
 
 #: assets/js/admin-core.js:353
-#: assets/js/admin.js:407
-#: assets/js/admin.js:1339
+#: assets/js/admin.js:414
+#: assets/js/admin.js:1346
 msgid "Content"
 msgstr ""
 
@@ -2630,9 +2630,9 @@ msgid "Location"
 msgstr ""
 
 #: assets/js/admin-core.js:356
-#: assets/js/admin.js:403
-#: assets/js/admin.js:1121
-#: assets/js/admin.js:1436
+#: assets/js/admin.js:410
+#: assets/js/admin.js:1128
+#: assets/js/admin.js:1443
 msgid "Technology"
 msgstr ""
 
@@ -2694,7 +2694,7 @@ msgid "AI prompt for this CSV file"
 msgstr ""
 
 #: assets/js/admin-core.js:867
-#: assets/js/admin.js:1395
+#: assets/js/admin.js:1402
 #: assets/js/settings.js:88
 msgid "Copied"
 msgstr ""
@@ -2732,7 +2732,7 @@ msgid "Open page report"
 msgstr ""
 
 #: assets/js/admin-core.js:1081
-#: assets/js/admin.js:1003
+#: assets/js/admin.js:1010
 msgid "Filter by this value"
 msgstr ""
 
@@ -2749,8 +2749,8 @@ msgid "No matches."
 msgstr ""
 
 #: assets/js/admin-core.js:1235
-#: assets/js/admin.js:1216
-#: assets/js/admin.js:1635
+#: assets/js/admin.js:1223
+#: assets/js/admin.js:1642
 msgid "new"
 msgstr ""
 
@@ -2760,12 +2760,12 @@ msgid "%1$s-%2$s of %3$s"
 msgstr ""
 
 #: assets/js/admin-core.js:1260
-#: assets/js/admin.js:1275
+#: assets/js/admin.js:1282
 msgid "Previous page"
 msgstr ""
 
 #: assets/js/admin-core.js:1261
-#: assets/js/admin.js:1276
+#: assets/js/admin.js:1283
 msgid "Next page"
 msgstr ""
 
@@ -2819,61 +2819,61 @@ msgid "Summary & trend"
 msgstr ""
 
 #: assets/js/admin.js:156
-#: assets/js/admin.js:1233
-#: assets/js/admin.js:1253
+#: assets/js/admin.js:1240
+#: assets/js/admin.js:1260
 msgid "All pages"
 msgstr ""
 
 #: assets/js/admin.js:157
-#: assets/js/admin.js:1107
-#: assets/js/admin.js:1280
-#: assets/js/admin.js:1313
+#: assets/js/admin.js:1114
+#: assets/js/admin.js:1287
+#: assets/js/admin.js:1320
 msgid "Traffic sources"
 msgstr ""
 
 #: assets/js/admin.js:158
-#: assets/js/admin.js:1109
-#: assets/js/admin.js:1283
-#: assets/js/admin.js:1316
+#: assets/js/admin.js:1116
+#: assets/js/admin.js:1290
+#: assets/js/admin.js:1323
 msgid "Channels"
 msgstr ""
 
 #: assets/js/admin.js:159
-#: assets/js/admin.js:401
-#: assets/js/admin.js:1112
-#: assets/js/admin.js:1284
-#: assets/js/admin.js:1335
+#: assets/js/admin.js:408
+#: assets/js/admin.js:1119
+#: assets/js/admin.js:1291
+#: assets/js/admin.js:1342
 msgid "Campaigns"
 msgstr ""
 
 #: assets/js/admin.js:160
-#: assets/js/admin.js:627
-#: assets/js/admin.js:1161
-#: assets/js/admin.js:1290
-#: assets/js/admin.js:1419
+#: assets/js/admin.js:634
+#: assets/js/admin.js:1168
+#: assets/js/admin.js:1297
+#: assets/js/admin.js:1426
 msgid "Countries"
 msgstr ""
 
 #: assets/js/admin.js:161
-#: assets/js/admin.js:627
-#: assets/js/admin.js:1291
-#: assets/js/admin.js:1421
+#: assets/js/admin.js:634
+#: assets/js/admin.js:1298
+#: assets/js/admin.js:1428
 msgid "Cities"
 msgstr ""
 
 #: assets/js/admin.js:162
-#: assets/js/admin.js:1119
-#: assets/js/admin.js:1297
-#: assets/js/admin.js:1299
-#: assets/js/admin.js:1431
+#: assets/js/admin.js:1126
+#: assets/js/admin.js:1304
+#: assets/js/admin.js:1306
+#: assets/js/admin.js:1438
 msgid "Devices"
 msgstr ""
 
 #: assets/js/admin.js:163
-#: assets/js/admin.js:1123
-#: assets/js/admin.js:1300
-#: assets/js/admin.js:1432
+#: assets/js/admin.js:1130
+#: assets/js/admin.js:1307
 #: assets/js/admin.js:1439
+#: assets/js/admin.js:1446
 msgid "Browsers"
 msgstr ""
 
@@ -2966,843 +2966,843 @@ msgstr ""
 msgid "Remove filter"
 msgstr ""
 
-#: assets/js/admin.js:387
-msgid "Clear all"
+#: assets/js/admin.js:394
+msgid "Clear all filters"
 msgstr ""
 
-#: assets/js/admin.js:397
+#: assets/js/admin.js:404
 msgid "Overview"
 msgstr ""
 
-#: assets/js/admin.js:398
+#: assets/js/admin.js:405
 msgid "Real-time"
 msgstr ""
 
-#: assets/js/admin.js:399
-#: assets/js/admin.js:1099
-#: assets/js/admin.js:1240
+#: assets/js/admin.js:406
+#: assets/js/admin.js:1106
+#: assets/js/admin.js:1247
 msgid "Pages"
 msgstr ""
 
-#: assets/js/admin.js:400
-#: assets/js/admin.js:1110
-#: assets/js/admin.js:1160
-#: assets/js/admin.js:1282
-#: assets/js/admin.js:1317
-#: assets/js/admin.js:1336
+#: assets/js/admin.js:407
+#: assets/js/admin.js:1117
+#: assets/js/admin.js:1167
+#: assets/js/admin.js:1289
+#: assets/js/admin.js:1324
+#: assets/js/admin.js:1343
 msgid "Sources"
 msgstr ""
 
-#: assets/js/admin.js:402
-#: assets/js/admin.js:1288
-#: assets/js/admin.js:1416
+#: assets/js/admin.js:409
+#: assets/js/admin.js:1295
+#: assets/js/admin.js:1423
 msgid "Locations"
 msgstr ""
 
-#: assets/js/admin.js:406
-#: assets/js/admin.js:1615
+#: assets/js/admin.js:413
+#: assets/js/admin.js:1622
 msgid "Visitor log"
 msgstr ""
 
-#: assets/js/admin.js:435
+#: assets/js/admin.js:442
 msgid "Interval"
 msgstr ""
 
-#: assets/js/admin.js:436
+#: assets/js/admin.js:443
 msgid "Show as table"
 msgstr ""
 
-#: assets/js/admin.js:472
+#: assets/js/admin.js:479
 msgid "Hourly"
 msgstr ""
 
-#: assets/js/admin.js:472
+#: assets/js/admin.js:479
 msgid "Daily"
 msgstr ""
 
-#: assets/js/admin.js:472
+#: assets/js/admin.js:479
 msgid "Weekly"
 msgstr ""
 
-#: assets/js/admin.js:472
+#: assets/js/admin.js:479
 msgid "Monthly"
 msgstr ""
 
-#: assets/js/admin.js:526
+#: assets/js/admin.js:533
 msgid "Current period"
 msgstr ""
 
-#: assets/js/admin.js:532
+#: assets/js/admin.js:539
 msgid "in progress"
 msgstr ""
 
-#: assets/js/admin.js:617
+#: assets/js/admin.js:624
 msgid "Visitors by location"
 msgstr ""
 
-#: assets/js/admin.js:627
-#: assets/js/admin.js:1420
+#: assets/js/admin.js:634
+#: assets/js/admin.js:1427
 msgid "Regions"
 msgstr ""
 
-#: assets/js/admin.js:634
+#: assets/js/admin.js:641
 msgid "World map of visitors"
 msgstr ""
 
-#: assets/js/admin.js:636
+#: assets/js/admin.js:643
 msgid "Zoom in"
 msgstr ""
 
-#: assets/js/admin.js:636
+#: assets/js/admin.js:643
 msgid "Zoom out"
 msgstr ""
 
-#: assets/js/admin.js:636
+#: assets/js/admin.js:643
 msgid "Reset zoom"
 msgstr ""
 
-#: assets/js/admin.js:654
+#: assets/js/admin.js:661
 msgid "Loading map..."
 msgstr ""
 
-#: assets/js/admin.js:666
+#: assets/js/admin.js:673
 msgid "The map could not be loaded. Country statistics are still listed on the right."
 msgstr ""
 
-#: assets/js/admin.js:710
+#: assets/js/admin.js:717
 msgid "Visitor countries are unknown. Download the free geolocation database to see countries on the map."
 msgstr ""
 
-#: assets/js/admin.js:712
+#: assets/js/admin.js:719
 msgid "Geolocation settings"
 msgstr ""
 
-#: assets/js/admin.js:723
+#: assets/js/admin.js:730
 msgid "City-level data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:765
+#: assets/js/admin.js:772
 msgid "Busiest times"
 msgstr ""
 
-#: assets/js/admin.js:765
+#: assets/js/admin.js:772
 msgid "Pageviews by weekday and hour"
 msgstr ""
 
-#: assets/js/admin.js:789
+#: assets/js/admin.js:796
 msgid "Less"
 msgstr ""
 
-#: assets/js/admin.js:790
+#: assets/js/admin.js:797
 msgid "More"
 msgstr ""
 
-#: assets/js/admin.js:810
+#: assets/js/admin.js:817
 msgid "Track conversions such as contact form submissions, sign-ups or visits to a thank-you page."
 msgstr ""
 
-#: assets/js/admin.js:811
+#: assets/js/admin.js:818
 msgid "Create a goal"
 msgstr ""
 
-#: assets/js/admin.js:822
+#: assets/js/admin.js:829
 msgid "Filter by this goal"
 msgstr ""
 
-#: assets/js/admin.js:833
+#: assets/js/admin.js:840
 msgid "Manage goals"
 msgstr ""
 
-#: assets/js/admin.js:844
+#: assets/js/admin.js:851
 msgid "Share of pageviews that reached each point"
 msgstr ""
 
-#: assets/js/admin.js:853
+#: assets/js/admin.js:860
 msgid "No scroll data yet."
 msgstr ""
 
-#: assets/js/admin.js:859
+#: assets/js/admin.js:866
 #, js-format
 msgid "Reached %s%%"
 msgstr ""
 
-#: assets/js/admin.js:865
+#: assets/js/admin.js:872
 #, js-format
 msgid "Average scroll depth: %1$s of the page (%2$s pageviews measured)."
 msgstr ""
 
-#: assets/js/admin.js:876
+#: assets/js/admin.js:883
 msgid "Insights"
 msgstr ""
 
-#: assets/js/admin.js:893
+#: assets/js/admin.js:900
 msgid "Insights appear once there is enough data."
 msgstr ""
 
-#: assets/js/admin.js:922
+#: assets/js/admin.js:929
 #, js-format
 msgid "Visitors are up %1$s compared with the previous period (%2$s vs. %3$s)."
 msgstr ""
 
-#: assets/js/admin.js:923
+#: assets/js/admin.js:930
 #, js-format
 msgid "Visitors are down %1$s compared with the previous period (%2$s vs. %3$s)."
 msgstr ""
 
-#: assets/js/admin.js:940
+#: assets/js/admin.js:947
 #, js-format
 msgid "Fastest-growing source: %1$s sent %2$s visitors (+%3$s)."
 msgstr ""
 
-#: assets/js/admin.js:941
+#: assets/js/admin.js:948
 #, js-format
 msgid "New traffic source: %1$s sent %2$s visitors."
 msgstr ""
 
-#: assets/js/admin.js:946
+#: assets/js/admin.js:953
 #, js-format
 msgid "AI assistants such as ChatGPT, Perplexity and Gemini sent %1$s visitors (%2$s of all traffic)."
 msgstr ""
 
-#: assets/js/admin.js:950
+#: assets/js/admin.js:957
 #, js-format
 msgid "Most viewed page: \"%1$s\" with %2$s pageviews."
 msgstr ""
 
-#: assets/js/admin.js:959
+#: assets/js/admin.js:966
 #, js-format
 msgid "Trending: pageviews of \"%1$s\" grew by %2$s."
 msgstr ""
 
-#: assets/js/admin.js:964
+#: assets/js/admin.js:971
 #, js-format
 msgid "%s of visitors use a mobile phone, so make sure your main pages work well on small screens."
 msgstr ""
 
-#: assets/js/admin.js:970
+#: assets/js/admin.js:977
 #, js-format
 msgid "Busiest day: %1$s with %2$s visitors."
 msgstr ""
 
-#: assets/js/admin.js:976
+#: assets/js/admin.js:983
 #, js-format
 msgid "Bounce rate improved by %s points."
 msgstr ""
 
-#: assets/js/admin.js:976
+#: assets/js/admin.js:983
 #, js-format
 msgid "Bounce rate worsened by %s points."
 msgstr ""
 
-#: assets/js/admin.js:983
+#: assets/js/admin.js:990
 msgid "Visits per period"
 msgstr ""
 
-#: assets/js/admin.js:1059
+#: assets/js/admin.js:1066
 msgid "Pulse Analytics is installed. Statistics will show up here as soon as people visit your website."
 msgstr ""
 
-#: assets/js/admin.js:1061
+#: assets/js/admin.js:1068
 msgid "Tracking is active on every page of your website (cookieless by default)."
 msgstr ""
 
-#: assets/js/admin.js:1061
+#: assets/js/admin.js:1068
 msgid "Tracking is paused in the settings."
 msgstr ""
 
-#: assets/js/admin.js:1062
+#: assets/js/admin.js:1069
 msgid "Your own visits as an administrator are not counted. To test, open your website in a private/incognito window."
 msgstr ""
 
-#: assets/js/admin.js:1063
+#: assets/js/admin.js:1070
 msgid "Visitor countries are detected for the world map."
 msgstr ""
 
-#: assets/js/admin.js:1063
+#: assets/js/admin.js:1070
 msgid "The free geolocation database is being downloaded in the background (needed for the world map)."
 msgstr ""
 
-#: assets/js/admin.js:1066
+#: assets/js/admin.js:1073
 msgid "Explore with sample data"
 msgstr ""
 
-#: assets/js/admin.js:1067
+#: assets/js/admin.js:1074
 msgid "Visit your website"
 msgstr ""
 
-#: assets/js/admin.js:1080
+#: assets/js/admin.js:1087
 msgid "Sample data is included in these reports."
 msgstr ""
 
-#: assets/js/admin.js:1102
-#: assets/js/admin.js:1234
+#: assets/js/admin.js:1109
+#: assets/js/admin.js:1241
 msgid "Entry pages"
 msgstr ""
 
-#: assets/js/admin.js:1103
-#: assets/js/admin.js:1235
+#: assets/js/admin.js:1110
+#: assets/js/admin.js:1242
 msgid "Exit pages"
 msgstr ""
 
-#: assets/js/admin.js:1111
+#: assets/js/admin.js:1118
 msgid "Referrers"
 msgstr ""
 
-#: assets/js/admin.js:1111
-#: assets/js/admin.js:1318
-#: assets/js/admin.js:1319
+#: assets/js/admin.js:1118
+#: assets/js/admin.js:1325
+#: assets/js/admin.js:1326
 msgid "No referring websites yet."
 msgstr ""
 
-#: assets/js/admin.js:1112
+#: assets/js/admin.js:1119
 msgid "No UTM-tagged campaign visits yet. Use the campaign URL builder on the Campaigns tab."
 msgstr ""
 
-#: assets/js/admin.js:1124
-#: assets/js/admin.js:1301
-#: assets/js/admin.js:1433
-#: assets/js/admin.js:1441
+#: assets/js/admin.js:1131
+#: assets/js/admin.js:1308
+#: assets/js/admin.js:1440
+#: assets/js/admin.js:1448
 msgid "Operating systems"
 msgstr ""
 
-#: assets/js/admin.js:1125
-#: assets/js/admin.js:1443
+#: assets/js/admin.js:1132
+#: assets/js/admin.js:1450
 msgid "Screen sizes"
 msgstr ""
 
-#: assets/js/admin.js:1126
-#: assets/js/admin.js:1423
+#: assets/js/admin.js:1133
+#: assets/js/admin.js:1430
 msgid "Languages"
 msgstr ""
 
-#: assets/js/admin.js:1131
+#: assets/js/admin.js:1138
 msgid "New vs. returning visitors"
 msgstr ""
 
-#: assets/js/admin.js:1135
+#: assets/js/admin.js:1142
 msgid "Event types"
 msgstr ""
 
-#: assets/js/admin.js:1135
+#: assets/js/admin.js:1142
 msgid "No clicks, downloads or form submissions recorded yet."
 msgstr ""
 
-#: assets/js/admin.js:1136
+#: assets/js/admin.js:1143
 msgid "Top events"
 msgstr ""
 
-#: assets/js/admin.js:1150
+#: assets/js/admin.js:1157
 msgid "Pageviews per minute"
 msgstr ""
 
-#: assets/js/admin.js:1150
+#: assets/js/admin.js:1157
 msgid "Last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1159
+#: assets/js/admin.js:1166
 msgid "Active pages"
 msgstr ""
 
-#: assets/js/admin.js:1162
+#: assets/js/admin.js:1169
 msgid "Latest pageviews"
 msgstr ""
 
-#: assets/js/admin.js:1167
+#: assets/js/admin.js:1174
 msgid "Resume"
 msgstr ""
 
-#: assets/js/admin.js:1167
+#: assets/js/admin.js:1174
 msgid "Pause"
 msgstr ""
 
-#: assets/js/admin.js:1174
+#: assets/js/admin.js:1181
 msgid "Nobody right now."
 msgstr ""
 
-#: assets/js/admin.js:1182
+#: assets/js/admin.js:1189
 msgid "visitor on your site right now"
 msgid_plural "visitors on your site right now"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1184
+#: assets/js/admin.js:1191
 msgid "visitors in the last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1185
+#: assets/js/admin.js:1192
 msgid "pageviews in the last 30 minutes"
 msgstr ""
 
-#: assets/js/admin.js:1187
+#: assets/js/admin.js:1194
 #, js-format
 msgid "Updated %s"
 msgstr ""
 
-#: assets/js/admin.js:1197
+#: assets/js/admin.js:1204
 msgid "This minute"
 msgstr ""
 
-#: assets/js/admin.js:1197
+#: assets/js/admin.js:1204
 #, js-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1207
+#: assets/js/admin.js:1214
 msgid "No pageviews in the last 30 minutes."
 msgstr ""
 
-#: assets/js/admin.js:1243
-#: assets/js/admin.js:1244
-#: assets/js/admin.js:1723
+#: assets/js/admin.js:1250
+#: assets/js/admin.js:1251
+#: assets/js/admin.js:1730
 msgid "Content types"
 msgstr ""
 
-#: assets/js/admin.js:1264
+#: assets/js/admin.js:1271
 #, js-format
 msgid "Published %s"
 msgstr ""
 
-#: assets/js/admin.js:1265
+#: assets/js/admin.js:1272
 #, js-format
 msgid "by %s"
 msgstr ""
 
-#: assets/js/admin.js:1266
-#: assets/js/admin.js:1584
+#: assets/js/admin.js:1273
+#: assets/js/admin.js:1591
 msgid "Edit"
 msgstr ""
 
-#: assets/js/admin.js:1267
+#: assets/js/admin.js:1274
 msgid "Filter whole dashboard by this page"
 msgstr ""
 
-#: assets/js/admin.js:1275
+#: assets/js/admin.js:1282
 msgid "Where visitors came from"
 msgstr ""
 
-#: assets/js/admin.js:1276
+#: assets/js/admin.js:1283
 msgid "Where they went next"
 msgstr ""
 
-#: assets/js/admin.js:1305
+#: assets/js/admin.js:1312
 msgid "Events on this page"
 msgstr ""
 
-#: assets/js/admin.js:1305
+#: assets/js/admin.js:1312
 msgid "No clicks, downloads or form submissions on this page yet."
 msgstr ""
 
-#: assets/js/admin.js:1310
+#: assets/js/admin.js:1317
 msgid "Channels over time"
 msgstr ""
 
-#: assets/js/admin.js:1318
+#: assets/js/admin.js:1325
 msgid "Referring sites"
 msgstr ""
 
-#: assets/js/admin.js:1319
+#: assets/js/admin.js:1326
 msgid "Referrer URLs"
 msgstr ""
 
-#: assets/js/admin.js:1323
+#: assets/js/admin.js:1330
 msgid "Tip: add a goal filter (Add filter > Goal) to see conversions and conversion rates for each source."
 msgstr ""
 
-#: assets/js/admin.js:1330
+#: assets/js/admin.js:1337
 msgid "No campaign visits yet. Add UTM parameters to the links you share. The builder below can create them for you."
 msgstr ""
 
-#: assets/js/admin.js:1332
+#: assets/js/admin.js:1339
 msgid "UTM campaigns"
 msgstr ""
 
-#: assets/js/admin.js:1337
+#: assets/js/admin.js:1344
 msgid "Mediums"
 msgstr ""
 
-#: assets/js/admin.js:1338
+#: assets/js/admin.js:1345
 msgid "Terms"
 msgstr ""
 
-#: assets/js/admin.js:1346
+#: assets/js/admin.js:1353
 msgid "Campaign URL builder"
 msgstr ""
 
-#: assets/js/admin.js:1346
+#: assets/js/admin.js:1353
 msgid "Create trackable links for ads, emails and social posts"
 msgstr ""
 
-#: assets/js/admin.js:1348
+#: assets/js/admin.js:1355
 msgid "Generated URL"
 msgstr ""
 
-#: assets/js/admin.js:1349
-#: assets/js/admin.js:1396
+#: assets/js/admin.js:1356
+#: assets/js/admin.js:1403
 msgid "Copy"
 msgstr ""
 
-#: assets/js/admin.js:1351
+#: assets/js/admin.js:1358
 msgid "Website URL"
 msgstr ""
 
-#: assets/js/admin.js:1352
+#: assets/js/admin.js:1359
 msgid "Campaign source"
 msgstr ""
 
-#: assets/js/admin.js:1353
+#: assets/js/admin.js:1360
 msgid "Campaign medium"
 msgstr ""
 
-#: assets/js/admin.js:1354
+#: assets/js/admin.js:1361
 msgid "Campaign name"
 msgstr ""
 
-#: assets/js/admin.js:1355
+#: assets/js/admin.js:1362
 msgid "Campaign term"
 msgstr ""
 
-#: assets/js/admin.js:1355
+#: assets/js/admin.js:1362
 msgid "paid keywords (optional)"
 msgstr ""
 
-#: assets/js/admin.js:1356
+#: assets/js/admin.js:1363
 msgid "Campaign content"
 msgstr ""
 
-#: assets/js/admin.js:1356
+#: assets/js/admin.js:1363
 msgid "ad variant (optional)"
 msgstr ""
 
-#: assets/js/admin.js:1366
+#: assets/js/admin.js:1373
 msgid "Facebook ad"
 msgstr ""
 
-#: assets/js/admin.js:1367
+#: assets/js/admin.js:1374
 msgid "Instagram bio"
 msgstr ""
 
-#: assets/js/admin.js:1368
+#: assets/js/admin.js:1375
 msgid "Email newsletter"
 msgstr ""
 
-#: assets/js/admin.js:1369
+#: assets/js/admin.js:1376
 msgid "Google Ads"
 msgstr ""
 
-#: assets/js/admin.js:1370
+#: assets/js/admin.js:1377
 msgid "WhatsApp share"
 msgstr ""
 
-#: assets/js/admin.js:1371
+#: assets/js/admin.js:1378
 msgid "QR code / print"
 msgstr ""
 
-#: assets/js/admin.js:1373
+#: assets/js/admin.js:1380
 msgid "Quick fill:"
 msgstr ""
 
-#: assets/js/admin.js:1383
+#: assets/js/admin.js:1390
 msgid "Enter a valid website URL"
 msgstr ""
 
-#: assets/js/admin.js:1420
+#: assets/js/admin.js:1427
 msgid "Region data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:1421
+#: assets/js/admin.js:1428
 msgid "City data needs the DB-IP City database or Cloudflare location headers."
 msgstr ""
 
-#: assets/js/admin.js:1422
+#: assets/js/admin.js:1429
 msgid "Continents"
 msgstr ""
 
-#: assets/js/admin.js:1440
+#: assets/js/admin.js:1447
 msgid "Browser versions"
 msgstr ""
 
-#: assets/js/admin.js:1442
+#: assets/js/admin.js:1449
 msgid "OS versions"
 msgstr ""
 
-#: assets/js/admin.js:1444
+#: assets/js/admin.js:1451
 msgid "Device types"
 msgstr ""
 
-#: assets/js/admin.js:1467
+#: assets/js/admin.js:1474
 #, js-format
 msgid "%s visitor"
 msgid_plural "%s visitors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/admin.js:1479
+#: assets/js/admin.js:1486
 msgid "All events"
 msgstr ""
 
-#: assets/js/admin.js:1479
+#: assets/js/admin.js:1486
 msgid "No events recorded yet."
 msgstr ""
 
-#: assets/js/admin.js:1480
+#: assets/js/admin.js:1487
 msgid "Custom"
 msgstr ""
 
-#: assets/js/admin.js:1480
+#: assets/js/admin.js:1487
 msgid "Add data-pa-event=\"Name\" to any button or link to track clicks."
 msgstr ""
 
-#: assets/js/admin.js:1481
+#: assets/js/admin.js:1488
 msgid "Destination"
 msgstr ""
 
-#: assets/js/admin.js:1482
+#: assets/js/admin.js:1489
 msgid "Downloads"
 msgstr ""
 
-#: assets/js/admin.js:1482
+#: assets/js/admin.js:1489
 msgid "File"
 msgstr ""
 
-#: assets/js/admin.js:1483
+#: assets/js/admin.js:1490
 msgid "Forms"
 msgstr ""
 
-#: assets/js/admin.js:1483
+#: assets/js/admin.js:1490
 msgid "Form"
 msgstr ""
 
-#: assets/js/admin.js:1484
+#: assets/js/admin.js:1491
 msgid "Email & phone"
 msgstr ""
 
-#: assets/js/admin.js:1484
+#: assets/js/admin.js:1491
 msgid "Contact link"
 msgstr ""
 
-#: assets/js/admin.js:1485
+#: assets/js/admin.js:1492
 msgid "Site search"
 msgstr ""
 
-#: assets/js/admin.js:1485
+#: assets/js/admin.js:1492
 msgid "Search term"
 msgstr ""
 
-#: assets/js/admin.js:1485
+#: assets/js/admin.js:1492
 msgid "No internal searches yet."
 msgstr ""
 
-#: assets/js/admin.js:1486
+#: assets/js/admin.js:1493
 msgid "Missing URL"
 msgstr ""
 
-#: assets/js/admin.js:1486
+#: assets/js/admin.js:1493
 msgid "No broken links found."
 msgstr ""
 
-#: assets/js/admin.js:1487
+#: assets/js/admin.js:1494
 msgid "Details"
 msgstr ""
 
-#: assets/js/admin.js:1487
+#: assets/js/admin.js:1494
 msgid "Detail (URL, page, label)"
 msgstr ""
 
-#: assets/js/admin.js:1494
+#: assets/js/admin.js:1501
 msgid "Goals & conversions"
 msgstr ""
 
-#: assets/js/admin.js:1499
-#: assets/js/admin.js:1516
+#: assets/js/admin.js:1506
+#: assets/js/admin.js:1523
 msgid "starts with"
 msgstr ""
 
-#: assets/js/admin.js:1499
-#: assets/js/admin.js:1516
+#: assets/js/admin.js:1506
+#: assets/js/admin.js:1523
 msgid "ends with"
 msgstr ""
 
-#: assets/js/admin.js:1499
-#: assets/js/admin.js:1516
+#: assets/js/admin.js:1506
+#: assets/js/admin.js:1523
 msgid "matches regex"
 msgstr ""
 
-#: assets/js/admin.js:1501
+#: assets/js/admin.js:1508
 #, js-format
 msgid "Event %1$s \"%2$s\""
 msgstr ""
 
-#: assets/js/admin.js:1503
+#: assets/js/admin.js:1510
 #, js-format
 msgid "Page %1$s \"%2$s\""
 msgstr ""
 
-#: assets/js/admin.js:1511
+#: assets/js/admin.js:1518
 msgid "e.g. Contact form sent"
 msgstr ""
 
-#: assets/js/admin.js:1512
+#: assets/js/admin.js:1519
 msgid "Event (form, click, download, etc.)"
 msgstr ""
 
-#: assets/js/admin.js:1512
+#: assets/js/admin.js:1519
 msgid "Page visit (e.g. thank-you page)"
 msgstr ""
 
-#: assets/js/admin.js:1514
+#: assets/js/admin.js:1521
 msgid "Any event type"
 msgstr ""
 
-#: assets/js/admin.js:1516
+#: assets/js/admin.js:1523
 msgid "is exactly"
 msgstr ""
 
-#: assets/js/admin.js:1525
+#: assets/js/admin.js:1532
 msgid "e.g. contact (form name) or CTA Click"
 msgstr ""
 
-#: assets/js/admin.js:1525
+#: assets/js/admin.js:1532
 msgid "e.g. /thank-you/"
 msgstr ""
 
-#: assets/js/admin.js:1526
+#: assets/js/admin.js:1533
 msgid "Matches the event name: form id/name, clicked link host, file name, phone number or your custom event name."
 msgstr ""
 
-#: assets/js/admin.js:1526
+#: assets/js/admin.js:1533
 msgid "Matches the page path (the part after your domain). You can paste a full URL."
 msgstr ""
 
-#: assets/js/admin.js:1542
+#: assets/js/admin.js:1549
 msgid "Edit goal"
 msgstr ""
 
-#: assets/js/admin.js:1542
+#: assets/js/admin.js:1549
 msgid "Add a goal"
 msgstr ""
 
-#: assets/js/admin.js:1544
+#: assets/js/admin.js:1551
 msgid "Name"
 msgstr ""
 
-#: assets/js/admin.js:1545
+#: assets/js/admin.js:1552
 msgid "Goal type"
 msgstr ""
 
-#: assets/js/admin.js:1547
+#: assets/js/admin.js:1554
 msgid "Match"
 msgstr ""
 
-#: assets/js/admin.js:1548
+#: assets/js/admin.js:1555
 msgid "Value"
 msgstr ""
 
-#: assets/js/admin.js:1553
+#: assets/js/admin.js:1560
 msgid "Save goal"
 msgstr ""
 
-#: assets/js/admin.js:1553
+#: assets/js/admin.js:1560
 msgid "Add goal"
 msgstr ""
 
-#: assets/js/admin.js:1554
+#: assets/js/admin.js:1561
 msgid "Cancel"
 msgstr ""
 
-#: assets/js/admin.js:1567
+#: assets/js/admin.js:1574
 msgid "No goals yet. A goal counts a conversion, for example a contact form submission, a click on your phone number or a visit to a thank-you page. Once you add one, you can see which channels and campaigns bring in customers."
 msgstr ""
 
-#: assets/js/admin.js:1583
+#: assets/js/admin.js:1590
 msgid "See which sources convert"
 msgstr ""
 
-#: assets/js/admin.js:1583
+#: assets/js/admin.js:1590
 msgid "Analyze"
 msgstr ""
 
-#: assets/js/admin.js:1585
+#: assets/js/admin.js:1592
 msgid "Delete"
 msgstr ""
 
-#: assets/js/admin.js:1586
+#: assets/js/admin.js:1593
 #, js-format
 msgid "Delete the goal \"%s\"? Your statistics are not affected."
 msgstr ""
 
-#: assets/js/admin.js:1595
+#: assets/js/admin.js:1602
 msgid "Unique visitors who completed the goal"
 msgstr ""
 
-#: assets/js/admin.js:1596
+#: assets/js/admin.js:1603
 msgid "Total number of times the goal was completed"
 msgstr ""
 
-#: assets/js/admin.js:1597
+#: assets/js/admin.js:1604
 msgid "Conversion rate"
 msgstr ""
 
-#: assets/js/admin.js:1602
+#: assets/js/admin.js:1609
 #, js-format
 msgid "Conversion rate is the share of all %s visitors in this period who completed the goal."
 msgstr ""
 
-#: assets/js/admin.js:1615
+#: assets/js/admin.js:1622
 msgid "Every visit with its journey through your site"
 msgstr ""
 
-#: assets/js/admin.js:1617
+#: assets/js/admin.js:1624
 msgid "Load more"
 msgstr ""
 
-#: assets/js/admin.js:1628
+#: assets/js/admin.js:1635
 msgid "Unknown location"
 msgstr ""
 
-#: assets/js/admin.js:1635
+#: assets/js/admin.js:1642
 msgid "returning"
 msgstr ""
 
-#: assets/js/admin.js:1671
+#: assets/js/admin.js:1678
 #, js-format
 msgid "%1$s on page, scrolled %2$s"
 msgstr ""
 
-#: assets/js/admin.js:1701
+#: assets/js/admin.js:1708
 msgid "No visits in this period."
 msgstr ""
 
-#: assets/js/admin.js:1720
+#: assets/js/admin.js:1727
 msgid "Content performance"
 msgstr ""
 
-#: assets/js/admin.js:1724
+#: assets/js/admin.js:1731
 msgid "Authors"
 msgstr ""
 
-#: assets/js/admin.js:1725
+#: assets/js/admin.js:1732
 msgid "Categories"
 msgstr ""
 
-#: assets/js/admin.js:1728
+#: assets/js/admin.js:1735
 msgid "Top content"
 msgstr ""
 
-#: assets/js/admin.js:1778
+#: assets/js/admin.js:1785
 msgid "Reports"
 msgstr ""
 
-#: assets/js/admin.js:1782
+#: assets/js/admin.js:1789
 msgid "IP geolocation by"
 msgstr ""
 
-#: assets/js/admin.js:1783
+#: assets/js/admin.js:1790
 msgid "Map data: Natural Earth"
 msgstr ""
 
-#: assets/js/admin.js:1784
+#: assets/js/admin.js:1791
 msgid "Flags: Twemoji (CC BY 4.0)"
 msgstr ""
 

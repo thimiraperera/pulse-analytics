@@ -3,7 +3,7 @@ Tags: analytics, statistics, stats, visitors, marketing
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,9 @@ New versions are published as releases on GitHub (https://github.com/thimirapere
 Only your server does, never your visitors. It downloads the geolocation database from download.db-ip.com once a month and the world map outline from cdn.jsdelivr.net once. A few times a day it asks api.github.com whether there is a new version of the plugin. On the Statistics page your own browser loads flag icons from jsDelivr and website icons from DuckDuckGo. You can turn that off under Settings > Access & display.
 
 == Changelog ==
+
+= 0.3.1 =
+* A "Clear all filters" button now appears next to "Add filter" as soon as one filter is set. Before, it only showed up with two or more filters.
 
 = 0.3.0 =
 * AI prompt for every export: text that tells ChatGPT, Claude, Gemini or another AI tool what the CSV file contains, so it can analyse the data properly. The ZIP includes it as prompt-for-ai.txt.
