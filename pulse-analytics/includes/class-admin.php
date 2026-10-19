@@ -226,6 +226,8 @@ class Admin {
 			'update_checked' => array( 'success', __( 'Checked GitHub for updates.', 'pulse-analytics' ) ),
 			'update_error'   => array( 'error', __( 'Could not check GitHub for updates.', 'pulse-analytics' ) ),
 			'token_invalid'  => array( 'error', __( 'That does not look like a GitHub token. Nothing was saved.', 'pulse-analytics' ) ),
+			'report_sent'    => array( 'success', __( 'The PDF report was sent.', 'pulse-analytics' ) ),
+			'report_failed'  => array( 'error', __( 'The PDF report was not sent.', 'pulse-analytics' ) ),
 		);
 		if ( ! isset( $messages[ $notice ] ) ) {
 			return;

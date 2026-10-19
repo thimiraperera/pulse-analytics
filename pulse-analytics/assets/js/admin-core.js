@@ -835,6 +835,108 @@
 		}, [icon('sparkles'), h('span', { 'class': 'pa-icon-btn-label', text: __('AI prompt', 'pulse-analytics') })]);
 	};
 
+	/* -------------------------------------------------- PDF report by email */
+
+	var emailDialog = null;
+
+	// Link to the PDF summary report for the current period and filters.
+	App.pdfUrl = function () {
+		return App.exportUrl('summary', { interval: state.interval }) + '&format=pdf';
+	};
+
+	// Dialog that emails the PDF report for the current period and filters.
+	App.emailReport = function () {
+		var appRoot = document.getElementById('pulse-analytics-app') || document.body;
+		var longDate = function (d) { return App.dates.format(d, { day: 'numeric', month: 'short', year: 'numeric' }); };
+		/* translators: 1: first day, 2: last day */
+		var range = state.start === state.end ? longDate(state.start) : sprintf(__('%1$s to %2$s', 'pulse-analytics'), longDate(state.start), longDate(state.end));
+		var parts = [range];
+		if (state.compare) {
+			parts.push(state.compare === 'year' ? __('compared with a year earlier', 'pulse-analytics') : __('compared with the period before', 'pulse-analytics'));
+		}
+		var filters = App.allFilters();
+		if (filters.length) {
+			/* translators: %s: number of filters */
+			parts.push(sprintf(_n('%s filter', '%s filters', filters.length, 'pulse-analytics'), filters.length));
+		}
+
+		if (emailDialog && emailDialog.parentNode) {
+			emailDialog.parentNode.removeChild(emailDialog);
+		}
+		var to = h('input', { type: 'text', 'class': 'pa-input', id: 'pa-mail-to', placeholder: 'name@example.com, another@example.com', autocomplete: 'email' });
+		/* translators: 1: site name, 2: date range */
+		var subject = h('input', { type: 'text', 'class': 'pa-input', id: 'pa-mail-subject', maxlength: '200', value: sprintf(__('Website statistics for %1$s: %2$s', 'pulse-analytics'), C.siteName, range) });
+		var message = h('textarea', { 'class': 'pa-input pa-textarea', id: 'pa-mail-message', rows: '5', maxlength: '5000', placeholder: __('A short note for the people who get the report (optional).', 'pulse-analytics') });
+		var status = h('p', { 'class': 'pa-dialog-status', role: 'status' });
+		var sendBtn = h('button', { type: 'submit', 'class': 'pa-btn pa-btn-primary' }, [icon('mail'), h('span', { text: __('Send report', 'pulse-analytics') })]);
+		var closeBtn = h('button', { type: 'button', 'class': 'pa-btn', text: __('Cancel', 'pulse-analytics') });
+		var close = function () {
+			if (typeof emailDialog.close === 'function') { emailDialog.close(); } else { emailDialog.removeAttribute('open'); }
+		};
+		closeBtn.addEventListener('click', close);
+
+		var form = h('form', { 'class': 'pa-dialog-inner', novalidate: true }, [
+			h('div', { 'class': 'pa-dialog-head' }, [
+				h('h2', { id: 'pa-mail-title' }, [icon('mail'), h('span', { text: __('Email the PDF report', 'pulse-analytics') })]),
+				h('button', { type: 'button', 'class': 'pa-icon-btn', 'aria-label': __('Close', 'pulse-analytics'), onclick: close }, icon('close'))
+			]),
+			h('p', {
+				'class': 'pa-dialog-note',
+				/* translators: %s: period, comparison and number of filters */
+				text: sprintf(__('The PDF covers %s, the same view you have on screen.', 'pulse-analytics'), parts.join(', '))
+			}),
+			h('div', { 'class': 'pa-field' }, [h('label', { 'for': 'pa-mail-to', text: __('To', 'pulse-analytics') }), to]),
+			h('div', { 'class': 'pa-field' }, [h('label', { 'for': 'pa-mail-subject', text: __('Subject', 'pulse-analytics') }), subject]),
+			h('div', { 'class': 'pa-field' }, [h('label', { 'for': 'pa-mail-message', text: __('Message', 'pulse-analytics') }), message]),
+			status,
+			h('div', { 'class': 'pa-dialog-foot' }, [
+				h('a', { 'class': 'pa-btn pa-btn-ghost pa-foot-left', href: App.pdfUrl() }, [icon('download'), h('span', { text: __('Download instead', 'pulse-analytics') })]),
+				closeBtn,
+				sendBtn
+			])
+		]);
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			if (!to.value.trim()) {
+				status.className = 'pa-dialog-status is-error';
+				status.textContent = __('Add at least one email address.', 'pulse-analytics');
+				to.focus();
+				return;
+			}
+			sendBtn.disabled = true;
+			status.className = 'pa-dialog-status';
+			status.textContent = __('Sending...', 'pulse-analytics');
+			var body = App.baseQuery();
+			body.interval = state.interval;
+			body.to = to.value;
+			body.subject = subject.value;
+			body.message = message.value;
+			App.api('POST', 'email-report', body).then(function (res) {
+				status.className = 'pa-dialog-status is-ok';
+				/* translators: %s: email addresses */
+				status.textContent = sprintf(__('Sent to %s.', 'pulse-analytics'), (res.to || []).join(', '));
+				sendBtn.hidden = true;
+				closeBtn.textContent = __('Close', 'pulse-analytics');
+			}).catch(function (err) {
+				status.className = 'pa-dialog-status is-error';
+				status.textContent = err && err.message ? err.message : __('The report could not be sent.', 'pulse-analytics');
+				sendBtn.disabled = false;
+			});
+		});
+
+		emailDialog = h('dialog', { 'class': 'pa-dialog pa-dialog-narrow', 'aria-labelledby': 'pa-mail-title' }, form);
+		emailDialog.addEventListener('click', function (e) {
+			if (e.target === emailDialog) { close(); }
+		});
+		appRoot.appendChild(emailDialog);
+		if (typeof emailDialog.showModal === 'function') {
+			emailDialog.showModal();
+		} else {
+			emailDialog.setAttribute('open', '');
+		}
+		to.focus();
+	};
+
 	/* ------------------------------------------------------- prompt dialog */
 
 	var promptDialog = null;

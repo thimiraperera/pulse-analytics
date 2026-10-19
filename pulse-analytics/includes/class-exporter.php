@@ -239,6 +239,18 @@ class Exporter {
 			$type = 'breakdown';
 		}
 
+		// The summary report as a PDF file.
+		if ( 'pdf' === $format ) {
+			$pdf = Pdf_Report::build( $query, $interval );
+			nocache_headers();
+			header( 'Content-Type: application/pdf' );
+			header( 'Content-Disposition: attachment; filename="' . Pdf_Report::filename( $query ) . '"' );
+			header( 'Content-Length: ' . strlen( $pdf ) );
+			header( 'X-Content-Type-Options: nosniff' );
+			echo $pdf; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Binary file.
+			exit;
+		}
+
 		// The text to paste into an AI tool along with the file.
 		if ( 'prompt' === $format ) {
 			nocache_headers();

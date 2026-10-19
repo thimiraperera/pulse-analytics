@@ -75,6 +75,47 @@ class REST_Controller {
 				'permission_callback' => array( $this, 'can_view' ),
 			)
 		);
+		register_rest_route(
+			Plugin::REST_NS,
+			'/email-report',
+			array(
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'email_report' ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+	}
+
+	/**
+	 * Emails the PDF report. Body: { start, end, compare, filters, interval, to, subject, message }.
+	 *
+	 * @param \WP_REST_Request $request Request.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function email_report( \WP_REST_Request $request ) {
+		$params = $request->get_json_params();
+		if ( ! is_array( $params ) ) {
+			$params = $request->get_params();
+		}
+		$to = Pdf_Report::recipients( isset( $params['to'] ) ? (string) $params['to'] : '' );
+		if ( is_wp_error( $to ) ) {
+			return $to;
+		}
+		if ( ! Pdf_Report::allow_send() ) {
+			return new \WP_Error( 'pulse_report_limit', __( 'You have sent many reports in the last hour. Please try again later.', 'pulse-analytics' ), array( 'status' => 429 ) );
+		}
+		$subject = isset( $params['subject'] ) ? Helpers::truncate( sanitize_text_field( (string) $params['subject'] ), 200 ) : '';
+		$message = isset( $params['message'] ) ? Helpers::truncate( sanitize_textarea_field( (string) $params['message'] ), 5000 ) : '';
+		$result  = Pdf_Report::send( Query::from_array( $params ), $to, $subject, $message, isset( $params['interval'] ) ? sanitize_key( (string) $params['interval'] ) : '' );
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+		return rest_ensure_response(
+			array(
+				'sent' => true,
+				'to'   => $to,
+			)
+		);
 	}
 
 	/**

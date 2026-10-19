@@ -151,6 +151,7 @@
 			if (popoverEl) { closePopover(); return; }
 			var items = [
 				['all', null, __('All reports in one ZIP file', 'pulse-analytics')],
+				['pdf', null, __('Summary report (PDF)', 'pulse-analytics')],
 				'sep',
 				['summary', null, __('Summary & trend', 'pulse-analytics')],
 				['breakdown', 'page', __('All pages', 'pulse-analytics')],
@@ -168,10 +169,23 @@
 				['pageviews', null, __('Raw data: pageviews', 'pulse-analytics')],
 				['events', null, __('Raw data: events', 'pulse-analytics')]
 			];
-			var menu = h('div', { 'class': 'pa-menu', role: 'menu' }, [h('div', { 'class': 'pa-menu-title', text: __('Download CSV (current filters)', 'pulse-analytics') })]);
+			var menu = h('div', { 'class': 'pa-menu', role: 'menu' }, [h('div', { 'class': 'pa-menu-title', text: __('Download (current filters)', 'pulse-analytics') })]);
 			items.forEach(function (item) {
 				if (item === 'sep') {
 					menu.appendChild(h('hr'));
+					return;
+				}
+				if (item[0] === 'pdf') {
+					menu.appendChild(h('div', { 'class': 'pa-menu-row' }, [
+						h('a', { 'class': 'pa-menu-item is-strong', role: 'menuitem', href: App.pdfUrl(), onclick: closePopover }, [icon('file'), h('span', { text: item[2] })]),
+						C.canManage ? h('button', {
+							type: 'button',
+							'class': 'pa-menu-prompt',
+							role: 'menuitem',
+							title: __('Send the PDF report by email', 'pulse-analytics'),
+							onclick: function () { closePopover(); App.emailReport(); }
+						}, [icon('mail'), h('span', { text: __('Email', 'pulse-analytics') })]) : null
+					]));
 					return;
 				}
 				var itemIcon = item[0] === 'all' ? 'download' : (item[0] === 'breakdown' || item[0] === 'summary' || item[0] === 'goals' ? 'table' : 'file');

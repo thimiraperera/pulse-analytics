@@ -68,6 +68,63 @@
 		});
 	});
 
+	// PDF report: the download link follows the dates and comparison chosen in the card.
+	var pdfLink = document.getElementById('pa-report-download');
+	if (pdfLink) {
+		pdfLink.addEventListener('click', function () {
+			var url = new URL(pdfLink.href, window.location.href);
+			['start', 'end', 'compare'].forEach(function (key) {
+				var field = document.getElementById('pa-report-' + key);
+				if (field) { url.searchParams.set(key, field.value); }
+			});
+			pdfLink.href = url.toString();
+		});
+	}
+
+	// Logo for reports, picked from the media library.
+	var logoField = document.querySelector('[data-pa-logo]');
+	if (logoField && window.wp && wp.media) {
+		var logoInput = logoField.querySelector('[data-pa-logo-input]');
+		var logoPreview = logoField.querySelector('.pa-logo-preview');
+		var removeBtn = logoField.querySelector('[data-pa-logo-remove]');
+		var frame = null;
+		var showLogo = function (url) {
+			while (logoPreview.firstChild) { logoPreview.removeChild(logoPreview.firstChild); }
+			if (url) {
+				var img = document.createElement('img');
+				img.src = url;
+				img.alt = '';
+				logoPreview.appendChild(img);
+			} else {
+				var empty = document.createElement('span');
+				empty.className = 'pa-logo-empty';
+				empty.textContent = __('No logo chosen', 'pulse-analytics');
+				logoPreview.appendChild(empty);
+			}
+			removeBtn.hidden = !url;
+		};
+		logoField.querySelector('[data-pa-logo-choose]').addEventListener('click', function () {
+			if (!frame) {
+				frame = wp.media({
+					title: __('Choose a logo for reports', 'pulse-analytics'),
+					library: { type: 'image' },
+					button: { text: __('Use this logo', 'pulse-analytics') },
+					multiple: false
+				});
+				frame.on('select', function () {
+					var image = frame.state().get('selection').first().toJSON();
+					logoInput.value = image.id;
+					showLogo(image.sizes && image.sizes.medium ? image.sizes.medium.url : image.url);
+				});
+			}
+			frame.open();
+		});
+		removeBtn.addEventListener('click', function () {
+			logoInput.value = '0';
+			showLogo('');
+		});
+	}
+
 	// Prompt for AI tools, for the export picked in the list.
 	var dialog = document.getElementById('pa-prompt-dialog');
 	var openBtn = document.getElementById('pa-prompt-open');

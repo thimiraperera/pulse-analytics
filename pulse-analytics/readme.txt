@@ -36,6 +36,12 @@ Every report can be filtered. Click any row to filter by it, or use Add filter t
 
 Each card and table has a CSV button that uses the current filters and dates. The Export menu also has "All reports in one ZIP file", with every report as its own CSV file plus the raw visits, pageviews and events. Settings > Tools has the same downloads for any period. The files are saved as UTF-8 with a BOM, so Excel shows Sinhala, Tamil and other scripts correctly.
 
+= PDF reports =
+
+The Export menu has a summary report as a PDF file for the dates and filters on screen: the main numbers and how they changed, a chart of visitors, traffic channels, devices, top pages, sources, countries, campaigns, goals and actions on the site. Your logo is printed at the top (set it under Settings > Reports). The PDF can be downloaded, or emailed with your own message to up to 10 people at a time, from the dashboard or from Settings > Tools. The weekly or monthly email reports can include the same PDF.
+
+= AI prompts =
+
 Every export also has an AI prompt button. It gives you text to paste into ChatGPT, Claude, Gemini or another AI chat together with the file. The text explains what the file contains, what each column means and how the visitors were counted, and asks for an analysis. The ZIP includes the same text as prompt-for-ai.txt.
 
 = Elsewhere in the admin =
@@ -43,7 +49,7 @@ Every export also has an AI prompt button. It gives you text to paste into ChatG
 * A widget on the WordPress dashboard with the last 30 days.
 * A "Views (30d)" column in the posts and pages lists, and a small statistics box in the editor.
 * A view counter in the admin bar while you browse your own site.
-* Weekly or monthly summary emails.
+* Weekly or monthly summary emails, optionally with the PDF report attached.
 * 60 days of sample data, so you can try every report before real visits come in. It can be removed with one click.
 
 = Privacy =
@@ -89,6 +95,10 @@ Not noticeably. The script loads with defer and sends its data in the background
 
 In four database tables: wp_pulse_sessions, wp_pulse_pageviews, wp_pulse_pages and wp_pulse_events (with your table prefix). Deleting the plugin keeps the data unless you tick "Delete all statistics and settings when the plugin is deleted" on the Privacy tab.
 
+= Why does the PDF show some pages by their address instead of their title? =
+
+The PDF uses the standard PDF fonts, which cover English and other Western European languages. Page titles in other scripts, such as Sinhala or Tamil, are shown by their address instead, and the CSV exports keep the full titles.
+
 = How do updates work? =
 
 New versions are published as releases on GitHub (https://github.com/thimiraperera/pulse-analytics). WordPress checks for them along with its other updates and shows them on the Plugins screen, where automatic updates can be turned on. Statistics > Settings > Updates shows the latest version and has a button to check right away.
@@ -98,6 +108,11 @@ New versions are published as releases on GitHub (https://github.com/thimirapere
 Only your server does, never your visitors. It downloads the geolocation database from download.db-ip.com once a month and the world map outline from cdn.jsdelivr.net once. A few times a day it asks api.github.com whether there is a new version of the plugin. On the Statistics page your own browser loads flag icons from jsDelivr and website icons from DuckDuckGo. You can turn that off under Settings > Access & display.
 
 == Changelog ==
+
+= 0.4.0 =
+* PDF summary report for any period, from the Export menu or Settings > Tools.
+* Email the PDF with your own message, from the dashboard or Settings > Tools.
+* Logo setting under Settings > Reports, printed on PDF reports and shown in report emails. The weekly or monthly email reports can attach the PDF.
 
 = 0.3.1 =
 * A "Clear all filters" button now appears next to "Add filter" as soon as one filter is set. Before, it only showed up with two or more filters.

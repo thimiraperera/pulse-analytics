@@ -72,10 +72,12 @@ class Settings {
 			'post_columns'        => 1,
 			'post_metabox'        => 1,
 			'external_assets'     => 1,
-			// Email reports.
+			// Reports.
+			'report_logo'         => 0,
 			'email_enabled'       => 0,
 			'email_frequency'     => 'weekly',
 			'email_recipients'    => '',
+			'email_attach_pdf'    => 0,
 		);
 	}
 
@@ -133,7 +135,7 @@ class Settings {
 		$defaults = self::defaults();
 		$out      = array();
 
-		$booleans = array( 'tracking_enabled', 'store_user_id', 'respect_dnt', 'require_consent', 'track_outbound', 'track_downloads', 'track_forms', 'track_links', 'track_scroll', 'track_search', 'track_404', 'track_spa', 'geoip_headers', 'geoip_auto_update', 'delete_on_uninstall', 'dashboard_widget', 'admin_bar', 'post_columns', 'post_metabox', 'external_assets', 'email_enabled' );
+		$booleans = array( 'tracking_enabled', 'store_user_id', 'respect_dnt', 'require_consent', 'track_outbound', 'track_downloads', 'track_forms', 'track_links', 'track_scroll', 'track_search', 'track_404', 'track_spa', 'geoip_headers', 'geoip_auto_update', 'delete_on_uninstall', 'dashboard_widget', 'admin_bar', 'post_columns', 'post_metabox', 'external_assets', 'email_enabled', 'email_attach_pdf' );
 		foreach ( $booleans as $key ) {
 			if ( array_key_exists( $key, $input ) ) {
 				$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
@@ -180,6 +182,10 @@ class Settings {
 		}
 		if ( isset( $input['geoip_custom_path'] ) ) {
 			$out['geoip_custom_path'] = trim( sanitize_text_field( (string) $input['geoip_custom_path'] ) );
+		}
+		if ( isset( $input['report_logo'] ) ) {
+			$logo               = absint( $input['report_logo'] );
+			$out['report_logo'] = $logo && wp_attachment_is_image( $logo ) ? $logo : 0;
 		}
 		if ( isset( $input['email_recipients'] ) ) {
 			$emails                  = array_filter( array_map( 'sanitize_email', Helpers::lines( (string) $input['email_recipients'] ) ), 'is_email' );

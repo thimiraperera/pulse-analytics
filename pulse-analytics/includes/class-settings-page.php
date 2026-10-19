@@ -32,6 +32,7 @@ class Settings_Page {
 		add_action( 'admin_post_pulse_analytics_purge', array( $this, 'purge' ) );
 		add_action( 'admin_post_pulse_analytics_clear_cache', array( $this, 'clear_cache' ) );
 		add_action( 'admin_post_pulse_analytics_test_email', array( $this, 'test_email' ) );
+		add_action( 'admin_post_pulse_analytics_email_report', array( $this, 'email_report' ) );
 	}
 
 	/**
@@ -50,6 +51,9 @@ class Settings_Page {
 		if ( false === strpos( $hook, self::PAGE_SLUG ) ) {
 			return;
 		}
+		if ( 'email' === $this->current_tab() ) {
+			wp_enqueue_media(); // Media library for the logo field.
+		}
 		wp_enqueue_style( 'pulse-analytics-settings', PULSE_ANALYTICS_URL . 'assets/css/settings.css', array(), PULSE_ANALYTICS_VERSION );
 		wp_enqueue_script( 'pulse-analytics-settings', PULSE_ANALYTICS_URL . 'assets/js/settings.js', array( 'wp-i18n' ), PULSE_ANALYTICS_VERSION, true );
 		wp_set_script_translations( 'pulse-analytics-settings', 'pulse-analytics', PULSE_ANALYTICS_PATH . 'languages' );
@@ -66,7 +70,7 @@ class Settings_Page {
 			'geo'      => __( 'Geolocation', 'pulse-analytics' ),
 			'privacy'  => __( 'Privacy & data', 'pulse-analytics' ),
 			'display'  => __( 'Access & display', 'pulse-analytics' ),
-			'email'    => __( 'Email reports', 'pulse-analytics' ),
+			'email'    => __( 'Reports', 'pulse-analytics' ),
 			'tools'    => __( 'Tools', 'pulse-analytics' ),
 		);
 		if ( current_user_can( 'update_plugins' ) ) {
@@ -498,11 +502,47 @@ class Settings_Page {
 	 * @param array $s Settings.
 	 */
 	private function render_email( array $s ) {
+		$logo_id  = (int) $s['report_logo'];
+		$logo_url = $logo_id ? wp_get_attachment_image_url( $logo_id, 'medium' ) : '';
+		$theme    = (int) get_theme_mod( 'custom_logo' );
 		?>
 		<table class="form-table" role="presentation">
 			<tr>
+				<th scope="row"><?php esc_html_e( 'Logo', 'pulse-analytics' ); ?></th>
+				<td>
+					<div class="pa-logo-field" data-pa-logo>
+						<div class="pa-logo-preview">
+							<?php if ( $logo_url ) : ?>
+								<img src="<?php echo esc_url( $logo_url ); ?>" alt="" />
+							<?php else : ?>
+								<span class="pa-logo-empty"><?php esc_html_e( 'No logo chosen', 'pulse-analytics' ); ?></span>
+							<?php endif; ?>
+						</div>
+						<input type="hidden" name="pulse[report_logo]" value="<?php echo esc_attr( (string) $logo_id ); ?>" data-pa-logo-input />
+						<p class="pa-inline">
+							<button type="button" class="button" data-pa-logo-choose><?php esc_html_e( 'Choose logo', 'pulse-analytics' ); ?></button>
+							<button type="button" class="button-link button-link-delete" data-pa-logo-remove <?php echo $logo_url ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove logo', 'pulse-analytics' ); ?></button>
+						</p>
+					</div>
+					<p class="description">
+						<?php
+						echo esc_html(
+							$theme
+								? __( 'Printed at the top of PDF reports and shown in report emails. A wide PNG or JPG works best. Without a logo here, the logo from your theme is used.', 'pulse-analytics' )
+								: __( 'Printed at the top of PDF reports and shown in report emails. A wide PNG or JPG works best.', 'pulse-analytics' )
+						);
+						?>
+					</p>
+				</td>
+			</tr>
+			<tr>
 				<th scope="row"><?php esc_html_e( 'Email reports', 'pulse-analytics' ); ?></th>
-				<td><?php $this->checkbox( 'email_enabled', __( 'Send a summary report by email', 'pulse-analytics' ), '', $s ); ?></td>
+				<td>
+					<?php
+					$this->checkbox( 'email_enabled', __( 'Send a summary report by email', 'pulse-analytics' ), '', $s );
+					$this->checkbox( 'email_attach_pdf', __( 'Attach the PDF report to these emails', 'pulse-analytics' ), '', $s );
+					?>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pa-email-freq"><?php esc_html_e( 'Frequency', 'pulse-analytics' ); ?></label></th>
@@ -586,6 +626,41 @@ class Settings_Page {
 						</p>
 					</div>
 				</dialog>
+			</div>
+
+			<div class="pa-card">
+				<h2><?php esc_html_e( 'PDF report', 'pulse-analytics' ); ?></h2>
+				<p><?php esc_html_e( 'A printable summary for the dates you choose: the main numbers and how they changed, a chart of visitors, traffic channels, devices, top pages, sources, countries, campaigns, goals and actions on the site. The logo from the Reports tab is printed at the top.', 'pulse-analytics' ); ?></p>
+				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="pa-report-form">
+					<input type="hidden" name="action" value="pulse_analytics_email_report" />
+					<?php wp_nonce_field( 'pulse_analytics_email_report' ); ?>
+					<p class="pa-inline">
+						<label><?php esc_html_e( 'From', 'pulse-analytics' ); ?> <input type="date" name="start" id="pa-report-start" value="<?php echo esc_attr( Helpers::today( -29 ) ); ?>" required /></label>
+						<label><?php esc_html_e( 'To', 'pulse-analytics' ); ?> <input type="date" name="end" id="pa-report-end" value="<?php echo esc_attr( Helpers::today() ); ?>" required /></label>
+						<label><?php esc_html_e( 'Compare with', 'pulse-analytics' ); ?>
+							<select name="compare" id="pa-report-compare">
+								<option value="previous"><?php esc_html_e( 'the period before', 'pulse-analytics' ); ?></option>
+								<option value="year"><?php esc_html_e( 'the same dates a year earlier', 'pulse-analytics' ); ?></option>
+								<option value=""><?php esc_html_e( 'nothing', 'pulse-analytics' ); ?></option>
+							</select>
+						</label>
+						<a class="button button-primary" id="pa-report-download" href="<?php echo esc_url( add_query_arg( array( 'action' => 'pulse_analytics_export', 'type' => 'summary', 'format' => 'pdf', 'filters' => '[]', '_wpnonce' => wp_create_nonce( 'pulse_analytics_export' ) ), admin_url( 'admin-post.php' ) ) ); ?>"><?php esc_html_e( 'Download PDF', 'pulse-analytics' ); ?></a>
+					</p>
+					<h3><?php esc_html_e( 'Send by email', 'pulse-analytics' ); ?></h3>
+					<p>
+						<label for="pa-report-to"><?php esc_html_e( 'To', 'pulse-analytics' ); ?></label><br />
+						<input type="text" id="pa-report-to" name="to" class="large-text" placeholder="name@example.com, another@example.com" />
+					</p>
+					<p>
+						<label for="pa-report-subject"><?php esc_html_e( 'Subject', 'pulse-analytics' ); ?></label><br />
+						<input type="text" id="pa-report-subject" name="subject" class="large-text" maxlength="200" placeholder="<?php echo esc_attr( Pdf_Report::default_subject( new Query( Helpers::today( -29 ), Helpers::today() ) ) ); ?>" />
+					</p>
+					<p>
+						<label for="pa-report-message"><?php esc_html_e( 'Message', 'pulse-analytics' ); ?></label><br />
+						<textarea id="pa-report-message" name="message" rows="5" class="large-text" maxlength="5000" placeholder="<?php esc_attr_e( 'A short note for the people who get the report (optional).', 'pulse-analytics' ); ?>"></textarea>
+					</p>
+					<p><button type="submit" class="button"><?php esc_html_e( 'Send PDF by email', 'pulse-analytics' ); ?></button></p>
+				</form>
 			</div>
 
 			<div class="pa-card">
@@ -878,5 +953,34 @@ class Settings_Page {
 		$this->guard( 'pulse_analytics_test_email' );
 		$sent = Email_Reports::send();
 		$this->back( $sent ? 'email_sent' : 'email_failed', 'email' );
+	}
+
+	/**
+	 * Emails the PDF report from the Tools tab.
+	 */
+	public function email_report() {
+		$this->guard( 'pulse_analytics_email_report' );
+		$query = Query::from_array(
+			array(
+				'start'   => isset( $_POST['start'] ) ? sanitize_text_field( wp_unslash( $_POST['start'] ) ) : '',
+				'end'     => isset( $_POST['end'] ) ? sanitize_text_field( wp_unslash( $_POST['end'] ) ) : '',
+				'compare' => isset( $_POST['compare'] ) ? sanitize_key( wp_unslash( $_POST['compare'] ) ) : '',
+			)
+		);
+		$to    = Pdf_Report::recipients( isset( $_POST['to'] ) ? sanitize_text_field( wp_unslash( $_POST['to'] ) ) : '' );
+		if ( is_wp_error( $to ) ) {
+			$this->back( 'report_failed', 'tools', $to->get_error_message() );
+		}
+		if ( ! Pdf_Report::allow_send() ) {
+			$this->back( 'report_failed', 'tools', __( 'You have sent many reports in the last hour. Please try again later.', 'pulse-analytics' ) );
+		}
+		$subject = isset( $_POST['subject'] ) ? Helpers::truncate( sanitize_text_field( wp_unslash( $_POST['subject'] ) ), 200 ) : '';
+		$message = isset( $_POST['message'] ) ? Helpers::truncate( sanitize_textarea_field( wp_unslash( $_POST['message'] ) ), 5000 ) : '';
+		$result  = Pdf_Report::send( $query, $to, $subject, $message );
+		if ( is_wp_error( $result ) ) {
+			$this->back( 'report_failed', 'tools', $result->get_error_message() );
+		}
+		/* translators: %s: list of email addresses */
+		$this->back( 'report_sent', 'tools', sprintf( __( 'Sent to %s.', 'pulse-analytics' ), implode( ', ', $to ) ) );
 	}
 }

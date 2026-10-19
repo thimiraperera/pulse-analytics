@@ -79,8 +79,19 @@ class Email_Reports {
 		);
 
 		/* translators: 1: site name, 2: start date, 3: end date */
-		$subject = sprintf( __( '[%1$s] Website statistics for %2$s to %3$s', 'pulse-analytics' ), wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ), $start, $end );
-		return wp_mail( $to, $subject, self::render( $data ), array( 'Content-Type: text/html; charset=UTF-8' ) );
+		$subject     = sprintf( __( '[%1$s] Website statistics for %2$s to %3$s', 'pulse-analytics' ), wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ), $start, $end );
+		$attachments = array();
+		if ( Settings::get( 'email_attach_pdf' ) ) {
+			$file = Pdf_Report::temp_file( $query );
+			if ( ! is_wp_error( $file ) ) {
+				$attachments[] = $file;
+			}
+		}
+		$sent = wp_mail( $to, $subject, self::render( $data ), array( 'Content-Type: text/html; charset=UTF-8' ), $attachments );
+		foreach ( $attachments as $file ) {
+			Pdf_Report::delete_temp_file( $file );
+		}
+		return $sent;
 	}
 
 	/**
@@ -104,7 +115,10 @@ class Email_Reports {
 		$head  = 'padding:8px 12px;border-bottom:2px solid #c3c2b7;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#52514e;text-align:left;';
 		$html  = '<div style="background:#f6f7f7;padding:24px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">';
 		$html .= '<div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e1e0d9;border-radius:8px;overflow:hidden;">';
-		$html .= '<div style="padding:20px 24px;border-bottom:1px solid #e1e0d9;"><div style="font-size:12px;color:#52514e;text-transform:uppercase;letter-spacing:.05em;">' . esc_html__( 'Website statistics', 'pulse-analytics' ) . '</div>';
+		$logo  = Pdf_Report::logo_url();
+		$html .= '<div style="padding:20px 24px;border-bottom:1px solid #e1e0d9;">';
+		$html .= $logo ? '<img src="' . esc_url( $logo ) . '" alt="" style="display:block;max-height:44px;max-width:220px;border:0;margin-bottom:12px;">' : '';
+		$html .= '<div style="font-size:12px;color:#52514e;text-transform:uppercase;letter-spacing:.05em;">' . esc_html__( 'Website statistics', 'pulse-analytics' ) . '</div>';
 		$html .= '<div style="font-size:20px;font-weight:600;color:#0b0b0b;margin-top:4px;">' . esc_html( get_bloginfo( 'name' ) ) . '</div>';
 		$html .= '<div style="font-size:13px;color:#52514e;margin-top:4px;">' . esc_html( $data['start'] . ' to ' . $data['end'] ) . '</div></div>';
 
@@ -153,6 +167,9 @@ class Email_Reports {
 			$html .= '</table></div>';
 		}
 
+		if ( Settings::get( 'email_attach_pdf' ) ) {
+			$html .= '<div style="padding:16px 24px 0;font-size:13px;color:#52514e;">' . esc_html__( 'The full report is attached as a PDF file.', 'pulse-analytics' ) . '</div>';
+		}
 		$html .= '<div style="padding:20px 24px;"><a href="' . esc_url( admin_url( 'admin.php?page=' . Admin::PAGE_SLUG ) ) . '" style="display:inline-block;background:#2a78d6;color:#ffffff;text-decoration:none;padding:10px 16px;border-radius:6px;font-size:14px;">' . esc_html__( 'Open full statistics', 'pulse-analytics' ) . '</a></div>';
 		$html .= '</div><div style="text-align:center;font-size:11px;color:#898781;margin-top:12px;">' . esc_html__( 'Sent by Pulse Analytics. You can change or turn off these emails under Statistics > Settings.', 'pulse-analytics' ) . '</div></div>';
 		return $html;

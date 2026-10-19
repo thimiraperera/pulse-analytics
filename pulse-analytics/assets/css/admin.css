@@ -168,6 +168,15 @@
 	color: var(--pa-ink); font: 12.5px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 .pa-dialog-foot { display: flex; justify-content: flex-end; gap: 8px; }
+.pa-dialog-narrow { width: min(560px, calc(100vw - 32px)); }
+.pa-dialog-foot .pa-foot-left { margin-right: auto; }
+.pa-field { display: grid; gap: 4px; }
+.pa-field label { font-size: 12.5px; font-weight: 600; color: var(--pa-ink-2); }
+.pa-field .pa-input { width: 100%; box-sizing: border-box; }
+.pa-textarea { height: auto; min-height: 104px; padding: 8px 10px; resize: vertical; font: inherit; line-height: 1.5; }
+.pa-dialog-status { margin: 0; min-height: 18px; font-size: 13px; color: var(--pa-ink-2); }
+.pa-dialog-status.is-error { color: var(--pa-bad); }
+.pa-dialog-status.is-ok { color: var(--pa-good); font-weight: 600; }
 
 /* ----------------------------------------------------------- filter bar */
 .pa-filterbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0 4px; min-height: 32px; }
